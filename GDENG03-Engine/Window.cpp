@@ -10,18 +10,26 @@ Window::Window()
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,  WPARAM wparam, LPARAM lparam)
 {
+	Window* window;
 	switch(msg)
 	{
 
 	case WM_CREATE:
 
-		//Event fired when the window will be created
+		// Event fired when the window is created
+		// collected here..
+		window = (Window*)((LPCREATESTRUCT)lparam)->lpCreateParams;
+
+		// .. and then stored for later lookup
+		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
 		window->onCreate();
 		break;
 
 	case WM_DESTROY:
 
-		//Event fired when the window is destroyed
+		// Event fired when the window is destroyed
+		window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+
 		window->onDestroy();
 		::PostQuitMessage(0);
 		break;
@@ -29,6 +37,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,  WPARAM wparam, LPARAM lparam)
 	default:
 		return ::DefWindowProc(hwnd, msg, wparam, lparam);
 	}
+
+	return NULL;
 	
 }
 bool Window::init()
@@ -46,21 +56,19 @@ bool Window::init()
 	wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hInstance = NULL;
 	wc.lpszClassName = LPCWSTR("MyWindowClass");
 	wc.lpszMenuName = LPCWSTR("");
 	wc.style = NULL;
-	wc.lpfnWndProc = WndProc;
+	wc.lpfnWndProc = &WndProc;
 
 
 	if (!::RegisterClassEx(&wc)) // If the registration of class will fail, the function will return false
 		return false;
 
-	if (!window)
-		window = this;
-
 	m_hwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, LPCWSTR("MyWindowClass"), LPCWSTR("DirectX Application"), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768,
-		NULL, NULL, NULL, NULL);
+		NULL, NULL, NULL, this);
 
 	if (!m_hwnd)
 		return false;
@@ -71,7 +79,8 @@ bool Window::init()
 
 	
 
-	//set this flag to true indicate that the window is  initialized an running 
+	//set this flag to true indicate that the window is  initialized an running
+	m_is_run = true;
 
 	return true;
 }
@@ -87,9 +96,9 @@ bool Window::broadcast()
 
 	}
 
-	window->onUpdate();
+	this->onUpdate();
 
-	Sleep(0);
+	Sleep(1);
 
 	return true;
 }
