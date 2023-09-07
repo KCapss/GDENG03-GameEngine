@@ -1,0 +1,3 @@
+﻿  Window.cpp
+C:\Users\Kevin\source\repos\GDENG03-Engine\GDENG03-Engine\Window.cpp(33): warning C4715: 'WndProc': not all control paths return a value
+  GDENG03-Engine.vcxproj -> C:\Users\Kevin\source\repos\GDENG03-Engine\x64\Debug\GDENG03-Engine.exe
