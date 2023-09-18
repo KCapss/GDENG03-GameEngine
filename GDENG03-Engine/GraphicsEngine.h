@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <d3d11.h>
 
 class SwapChain;
@@ -44,4 +45,14 @@ private:
 private:
 	friend class SwapChain;
 	friend class VertexBuffer;
+};
+
+struct vec3
+{
+	float x, y, z;
+};
+
+struct vertex
+{
+	vec3 position;
 };

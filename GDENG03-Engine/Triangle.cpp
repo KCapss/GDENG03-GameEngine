@@ -1,9 +1,10 @@
 #include "Triangle.h"
 
 
-Triangle::Triangle(float offset)
+Triangle::Triangle(float xOffset, float yOffset)
 {
-	this->offset = offset;
+	this->xOffset = xOffset;
+	this->yOffset = yOffset;
 }
 
 
@@ -13,9 +14,9 @@ void Triangle::onCreate()
 	vertex list[] =
 	{
 		//X - Y - Z
-		{-0.1f * offset,-0.1f * offset,0.0f}, // POS1
-		{-0.1f * offset,0.1f * offset,0.0f}, // POS2
-		{ 0.1f * offset,-0.1f * offset,0.0f}
+		{-0.1f + xOffset,-0.1f + yOffset,0.0f}, // POS1
+		{-0.1f + xOffset,0.1f + yOffset,0.0f}, // POS2
+		{ 0.1f + xOffset,-0.1f + yOffset,0.0f}
 	};
 
 	m_vb_copy = GraphicsEngine::get()->createVertexBuffer();

@@ -4,31 +4,21 @@
 #include "VertexBuffer.h"
 
 
-struct vec3
-{
-	float x, y, z;
-};
-
-struct vertex
-{
-	vec3 position;
-};
-
-
 
 class Triangle
 {
 public:
-	Triangle(float offset);
+	Triangle(float xOffset, float yOffset);
 	void onCreate();
 	VertexBuffer *retrieveBuffer();
 
 private:
 
 	VertexBuffer* m_vb_copy;
-	vertex list[];
+	
 
-	float offset = 0;
+	float xOffset = 0;
+	float yOffset = 0;
 	
 };
 

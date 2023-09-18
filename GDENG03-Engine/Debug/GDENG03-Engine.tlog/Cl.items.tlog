@@ -2,6 +2,8 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\DeviceContext.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\DeviceContext.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\GraphicsEngine.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\GraphicsEngine.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Main.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Main.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Quads.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Quads.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SwapChain.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SwapChain.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Triangle.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Triangle.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\VertexBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\VertexBuffer.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Window.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Window.obj

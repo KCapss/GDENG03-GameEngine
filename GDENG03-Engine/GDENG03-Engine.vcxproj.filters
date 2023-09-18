@@ -51,6 +51,9 @@
     <ClCompile Include="Triangle.cpp">
       <Filter>GameEngine\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="Quads.cpp">
+      <Filter>GameEngine\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -72,6 +75,9 @@
       <Filter>GameEngine\GraphicsEngine\VertexBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Triangle.h">
+      <Filter>GameEngine\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Quads.h">
       <Filter>GameEngine\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
