@@ -10,36 +10,37 @@ Window::Window()
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,  WPARAM wparam, LPARAM lparam)
 {
-	Window* window;
-	switch(msg)
+	//GetWindowLong(hwnd,)
+	switch (msg)
 	{
-
 	case WM_CREATE:
-
+	{
 		// Event fired when the window is created
 		// collected here..
-		window = (Window*)((LPCREATESTRUCT)lparam)->lpCreateParams;
-
+		Window* window = (Window*)((LPCREATESTRUCT)lparam)->lpCreateParams;
 		// .. and then stored for later lookup
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
+		window->setHWND(hwnd);
 		window->onCreate();
 		break;
+	}
 
 	case WM_DESTROY:
-
+	{
 		// Event fired when the window is destroyed
-		window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-
+		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 		window->onDestroy();
 		::PostQuitMessage(0);
 		break;
+	}
+
 
 	default:
 		return ::DefWindowProc(hwnd, msg, wparam, lparam);
 	}
 
 	return NULL;
-	
+	{}
 }
 bool Window::init()
 {
@@ -58,8 +59,8 @@ bool Window::init()
 	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hInstance = NULL;
-	wc.lpszClassName = LPCWSTR("MyWindowClass");
-	wc.lpszMenuName = LPCWSTR("");
+	wc.lpszClassName = L"MyWindowClass";
+	wc.lpszMenuName = L"";
 	wc.style = NULL;
 	wc.lpfnWndProc = &WndProc;
 
@@ -67,7 +68,7 @@ bool Window::init()
 	if (!::RegisterClassEx(&wc)) // If the registration of class will fail, the function will return false
 		return false;
 
-	m_hwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, LPCWSTR("MyWindowClass"), LPCWSTR("DirectX Application"), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768,
+	m_hwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"MyWindowClass", L"Kevin Triangle Application", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768,
 		NULL, NULL, NULL, this);
 
 	if (!m_hwnd)
@@ -89,14 +90,13 @@ bool Window::broadcast()
 {
 	MSG msg;
 
-	while(::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+	this->onUpdate();
+
+	while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) > 0)
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-
 	}
-
-	this->onUpdate();
 
 	Sleep(1);
 
@@ -115,6 +115,25 @@ bool Window::release()
 bool Window::isRun()
 {
 	return m_is_run;
+}
+
+RECT Window::getClientWindowRect()
+{
+	RECT rc;
+	::GetClientRect(this->m_hwnd, &rc);
+	return rc;
+}
+void Window::setHWND(HWND hwnd)
+{
+	this->m_hwnd = hwnd;
+}
+
+void Window::onCreate()
+{
+}
+
+void Window::onUpdate()
+{
 }
 
 void Window::onDestroy()
