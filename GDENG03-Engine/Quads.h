@@ -13,8 +13,6 @@ public:
 private:
 
 	VertexBuffer* m_vb_copy;
-
-
 	float xOffset = 0;
 	float yOffset = 0;
 };
