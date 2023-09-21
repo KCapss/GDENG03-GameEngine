@@ -2,9 +2,6 @@
 #include "AppWindow.h"
 
 
-
-
-
 AppWindow::AppWindow()
 {
 }
@@ -23,9 +20,36 @@ void AppWindow::onCreate()
 	RECT rc = this->getClientWindowRect();
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
+	vertex list[] =
+	{
+		//X - Y - Z
+		{-0.5f,-0.5f,0.0f,   0,0,0}, // POS1
+		{-0.5f,0.5f,0.0f,    1,1,0}, // POS2
+		{ 0.5f,-0.5f,0.0f,   0,0,1},// POS2
+		{ 0.5f,0.5f,0.0f,    1,1,1}
+	};
+
+	m_vb = GraphicsEngine::get()->createVertexBuffer();
+	UINT size_list = ARRAYSIZE(list);
+
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+
+	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
+	m_vb->load(list, sizeof(vertex), size_list, shader_byte_code, size_shader);
+
+	GraphicsEngine::get()->releaseCompiledShader();
+
+
+	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
+	GraphicsEngine::get()->releaseCompiledShader();
+
+
 
 	//onTriangleMultipleCreate();
-	onQuadMultipleCreate();
+	//onQuadMultipleCreate();
 
 }
 
@@ -39,13 +63,20 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 	//SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
-	GraphicsEngine::get()->setShaders();
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
+
+	//SET THE VERTICES OF THE TRIANGLE TO DRAW
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
+
+	// FINALLY DRAW THE TRIANGLE
+	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
+
+
 
 	//TODO: Create a loop to draw all the triangle
-
 	//onTriangleUpdate();
-	onQuadUpdate();
-
+	//onQuadUpdate();
 
 	 //TODO: STOP HERE
 
@@ -55,43 +86,19 @@ void AppWindow::onUpdate()
 
 void AppWindow::onDestroy()
 {
+	
+
 	Window::onDestroy();
-	/*m_vb->release();*/
-	//onTriangleRelease();
-	onQuadRelease();
+	m_vb->release();
+	//onQuadRelease();
 	m_swap_chain->release();
+
+	m_vs->release();
+	m_ps->release();
 	GraphicsEngine::get()->release();
 }
 
-void AppWindow::onTriangleMultipleCreate()
-{
-	triangleList.push_back(new Triangle(-0.5f, 0));
-	triangleList.push_back(new Triangle(-0.2f, 0));
-	triangleList.push_back(new Triangle(0.1f, 0));
 
-	for (unsigned int i = 0; i < triangleList.size(); i++)
-	{
-		triangleList[i]->onCreate();
-	}
-}
-
-void AppWindow::onTriangleUpdate()
-{
-	
-	for (unsigned int i = 0; i < triangleList.size(); i++)
-	{
-		GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(triangleList[i]->retrieveBuffer());
-		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleList(triangleList[i]->retrieveBuffer()->getSizeVertexList(), 0);
-	}
-}
-
-void AppWindow::onTriangleRelease()
-{
-	for (unsigned int i = 0; i < triangleList.size(); i++)
-	{
-		triangleList[i]->retrieveBuffer()->release();
-	}
-}
 
 void AppWindow::onQuadMultipleCreate()
 {
@@ -110,7 +117,7 @@ void AppWindow::onQuadUpdate()
 	for (unsigned int i = 0; i < quadList.size(); i++)
 	{
 		GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(quadList[i]->retrieveBuffer());
-		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleList(quadList[i]->retrieveBuffer()->getSizeVertexList(), 0);
+		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(quadList[i]->retrieveBuffer()->getSizeVertexList(), 0);
 	}
 }
 

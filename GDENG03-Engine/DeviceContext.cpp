@@ -1,6 +1,9 @@
 #include "DeviceContext.h"
+
+#include "PixelShader.h"
 #include "SwapChain.h"
 #include "VertexBuffer.h"
+#include "VertexShader.h"
 
 DeviceContext::DeviceContext(ID3D11DeviceContext* device_context) :m_device_context(device_context)
 {
@@ -23,9 +26,16 @@ void DeviceContext::setVertexBuffer(VertexBuffer* vertex_buffer)
 
 void DeviceContext::drawTriangleList(UINT vertex_count, UINT start_vertex_index)
 {
+	m_device_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	m_device_context->Draw(vertex_count, start_vertex_index);
+}
+
+void DeviceContext::drawTriangleStrip(UINT vertex_count, UINT start_vertex_index)
+{
 	m_device_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 	m_device_context->Draw(vertex_count, start_vertex_index);
 }
+
 
 void DeviceContext::setViewportSize(UINT width, UINT height)
 {
@@ -35,6 +45,17 @@ void DeviceContext::setViewportSize(UINT width, UINT height)
 	vp.MinDepth = 0.0f;
 	vp.MaxDepth = 1.0f;
 	m_device_context->RSSetViewports(1, &vp);
+}
+
+void DeviceContext::setVertexShader(VertexShader* vertex_shader)
+{
+	m_device_context->VSSetShader(vertex_shader->m_vs, nullptr, 0);
+}
+
+
+void DeviceContext::setPixelShader(PixelShader* pixel_shader)
+{
+	m_device_context->PSSetShader(pixel_shader->m_ps, nullptr, 0);
 }
 
 
