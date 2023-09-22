@@ -2,6 +2,13 @@
 #include "AppWindow.h"
 
 
+__declspec(align(16))
+
+struct constant
+{
+	float m_angle;
+};
+
 AppWindow::AppWindow()
 {
 }
@@ -22,9 +29,41 @@ void AppWindow::onCreate()
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 
-	//Parameters for creeating vertex buffer
+	////Parameters for creeating vertex buffer
+	//m_vb = GraphicsEngine::get()->createVertexBuffer();
+	//onQuadMultipleCreate();
+
+	vertex list[] =
+	{
+		//X - Y - Z
+		{-0.5f,-0.5f,0.0f,    -0.32f,-0.11f,0.0f,   0,0,0,  0,1,0 }, // POS1
+		{-0.5f,0.5f,0.0f,     -0.11f,0.78f,0.0f,    1,1,0,  0,1,1 }, // POS2
+		{ 0.5f,-0.5f,0.0f,     0.75f,-0.73f,0.0f,   0,0,1,  1,0,0 },// POS2
+		{ 0.5f,0.5f,0.0f,      0.88f,0.77f,0.0f,    1,1,1,  0,0,1 }
+	};
+
 	m_vb = GraphicsEngine::get()->createVertexBuffer();
-	onQuadMultipleCreate();
+	UINT size_list = ARRAYSIZE(list);
+
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+
+	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
+	m_vb->load(list, sizeof(vertex), size_list, shader_byte_code, size_shader);
+
+	GraphicsEngine::get()->releaseCompiledShader();
+
+
+	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
+	GraphicsEngine::get()->releaseCompiledShader();
+
+	constant cc;
+	cc.m_angle = 0;
+
+	m_cb = GraphicsEngine::get()->createConstantBuffer();
+	m_cb->load(&cc, sizeof(constant));
 
 	
 
@@ -40,6 +79,25 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
+
+	unsigned long new_time = 0;
+	if (m_old_time)
+		new_time = ::GetTickCount() - m_old_time;
+	m_delta_time = new_time / 1000.0f;
+	m_old_time = ::GetTickCount();
+
+	m_angle += 1.57f * m_delta_time;
+	constant cc;
+	cc.m_angle = m_angle;
+
+	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
+
+
+
+
 	//TODO: Create a loop to draw all the triangle
 
 	//SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
@@ -51,13 +109,13 @@ void AppWindow::onUpdate()
 
 	// FINALLY DRAW THE TRIANGLE
 
-	//Rendering all things into vertex buffer
-	for(int i = 0; i < quadList.size(); i++)
-	{
-		int vertexSize = quadList[0]->RetrieveVertexSize();
-		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
+	////Rendering all things into vertex buffer
+	//for(int i = 0; i < quadList.size(); i++)
+	//{
+	//	int vertexSize = quadList[0]->RetrieveVertexSize();
+	//	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
 
-	}
+	//}
 		
 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
@@ -65,7 +123,7 @@ void AppWindow::onUpdate()
 	 //TODO: STOP HERE
 
 	// FINALLY DRAW THE TRIANGLE
-	
+	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 	m_swap_chain->present(true);
 }
 
@@ -156,4 +214,6 @@ void AppWindow::onQuadRelease()
 		quadList[i]->onDestroy();
 	}
 }
+
+
 

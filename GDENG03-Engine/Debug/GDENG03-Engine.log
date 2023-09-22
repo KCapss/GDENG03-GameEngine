@@ -1,7 +1,3 @@
 ﻿  AppWindow.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(55,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(102,20): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  Quads.cpp
-  Generating Code...
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(160,20): warning C4018: '<': signed/unsigned mismatch
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe
