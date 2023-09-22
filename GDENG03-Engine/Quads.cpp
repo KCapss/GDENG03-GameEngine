@@ -1,18 +1,7 @@
 #include "Quads.h"
 #include "DeviceContext.h"
 
-vertex* Quads::retrieveVertex()
-{
-	vertex list[] =
-	{
-		//X - Y - Z
-		{-0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,0}, // POS1
-		{-0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,0}, // POS2
-		{ 0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,1},
-		{ 0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,1}
-	};
-	return list;
-}
+
 
 Quads::Quads(float xOffset, float yOffset)
 {
@@ -32,19 +21,6 @@ void Quads::onCreate(VertexBuffer* m_vb)
 	};
 
 	vertexSize = list.size();
-	
-	// UINT size_list = list.size();
-	//void* shader_byte_code = nullptr;
-	//size_t size_shader = 0;
-
-	//GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
-	//m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-	////m_vb->load(list, sizeof(vertex), size_list, shader_byte_code, size_shader);
-	//GraphicsEngine::get()->releaseCompiledShader();
-	//GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
-	//m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	//GraphicsEngine::get()->releaseCompiledShader();
 
 
 }

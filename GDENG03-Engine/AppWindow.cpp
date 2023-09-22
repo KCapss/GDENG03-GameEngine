@@ -22,52 +22,11 @@ void AppWindow::onCreate()
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 
-	////Drawing Vertices
-	//vertex list[] =
-	//{
-	//	//X - Y - Z
-	//	{-0.5f,-0.5f,0.0f,   0,0,0}, // POS1
-	//	{-0.5f,0.5f,0.0f,    1,1,0}, // POS2
-	//	{ 0.5f,-0.5f,0.0f,   0,0,1},// POS2
-	//	{ 0.5f,0.5f,0.0f,    1,1,1}
-	//};
-
 	//Parameters for creeating vertex buffer
 	m_vb = GraphicsEngine::get()->createVertexBuffer();
 	onQuadMultipleCreate();
 
-	/*UINT size_list = ARRAYSIZE(list);*/
-	/*void* shader_byte_code = nullptr;
-	size_t size_shader = 0;
-	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
-	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-	m_vb->load(list, sizeof(vertex), size_list, shader_byte_code, size_shader);
-
-	GraphicsEngine::get()->releaseCompiledShader();
-
-
-	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
-	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader();*/
-
-
-
-	/*
-	 * Things Needed
-	 * 1) vb
-	 * 2) sizelist, shader_byte_code, size_shader
-	 * 3) m_vs,
-	 * 4) m_ps,
-	 *
-	 * Methods:
-	 * 1) When loading try looping to see if it works -------------  Results: Only one primitive has been loaded
-	 * 2) Try somehow combining the list before passing the load function
-	 */
-
-
-	//onTriangleMultipleCreate();
-	//onQuadMultipleCreate();
+	
 
 }
 
@@ -92,19 +51,16 @@ void AppWindow::onUpdate()
 
 	// FINALLY DRAW THE TRIANGLE
 
-	//Brute forcing here
+	//Rendering all things into vertex buffer
 	for(int i = 0; i < quadList.size(); i++)
 	{
-
 		int vertexSize = quadList[0]->RetrieveVertexSize();
-		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList() /vertexSize, i * vertexSize);
+		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
 
 	}
 		
 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
-
-	//onQuadUpdate();
 
 	 //TODO: STOP HERE
 
@@ -153,23 +109,17 @@ void AppWindow::onQuadMultipleCreate()
 
 	}
 	//=== Option 1
-	//vertex* list = &VertixList[0];
+	vertex* list = &VertixList[0];
 
 	//=== Option 2.1
-	vertex *list = (vertex*)malloc( VertixList.size());
+	/*vertex *list = (vertex*)malloc( VertixList.size());
 
-	int size = sizeof(vertex);
+	
 
 	for (int i = 0; i < VertixList.size(); i++) {
 		list[i] = VertixList[i];
-	}
+	}*/
 
-	int size2 = sizeof(list);
-
-	//Option 2.2
-	/*std::copy(VertixList.begin(), VertixList.end(), list);*/
-
-	//Option 3
 	
 
 

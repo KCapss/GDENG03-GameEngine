@@ -10,9 +10,10 @@ class Quads
 {
 public:
 
-	vertex* retrieveVertex();
+	
 
 	Quads(float xOffset, float yOffset);
+	
 	void onCreate(VertexBuffer* m_vb);
 	void onUpdate(VertexBuffer* m_vb);
 	void onDestroy();
