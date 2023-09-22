@@ -1,6 +1,19 @@
 #include "Quads.h"
 #include "DeviceContext.h"
 
+vertex* Quads::retrieveVertex()
+{
+	vertex list[] =
+	{
+		//X - Y - Z
+		{-0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,0}, // POS1
+		{-0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,0}, // POS2
+		{ 0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,1},
+		{ 0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,1}
+	};
+	return list;
+}
+
 Quads::Quads(float xOffset, float yOffset)
 {
 	this->xOffset = xOffset;
@@ -18,6 +31,7 @@ void Quads::onCreate(VertexBuffer* m_vb)
 		{ 0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,1}
 	};
 
+	vertexSize = list.size();
 	
 	// UINT size_list = list.size();
 	//void* shader_byte_code = nullptr;
@@ -58,6 +72,13 @@ std::vector<vertex> Quads::RetrieveVertexList()
 {
 	return list;
 }
+
+int Quads::RetrieveVertexSize()
+{
+	return vertexSize;
+}
+
+
 
 
 

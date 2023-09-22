@@ -91,9 +91,18 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
 
 	// FINALLY DRAW THE TRIANGLE
-	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 
+	//Brute forcing here
+	for(int i = 0; i < quadList.size(); i++)
+	{
 
+		int vertexSize = quadList[0]->RetrieveVertexSize();
+		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList() /vertexSize, i * vertexSize);
+
+	}
+		
+
+	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 
 	//onQuadUpdate();
 
@@ -130,23 +139,38 @@ void AppWindow::onQuadMultipleCreate()
 	std::vector<vertex> VertixList;
 	for (unsigned int i = 0; i < quadList.size(); i++)
 	{
+
+		//Option 1 & 2
 		quadList[i]->onCreate(m_vb);
 		std::vector<vertex> copy = quadList[i]->RetrieveVertexList();
 		for(int j = 0; j < copy.size(); j++)
 		{
-			VertixList.push_back(copy[i]);
+			vertex copyV = copy[j];
+			VertixList.push_back(copyV);
 		}
 
-	}
+		
 
+	}
+	//=== Option 1
 	//vertex* list = &VertixList[0];
 
-	vertex *list = new vertex [VertixList.size() * sizeof(vertex)];
+	//=== Option 2.1
+	vertex *list = (vertex*)malloc( VertixList.size());
+
+	int size = sizeof(vertex);
 
 	for (int i = 0; i < VertixList.size(); i++) {
 		list[i] = VertixList[i];
 	}
+
+	int size2 = sizeof(list);
+
+	//Option 2.2
 	/*std::copy(VertixList.begin(), VertixList.end(), list);*/
+
+	//Option 3
+	
 
 
 	UINT size_list = VertixList.size();

@@ -9,22 +9,25 @@
 class Quads
 {
 public:
+
+	vertex* retrieveVertex();
+
 	Quads(float xOffset, float yOffset);
 	void onCreate(VertexBuffer* m_vb);
 	void onUpdate(VertexBuffer* m_vb);
 	void onDestroy();
 
 	std::vector<vertex> RetrieveVertexList();
+	int RetrieveVertexSize();
 
 
 private:
 	int numVertex = 0;
 	std::vector<vertex> list;
+	int vertexSize;
 
 	float xOffset = 0;
 	float yOffset = 0;
 
-	VertexShader* m_vs;
-	PixelShader* m_ps;
 };
 
