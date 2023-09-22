@@ -14,9 +14,12 @@ public:
 	void onUpdate(VertexBuffer* m_vb);
 	void onDestroy();
 
+	std::vector<vertex> RetrieveVertexList();
 
 
 private:
+	int numVertex = 0;
+	std::vector<vertex> list;
 
 	float xOffset = 0;
 	float yOffset = 0;
