@@ -10,15 +10,18 @@ class Quads
 {
 public:
 	Quads(float xOffset, float yOffset);
-	void onCreate();
-	VertexBuffer* retrieveBuffer();
+	void onCreate(VertexBuffer* m_vb);
+	void onUpdate(VertexBuffer* m_vb);
+	void onDestroy();
+
+
 
 private:
 
-	VertexBuffer* m_vb_copy;
-	ID3D11VertexShader* m_vs = nullptr;
-	ID3D11PixelShader* m_ps = nullptr;
 	float xOffset = 0;
 	float yOffset = 0;
+
+	VertexShader* m_vs;
+	PixelShader* m_ps;
 };
 
