@@ -9,16 +9,24 @@ Quads::Quads(float xOffset, float yOffset)
 	this->yOffset = yOffset;
 }
 
+void Quads::setPosAnimationOffset(float xOffset, float yOffset)
+{
+	this->xPosAnimation = xOffset;
+	this->yPosAnimation = yOffset;
+}
+
 void Quads::onCreate(VertexBuffer* m_vb)
 {
 	list =
 	{
 		//X - Y - Z
-		{-0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,0}, // POS1
-		{-0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,0}, // POS2
-		{ 0.1f + xOffset,-0.1f + yOffset,0.0f,0,0,1},
-		{ 0.1f + xOffset,0.1f + yOffset, 0.0f,1,1,1}
+		//X - Y - Z
+		{-0.1f + xOffset,-0.1f + yOffset,0.0f, 0 + xPosAnimation, 0.15f +      yPosAnimation, 0.0f, 0,0,0, 0,1,0 }, // POS1
+		{-0.1f + xOffset,0.1f + yOffset, 0.0f, 0.05f + xPosAnimation, 0.25f +  yPosAnimation, 0.0f, 1,1,0, 0,1,1 }, // POS2
+		{ 0.1f + xOffset,-0.1f + yOffset,0.0f, 0.25f + xPosAnimation, -0.19f + yPosAnimation, 0.0f, 0,0,1,  1,0,0 },
+		{ 0.1f + xOffset,0.1f + yOffset, 0.0f, 0.35f + xPosAnimation, 0.19f +  yPosAnimation, 0.0f, 1,1,1,  0,0,1 }
 	};
+
 
 	vertexSize = list.size();
 

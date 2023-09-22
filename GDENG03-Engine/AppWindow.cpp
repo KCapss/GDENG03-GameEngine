@@ -30,19 +30,12 @@ void AppWindow::onCreate()
 
 
 	////Parameters for creeating vertex buffer
-	//m_vb = GraphicsEngine::get()->createVertexBuffer();
-	//onQuadMultipleCreate();
-
-	vertex list[] =
-	{
-		//X - Y - Z
-		{-0.5f,-0.5f,0.0f,    -0.32f,-0.11f,0.0f,   0,0,0,  0,1,0 }, // POS1
-		{-0.5f,0.5f,0.0f,     -0.11f,0.78f,0.0f,    1,1,0,  0,1,1 }, // POS2
-		{ 0.5f,-0.5f,0.0f,     0.75f,-0.73f,0.0f,   0,0,1,  1,0,0 },// POS2
-		{ 0.5f,0.5f,0.0f,      0.88f,0.77f,0.0f,    1,1,1,  0,0,1 }
-	};
-
 	m_vb = GraphicsEngine::get()->createVertexBuffer();
+	onQuadMultipleCreate();
+
+	
+
+	/*
 	UINT size_list = ARRAYSIZE(list);
 
 	void* shader_byte_code = nullptr;
@@ -57,13 +50,9 @@ void AppWindow::onCreate()
 
 	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader();
+	GraphicsEngine::get()->releaseCompiledShader();*/
 
-	constant cc;
-	cc.m_angle = 0;
-
-	m_cb = GraphicsEngine::get()->createConstantBuffer();
-	m_cb->load(&cc, sizeof(constant));
+	
 
 	
 
@@ -109,13 +98,13 @@ void AppWindow::onUpdate()
 
 	// FINALLY DRAW THE TRIANGLE
 
-	////Rendering all things into vertex buffer
-	//for(int i = 0; i < quadList.size(); i++)
-	//{
-	//	int vertexSize = quadList[0]->RetrieveVertexSize();
-	//	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
+	//Rendering all things into vertex buffer
+	for(int i = 0; i < quadList.size(); i++)
+	{
+		int vertexSize = quadList[0]->RetrieveVertexSize();
+		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
 
-	//}
+	}
 		
 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
@@ -123,7 +112,7 @@ void AppWindow::onUpdate()
 	 //TODO: STOP HERE
 
 	// FINALLY DRAW THE TRIANGLE
-	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
+	
 	m_swap_chain->present(true);
 }
 
@@ -145,9 +134,13 @@ void AppWindow::onDestroy()
 
 void AppWindow::onQuadMultipleCreate()
 {
-	quadList.push_back(new Quads(-0.5f, 0));
-	quadList.push_back(new Quads(-0.2f, 0));
-	quadList.push_back(new Quads(0.1f, 0));
+	quadList.push_back(new Quads(-0.8f, 0.3f));
+	quadList.push_back(new Quads(-0.2f, -0.4f));
+	quadList.push_back(new Quads(0.5f, 0.2f));
+
+	quadList[0]->setPosAnimationOffset(0.3f, 0.2f);
+	quadList[1]->setPosAnimationOffset(0.1f, 0.2f);
+	quadList[2]->setPosAnimationOffset(0.2f, 0.5f);
 
 
 	std::vector<vertex> VertixList;
@@ -195,6 +188,12 @@ void AppWindow::onQuadMultipleCreate()
 	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::get()->releaseCompiledShader();
+
+	constant cc;
+	cc.m_angle = 0;
+
+	m_cb = GraphicsEngine::get()->createConstantBuffer();
+	m_cb->load(&cc, sizeof(constant));
 
 	//delete[] list;
 }
