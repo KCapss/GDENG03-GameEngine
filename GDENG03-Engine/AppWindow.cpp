@@ -2,6 +2,7 @@
 #include "AppWindow.h"
 
 
+
 __declspec(align(16))
 
 struct constant
@@ -103,7 +104,6 @@ void AppWindow::onUpdate()
 	{
 		int vertexSize = quadList[0]->RetrieveVertexSize();
 		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
-
 	}
 		
 
