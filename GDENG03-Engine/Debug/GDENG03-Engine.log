@@ -1,9 +1,6 @@
-﻿  EngineTime.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\EngineTime.cpp(18,137): warning C4244: 'return': conversion from '_Rep' to 'double', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-  Window.cpp
+﻿  AppWindow.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(110,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(160,20): warning C4018: '<': signed/unsigned mismatch
+  EngineTime.cpp
   Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

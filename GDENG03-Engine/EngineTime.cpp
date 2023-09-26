@@ -9,13 +9,19 @@ void EngineTime::initialize()
 	{
 		EngineTime::sharedInstance = new EngineTime;
 	}
+	LogFrameStart();
+	LogFrameEnd();
 	
 }
 
 double EngineTime::getDeltaTime()
 {
 	//return 0;
-	return std::chrono::duration_cast<std::chrono::microseconds>(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count();
+	//std::chrono::duration_cast<std::chrono::microseconds> cast;
+
+	double timeElapsed = std::chrono::duration_cast<std::chrono::microseconds>(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count()/ 100.0f;
+	std::cout << timeElapsed << std::endl;
+	return  timeElapsed;
 }
 
 EngineTime::EngineTime()
