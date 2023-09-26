@@ -1,31 +1,42 @@
 #include "EngineTime.h"
 
+
+EngineTime* EngineTime::sharedInstance = NULL;
+
 void EngineTime::initialize()
 {
-	if(sharedInstance == nullptr)
+	if (sharedInstance == nullptr)
 	{
-		sharedInstance = new EngineTime;
+		EngineTime::sharedInstance = new EngineTime;
 	}
-
 	
 }
 
 double EngineTime::getDeltaTime()
 {
+	//return 0;
 	return std::chrono::duration_cast<std::chrono::microseconds>(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count();
 }
 
 EngineTime::EngineTime()
 {
+	
 }
 
 EngineTime::~EngineTime()
 {
+	
 }
 
 EngineTime::EngineTime(EngineTime const&)
 {
 }
+
+//EngineTime* EngineTime::get()
+//{
+//	if (sharedInstance == nullptr)
+//		sharedInstance = new EngineTime;
+//}
 
 void EngineTime::LogFrameStart()
 {

@@ -1,6 +1,8 @@
 #pragma once
 #include <Windows.h>
-#include "EngineTime.h"
+
+
+class EngineTime;
 
 class Window
 {
@@ -27,4 +29,9 @@ public:
 protected:
 	HWND m_hwnd;
 	bool m_is_run;
+
+private:
+	friend class EngineTime;
+	//EngineTime* engineTime = new EngineTime();
+	
 };

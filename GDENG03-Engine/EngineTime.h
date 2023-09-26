@@ -12,6 +12,7 @@ class EngineTime
 public:
 	static void initialize();
 	static double getDeltaTime();
+	EngineTime* get();
 
 private:
 	EngineTime();
@@ -19,6 +20,7 @@ private:
 	EngineTime(EngineTime const&); // copy  constructor
 	EngineTime& operator=(EngineTime const&){} // assignment operator
 
+	
 	static EngineTime* sharedInstance;
 
 	std::chrono::system_clock::time_point start;
