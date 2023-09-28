@@ -1,6 +1,6 @@
 ﻿  AppWindow.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(110,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(160,20): warning C4018: '<': signed/unsigned mismatch
-  EngineTime.cpp
-  Generating Code...
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(84,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(113,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(169,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(235,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

@@ -21,10 +21,20 @@ void Quads::onCreate(VertexBuffer* m_vb)
 	{
 		//X - Y - Z
 		//X - Y - Z
-		{-0.1f + xOffset,-0.1f + yOffset,0.0f, 0 + xPosAnimation, 0.15f +      yPosAnimation, 0.0f, 0,0,0, 0,1,0 }, // POS1
-		{-0.1f + xOffset,0.1f + yOffset, 0.0f, 0.05f + xPosAnimation, 0.25f +  yPosAnimation, 0.0f, 1,1,0, 0,1,1 }, // POS2
-		{ 0.1f + xOffset,-0.1f + yOffset,0.0f, 0.25f + xPosAnimation, -0.19f + yPosAnimation, 0.0f, 0,0,1,  1,0,0 },
-		{ 0.1f + xOffset,0.1f + yOffset, 0.0f, 0.35f + xPosAnimation, 0.19f +  yPosAnimation, 0.0f, 1,1,1,  0,0,1 }
+		
+		
+		//Part 1:
+		//{ -0.6f + xOffset, -0.8f + yOffset, 0.0f,  -0.3f + xPosAnimation, -0.1f + yPosAnimation, 0.0f, 0,0,0, 0,1,0 }, //POS4
+		//{ -0.9f + xOffset, 0.1f + yOffset, 0.0f,   -0.1f + xPosAnimation, 0.75f + yPosAnimation, 0.0f, 1,1,0, 0,1,1 }, // POS1
+		//{ 1.0f + xOffset, -0.3f + yOffset, 0.0f,  0.0f + xPosAnimation, -0.75f + yPosAnimation, 0.0f, 0,0,1,  1,0,0 }, //POS3
+		//{- 0.20f + xOffset, -0.30f + yOffset, -0.0f, 0.8f + xPosAnimation, 0.75f + yPosAnimation, 0.0f, 1,0,0,  0,0,1 } // POS2
+		
+
+		//Part 2:
+		{ -0.75f + xOffset, -0.9f + yOffset, 0.0f,  -0.25f + xPosAnimation, -0.1f + yPosAnimation, 0.0f, 0,0,0, 0,1,0 }, //POS4
+		{ -0.9f + xOffset, 0.1f + yOffset, 0.0f,   -0.1f + xPosAnimation, 0.75f + yPosAnimation, 0.0f, 1,1,0, 0,1,1 }, // POS1
+		{ 0.25f + xOffset, -0.25f + yOffset, 0.0f,  0.75f + xPosAnimation, -0.75f + yPosAnimation, 0.0f, 0,0,1,  1,0,0 }, //POS3
+		{0.1f + xOffset, 0.1f + yOffset, -0.0f, 0.8f + xPosAnimation, 0.75f + yPosAnimation, 0.0f, 1,0,0,  0,0,1 } // POS2
 	};
 
 

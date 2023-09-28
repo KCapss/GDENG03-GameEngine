@@ -1,6 +1,7 @@
 #pragma once
-#include "AppWindow.h"
 
+#include <cmath>
+#include "AppWindow.h"
 #include "EngineTime.h"
 
 
@@ -71,19 +72,12 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 
-	//unsigned long new_time = 0;
-	//if (m_old_time)
-	//	new_time = ::GetTickCount() - m_old_time;
-	//m_delta_time = new_time / 1000.0f;
-	//m_old_time = ::GetTickCount();
-	////m_angle += 1.57f * m_delta_time;
+	transitionSpeed += 0.5f * EngineTime::getDeltaTime();
+	float speed = lerp(0.25f, 5.5f, (sin(transitionSpeed) + 1.0f) / 2.0f) + 0.01f;
 
-	/*std::cout << "Engine: " << EngineTime::getDeltaTime() << std::endl;
-	std::cout << "Standard: " << m_delta_time << std::endl;*/
-
-	m_angle += 1.57f * (float) EngineTime::getDeltaTime();
+	//std::cout << "Current Speed: " << speed << std::endl;
 	
-
+	m_angle += (1.57f * (float) EngineTime::getDeltaTime()) * speed;
 	constant cc;
 	cc.m_angle = m_angle;
 
@@ -92,11 +86,7 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
 
-
-
-
-	//TODO: Create a loop to draw all the triangle
-
+	
 	//SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
@@ -109,14 +99,20 @@ void AppWindow::onUpdate()
 	//Rendering all things into vertex buffer
 	for(int i = 0; i < quadList.size(); i++)
 	{
-		int vertexSize = quadList[0]->RetrieveVertexSize();
-		GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() /vertexSize) + 1, i * vertexSize);
+		UINT vertexSize = quadList[0]->RetrieveVertexSize();
+
+		if (quadList.size() > 1)
+			GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList() / vertexSize) + 1, i * vertexSize);
+
+		//Edge Case for drawing single cases
+		else
+			GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList()),0);
 	}
 		
 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 
-	 //TODO: STOP HERE
+	
 
 	// FINALLY DRAW THE TRIANGLE
 	
@@ -141,13 +137,13 @@ void AppWindow::onDestroy()
 
 void AppWindow::onQuadMultipleCreate()
 {
-	quadList.push_back(new Quads(-0.8f, 0.3f));
-	quadList.push_back(new Quads(-0.2f, -0.4f));
-	quadList.push_back(new Quads(0.5f, 0.2f));
+	quadList.push_back(new Quads(-0.0f, 0.0f));
+	/*quadList.push_back(new Quads(-0.2f, -0.4f));
+	quadList.push_back(new Quads(0.5f, 0.2f));*/
 
-	quadList[0]->setPosAnimationOffset(0.3f, 0.2f);
-	quadList[1]->setPosAnimationOffset(0.1f, 0.2f);
-	quadList[2]->setPosAnimationOffset(0.2f, 0.5f);
+	quadList[0]->setPosAnimationOffset(0.0f, 0.0f);
+	//quadList[1]->setPosAnimationOffset(0.1f, 0.2f);
+	//quadList[2]->setPosAnimationOffset(0.2f, 0.5f);
 
 
 	std::vector<vertex> VertixList;
@@ -219,6 +215,11 @@ void AppWindow::onQuadRelease()
 	{
 		quadList[i]->onDestroy();
 	}
+}
+
+float AppWindow::lerp(float min, float max, float f)
+{
+	return min * (1.0 - f) + (max * f);
 }
 
 

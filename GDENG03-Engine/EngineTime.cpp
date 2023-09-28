@@ -20,7 +20,7 @@ double EngineTime::getDeltaTime()
 	//std::chrono::duration_cast<std::chrono::microseconds> cast;
 
 	double timeElapsed = std::chrono::duration_cast<std::chrono::microseconds>(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count()/ 100.0f;
-	std::cout << timeElapsed << std::endl;
+	//std::cout << timeElapsed << std::endl;
 	return  timeElapsed;
 }
 

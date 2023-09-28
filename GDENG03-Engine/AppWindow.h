@@ -29,6 +29,7 @@ public:
 	void onQuadMultipleCreate();
 	void onQuadUpdate();
 	void onQuadRelease();
+	float lerp(float min, float max, float f);
 
 
 private:
@@ -44,6 +45,10 @@ private:
 
 	
 	std::vector<Quads*> quadList;
+
+
+	//extra
+	float transitionSpeed = 1.0f;
 
 	
 	
