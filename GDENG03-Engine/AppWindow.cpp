@@ -71,13 +71,15 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
-
+	//Part 2: Lerping Speed Animation
 	transitionSpeed += 0.5f * EngineTime::getDeltaTime();
 	float speed = lerp(0.25f, 5.5f, (sin(transitionSpeed) + 1.0f) / 2.0f) + 0.01f;
+	m_angle += (1.57f * (float)EngineTime::getDeltaTime()) * speed;
 
-	//std::cout << "Current Speed: " << speed << std::endl;
+	//Part 1: Consntant Lerp Speed
+	//m_angle += (1.57f * (float)EngineTime::getDeltaTime());
+
 	
-	m_angle += (1.57f * (float) EngineTime::getDeltaTime()) * speed;
 	constant cc;
 	cc.m_angle = m_angle;
 
