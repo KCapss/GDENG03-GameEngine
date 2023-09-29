@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "Vector3D.h"
 #include <d3d11.h>
 
 class SwapChain;
@@ -70,8 +71,8 @@ struct vec3
 
 struct vertex
 {
-	vec3 position;
-	vec3 position1;
-	vec3 color;
-	vec3 color1;
+	Vector3D position;
+	Vector3D position1;
+	Vector3D color;
+	Vector3D color1;
 };

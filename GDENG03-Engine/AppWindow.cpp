@@ -3,13 +3,18 @@
 #include <cmath>
 #include "AppWindow.h"
 #include "EngineTime.h"
+#include "Vector3D.h"
+#include "Matrix4x4.h"
 
 
 __declspec(align(16))
 
 struct constant
 {
-	float m_angle;
+	Matrix4x4 m_world;
+	Matrix4x4 m_view;
+	Matrix4x4 m_proj;
+	unsigned int m_time;
 };
 
 AppWindow::AppWindow()
@@ -71,20 +76,27 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
-	//Part 2: Lerping Speed Animation
-	transitionSpeed += 0.5f * EngineTime::getDeltaTime();
-	float speed = lerp(0.25f, 5.5f, (sin(transitionSpeed) + 1.0f) / 2.0f) + 0.01f;
-	m_angle += (1.57f * (float)EngineTime::getDeltaTime()) * speed;
 
-	//Part 1: Consntant Lerp Speed
-	//m_angle += (1.57f * (float)EngineTime::getDeltaTime());
+	//TODO: Lerping
 
+	////Part 2: Lerping Speed Animation
+	//transitionSpeed += 0.5f * EngineTime::getDeltaTime();
+	//float speed = lerp(0.25f, 5.5f, (sin(transitionSpeed) + 1.0f) / 2.0f) + 0.01f;
+	//m_angle += (1.57f * (float)EngineTime::getDeltaTime()) * speed;
+
+	////Part 1: Consntant Lerp Speed
+	////m_angle += (1.57f * (float)EngineTime::getDeltaTime());
+
+
+	//TODO: Matrix
+	onQuadUpdate();
 	
-	constant cc;
+	/*constant cc;
 	cc.m_angle = m_angle;
 
-	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);*/
 
+	//TODO: Drawing
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
 
@@ -110,15 +122,15 @@ void AppWindow::onUpdate()
 		else
 			GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip((m_vb->getSizeVertexList()),0);
 	}
-		
 
-	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 
-	
-
-	// FINALLY DRAW THE TRIANGLE
-	
 	m_swap_chain->present(true);
+
+	/*m_old_delta = m_new_delta;
+	m_new_delta = ::GetTickCount();
+	m_delta_time = (m_old_delta) ? ((m_new_delta - m_old_delta) / 1000.0f) : 0;*/
+
+	m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
 }
 
 void AppWindow::onDestroy()
@@ -195,7 +207,7 @@ void AppWindow::onQuadMultipleCreate()
 	GraphicsEngine::get()->releaseCompiledShader();
 
 	constant cc;
-	cc.m_angle = 0;
+	cc.m_time = 0;
 
 	m_cb = GraphicsEngine::get()->createConstantBuffer();
 	m_cb->load(&cc, sizeof(constant));
@@ -205,10 +217,51 @@ void AppWindow::onQuadMultipleCreate()
 
 void AppWindow::onQuadUpdate()
 {
-	for (unsigned int i = 0; i < quadList.size(); i++)
+	
+	constant cc;
+	/*cc.m_time = ::GetTickCount();
+
+	m_delta_pos += m_delta_time / 10.0f;
+	if (m_delta_pos > 1.0f)
+		m_delta_pos = 0;*/
+
+	//Engine Time Conversion
+	cc.m_time = EngineTime::getDeltaTime();
+	m_delta_pos += EngineTime::getDeltaTime();
+	if (m_delta_pos > 1.0f)
+		m_delta_pos = 0;
+	m_delta_scale += EngineTime::getDeltaTime();
+
+
+	Matrix4x4 temp;
+
+	m_delta_scale += m_delta_time / 0.15f;
+
+	cc.m_world.setScale(Vector3D::lerp(Vector3D(0.5, 0.5, 0), Vector3D(1.0f, 1.0f, 0), (sin(m_delta_scale) + 1.0f) / 2.0f));
+
+	temp.setTranslation(Vector3D::lerp(Vector3D(-1.5f, -1.5f, 0), Vector3D(1.5f, 1.5f, 0), m_delta_pos));
+
+	cc.m_world *= temp;
+
+
+
+
+	cc.m_view.setIdentity();
+	cc.m_proj.setOrthoLH
+	(
+		(this->getClientWindowRect().right - this->getClientWindowRect().left) / 400.0f,
+		(this->getClientWindowRect().bottom - this->getClientWindowRect().top) / 400.0f,
+		-4.0f,
+		4.0f
+	);
+
+
+	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+
+	/*for (unsigned int i = 0; i < quadList.size(); i++)
 	{
 		quadList[i]->onUpdate(m_vb);
-	}
+	}*/
 }
 
 void AppWindow::onQuadRelease()
