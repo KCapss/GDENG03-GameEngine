@@ -1,7 +1,7 @@
 #include "EngineTime.h"
 
 
-EngineTime* EngineTime::sharedInstance = NULL;
+EngineTime* EngineTime::sharedInstance = nullptr;
 
 void EngineTime::initialize()
 {
@@ -19,7 +19,10 @@ double EngineTime::getDeltaTime()
 	//return 0;
 	//std::chrono::duration_cast<std::chrono::microseconds> cast;
 
-	double timeElapsed = std::chrono::duration_cast<std::chrono::microseconds>(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count()/ 100.0f;
+	double timeElapsed = std::chrono::duration_cast<std::chrono::microseconds>
+	(EngineTime::sharedInstance->start - EngineTime::sharedInstance->end).count()/ 100.0f;
+
+
 	//std::cout << timeElapsed << std::endl;
 	return  timeElapsed;
 }

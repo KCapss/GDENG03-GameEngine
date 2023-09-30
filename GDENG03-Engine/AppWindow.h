@@ -5,12 +5,14 @@
 #include "DeviceContext.h"
 #include "VertexBuffer.h"
 #include "ConstantBuffer.h"
+#include "IndexBuffer.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
 
 //Primitives
 
 #include "Quads.h"
+#include "Cube.h"
 
 class AppWindow : public Window
 {
@@ -24,12 +26,20 @@ public:
 	virtual void onDestroy() override;
 
 // Assignment Based Solution
+	float lerp(float min, float max, float f);
 	
-
+	//Part 1: Quads:
 	void onQuadMultipleCreate();
 	void onQuadUpdate();
 	void onQuadRelease();
-	float lerp(float min, float max, float f);
+	
+
+
+	//Part 2: Cube
+	void onCubeCreate();
+	void onCubeUpdate();
+	void onCubeRelease();
+	
 
 
 private:
@@ -38,6 +48,7 @@ private:
 	VertexShader* m_vs;
 	PixelShader* m_ps;
 	ConstantBuffer* m_cb;
+	IndexBuffer* m_ib;
 
 	long m_old_delta;
 	long m_new_delta;
@@ -49,6 +60,7 @@ private:
 
 	
 	std::vector<Quads*> quadList;
+	std::vector<Cube*> cubeList;
 
 
 	//extra

@@ -32,6 +32,6 @@ protected:
 
 private:
 	friend class EngineTime;
-	//EngineTime* engineTime = new EngineTime();
+	
 	
 };

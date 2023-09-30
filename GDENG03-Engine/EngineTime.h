@@ -12,7 +12,7 @@ class EngineTime
 public:
 	static void initialize();
 	static double getDeltaTime();
-	EngineTime* get();
+
 
 private:
 	EngineTime();
