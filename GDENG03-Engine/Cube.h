@@ -5,6 +5,7 @@ class Cube
 {
 public:
 	Cube(float xOffset, float yOffset);
+	~Cube();
 	void setPosAnimationOffset(float xOffset, float yOffset);
 
 	void onCreate(VertexBuffer* m_vb);

@@ -90,6 +90,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>GameEngine\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="AGameObject.cpp">
+      <Filter>GameEngine\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -135,6 +138,9 @@
       <Filter>GameEngine\GraphicsEngine\IndexBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
+      <Filter>GameEngine\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="AGameObject.h">
       <Filter>GameEngine\Primitives</Filter>
     </ClInclude>
   </ItemGroup>

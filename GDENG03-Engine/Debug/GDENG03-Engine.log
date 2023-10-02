@@ -10,4 +10,19 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(367,38): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(369,44): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(414,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  ConstantBuffer.cpp
+  Cube.cpp
+  DeviceContext.cpp
+  EngineTime.cpp
+  GraphicsEngine.cpp
+  IndexBuffer.cpp
+  Main.cpp
+  PixelShader.cpp
+  Quads.cpp
+  SwapChain.cpp
+  Vector3D.cpp
+  VertexBuffer.cpp
+  VertexShader.cpp
+  Window.cpp
+  Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

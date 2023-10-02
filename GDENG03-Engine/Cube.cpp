@@ -6,6 +6,10 @@ Cube::Cube(float xOffset, float yOffset)
 	this->yOffset = yOffset;
 }
 
+Cube::~Cube()
+{
+}
+
 void Cube::setPosAnimationOffset(float xOffset, float yOffset)
 {
 	this->xPosAnimation = xOffset;
