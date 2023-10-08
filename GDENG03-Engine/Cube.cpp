@@ -54,20 +54,16 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 	size_index_list = ARRAYSIZE(index_list);
 	indexBuffer->load(index_list, size_index_list);
 
-	//vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
-
-
 	size_list = ARRAYSIZE(cubeList);
 
-	
-	
-	
+	vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
 
-	/*constant temp;
-	temp.m_time = 0;
+
+	
+	cc.m_time = 0;
 
 	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
-	constantBuffer->load(&temp, sizeof(constant));*/
+	constantBuffer->load(&cc, sizeof(constant));
 }
 
 void Cube::update(float deltaTime)
@@ -87,9 +83,31 @@ void Cube::update(float deltaTime)
 
 	Matrix4x4 temp;
 
-	ticks += EngineTime::getDeltaTime() / 0.55f;
+	ticks += (EngineTime::getDeltaTime()) * this->speed;
 
-	cc.m_world.setScale(Vector3D(1,1, 1));
+	cc.m_world.setIdentity();
+	temp.setIdentity();
+	temp.setScale(this->getLocalScale());
+	cc.m_world *= temp;
+
+
+	Matrix4x4 Rot;
+	//Setting the Euler Rotaion
+	Rot.setIdentity();
+
+	temp.setIdentity();
+	temp.setRotationX(this->getLocalRotation().m_x);
+	Rot *= temp;
+	
+	temp.setIdentity();
+	temp.setRotationY(this->getLocalRotation().m_y);
+	Rot *= temp;
+
+	temp.setIdentity();
+	temp.setRotationZ(this->getLocalRotation().m_z);
+	Rot *= temp;
+	cc.m_world *= Rot;
+
 
 	temp.setIdentity();
 	temp.setRotationZ(ticks);
@@ -103,9 +121,11 @@ void Cube::update(float deltaTime)
 	temp.setRotationX(ticks);
 	cc.m_world *= temp;
 
+	
+	temp.setIdentity();
+	temp.setTranslation(this->getLocalPosition());
+	cc.m_world *= temp;
 
-	
-	
 }
 
 void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
@@ -140,37 +160,5 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 
 void Cube::setAnimSpeed(float speed)
 {
-}
-
-void Cube::LoadVertex( void* shaderByteCode, unsigned sizeShader)
-
-{
-
-	Vertex cubeList[] =
-	{
-		//X - Y - Z
-		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,0), Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
-
-		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) }
-	};
-
-	vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
-
-}
-
-void Cube::createContext()
-{
-	constant temp;
-	temp.m_time = 0;
-
-	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
-	constantBuffer->load(&temp, sizeof(constant));
+	this->speed = speed;
 }

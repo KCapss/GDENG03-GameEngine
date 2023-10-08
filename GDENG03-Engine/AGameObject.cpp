@@ -29,12 +29,12 @@ Vector3D AGameObject::getLocalPosition()
 
 void AGameObject::setScale(float x, float y, float z)
 {
-	this->getLocalScale() = Vector3D(x, y, z);
+	this->localScale = Vector3D(x, y, z);
 }
 
 void AGameObject::setScale(Vector3D scale)
 {
-	this->getLocalScale() = scale;
+	this->localScale = scale;
 }
 
 Vector3D AGameObject::getLocalScale()

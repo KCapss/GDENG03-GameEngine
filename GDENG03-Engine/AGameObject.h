@@ -48,7 +48,7 @@ private:
 	Vector3D localScale; 
 
 
-
+	Matrix4x4 Transform;
 
 };
 
