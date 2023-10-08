@@ -1,34 +1,45 @@
 #pragma once
 #include "GraphicsEngine.h"
+#include "AGameObject.h"
 
-class Cube
+class VertexBuffer;
+class IndexBuffer;
+class ConstantBuffer;
+
+class Cube : public AGameObject
 {
 public:
-	Cube(float xOffset, float yOffset);
+	Cube(string name, void* shaderByteCode, size_t sizeShader);
 	~Cube();
-	void setPosAnimationOffset(float xOffset, float yOffset);
 
-	void onCreate(VertexBuffer* m_vb);
-	void onUpdate(VertexBuffer* m_vb);
-	void onDestroy();
 
-	std::vector<vertex> RetrieveVertexList();
-	std::vector<unsigned int> RetrieveIndexList();
-	int RetrieveVertexSize();
-	int RetrieveIndexBufferSize();
+	void update(float deltaTime) override;
+	void draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader) override;
+	void setAnimSpeed(float speed);
+
 
 
 private:
-	int numVertex = 0;
-	int bufferSize = 0;
-	std::vector<vertex> list;
-	std::vector<unsigned int> index_list;
-	int vertexSize;
+	//Buffers
+	VertexBuffer* vertexBuffer;
+	IndexBuffer* indexBuffer;
+	ConstantBuffer* constantBuffer;
 
-	float xOffset = 0;
-	float yOffset = 0;
+	constant cc;
 
-	float xPosAnimation = 0;
-	float yPosAnimation = 0;
+	float ticks = 0.0f;
+	float deltaPos = 0.0f;
+	float deltaTime = 0.0f;
+	float speed = 10.0f;
+
+	//Buffer Size
+	UINT size_list = 0;
+	UINT size_index_list = 0;
+
+	//Rotation
+	
+
+
+
 };
 
