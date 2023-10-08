@@ -18,6 +18,11 @@ public:
 	void setAnimSpeed(float speed);
 
 
+	//MAKi.
+	void LoadVertex(void* shaderByteCode, unsigned sizeShader);
+	void createContext();
+
+
 
 private:
 	//Buffers

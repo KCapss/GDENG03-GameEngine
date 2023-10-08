@@ -54,27 +54,20 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 	size_index_list = ARRAYSIZE(index_list);
 	indexBuffer->load(index_list, size_index_list);
 
+	//vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
+
 
 	size_list = ARRAYSIZE(cubeList);
 
-	//void* shader_byte_code = nullptr;
-	//size_t size_shader = 0;
-	//Vertex Shader
-	//GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
-	//m_vs = GraphicsEngine::get()->createVertexShader(shaderByteCode, sizeShader);
-	vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
-	GraphicsEngine::get()->releaseCompiledShader();
 	
-	//Pixel Shader
-	//GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
-	//m_ps = GraphicsEngine::get()->createPixelShader(shaderByteCode, sizeShader);
-	GraphicsEngine::get()->releaseCompiledShader();
+	
+	
 
-	cc.m_time = 0;
+	/*constant temp;
+	temp.m_time = 0;
 
 	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
-	constantBuffer->load(&cc, sizeof(constant));
+	constantBuffer->load(&temp, sizeof(constant));*/
 }
 
 void Cube::update(float deltaTime)
@@ -86,7 +79,7 @@ void Cube::update(float deltaTime)
 			m_delta_pos = 0;*/
 
 			//Engine Time Conversion
-	cc.m_time = EngineTime::getDeltaTime();
+	cc.m_time = deltaTime / 0.55f;
 
 	/*m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
 	if (m_delta_pos > 1.0f)
@@ -96,7 +89,7 @@ void Cube::update(float deltaTime)
 
 	ticks += EngineTime::getDeltaTime() / 0.55f;
 
-	cc.m_world.setScale(this->getLocalScale());
+	cc.m_world.setScale(Vector3D(1,1, 1));
 
 	temp.setIdentity();
 	temp.setRotationZ(ticks);
@@ -111,12 +104,14 @@ void Cube::update(float deltaTime)
 	cc.m_world *= temp;
 
 
-	cc.m_view.setIdentity();
+	
 	
 }
 
 void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
 {
+
+	cc.m_view.setIdentity();
 	cc.m_proj.setOrthoLH
 	(
 		(width) / 300.0f,
@@ -130,6 +125,9 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(vertexShader, constantBuffer);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(pixelShader, constantBuffer);
 
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(vertexShader);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(pixelShader);
+
 	//SET THE VERTICES OF THE TRIANGLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vertexBuffer);
 
@@ -142,4 +140,37 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 
 void Cube::setAnimSpeed(float speed)
 {
+}
+
+void Cube::LoadVertex( void* shaderByteCode, unsigned sizeShader)
+
+{
+
+	Vertex cubeList[] =
+	{
+		//X - Y - Z
+		//FRONT FACE
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
+		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,0), Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+
+		//BACK FACE
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) }
+	};
+
+	vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
+
+}
+
+void Cube::createContext()
+{
+	constant temp;
+	temp.m_time = 0;
+
+	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
+	constantBuffer->load(&temp, sizeof(constant));
 }

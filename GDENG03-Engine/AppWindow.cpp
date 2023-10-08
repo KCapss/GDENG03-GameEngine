@@ -34,113 +34,61 @@ void AppWindow::onCreate()
 	m_swap_chain = GraphicsEngine::get()->createSwapChain();
 
 	RECT rc = this->getClientWindowRect();
+	
+	copy = new Cube("Cube", nullptr, 0);
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
+
+	//Vertex Shader
 	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
 	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-	Cube* copy = new Cube("Cube", shader_byte_code, size_shader);
-	GameObjectList.push_back((AGameObject*)copy);
 
+	copy->LoadVertex(shader_byte_code, size_shader);
+	
 
 	GraphicsEngine::get()->releaseCompiledShader();
 
 	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader(); 
+	GraphicsEngine::get()->releaseCompiledShader();
+
+	copy->createContext();
+
+
+	//GameObjectList.push_back((AGameObject*)copy);
 
 	
-	////Parameters for creeating Vertex buffer
-	//m_vb = GraphicsEngine::get()->createVertexBuffer();
-	//onQuadMultipleCreate();
-	//onCubeCreate();
-
-
-	/*
-	UINT size_list = ARRAYSIZE(list);
-
-	void* shader_byte_code = nullptr;
-	size_t size_shader = 0;
-	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
-	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-	m_vb->load(list, sizeof(Vertex), size_list, shader_byte_code, size_shader);
-
-	GraphicsEngine::get()->releaseCompiledShader();
-
-
-	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
-	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader();*/
-
 }
 
 void AppWindow::onUpdate()
 {
+	m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
 	Window::onUpdate();
 	//CLEAR THE RENDER TARGET 
 	GraphicsEngine::get()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain,
 		0, 0.3f, 0.4f, 1);
 	RECT rc = this->getClientWindowRect();
+	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
-	for (AGameObject* gameobject : GameObjectList )
+	/*for (AGameObject* gameobject : GameObjectList )
 	{
 		gameobject->update(m_delta_time);
 	}
 
-	////SET VIEWPORT OF RENDER TARGET IN WHICH WE HAVE TO DRAW
-	//RECT rc = this->getClientWindowRect();
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
-
-
 	
-
-
-	//TODO: Matrix
 	
-
-	//TODO: Drawing
-	/*GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);*/
-
-	
-	//SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
-	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
-
-	////SET THE VERTICES OF THE TRIANGLE TO DRAW
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
-
-	////SET THE INDICES OF THE TRIANGLE TO DRAW
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setIndexBuffer(m_ib);
-
-
-
-	// FINALLY DRAW THE TRIANGLE
-
-	
-
-	//for (int i = 0; i < cubeList.size(); i++)
-	//{
-	//	UINT bufferSize = cubeList[0]->RetrieveIndexBufferSize();
-
-	//	if (quadList.size() > 1)
-	//		GraphicsEngine::get()->getImmediateDeviceContext()->drawIndexedTriangleList((m_ib->getSizeIndexList()), i * bufferSize, i*bufferSize);
-
-	//	//Edge Case for drawing single cases
-	//	else
-	//		GraphicsEngine::get()->getImmediateDeviceContext()->drawIndexedTriangleList((m_ib->getSizeIndexList()), 0, 0);
-	//}
 
 	for (AGameObject* gameobject : GameObjectList)
 	{
 		gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
-	}
+	}*/
 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->drawIndexedTriangleList(m_ib->getSizeIndexList(), 0, 0);
 
+	copy->update(m_delta_time);
+	copy->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
 
 	m_swap_chain->present(true);
 
@@ -148,13 +96,13 @@ void AppWindow::onUpdate()
 	m_new_delta = ::GetTickCount();
 	m_delta_time = (m_old_delta) ? ((m_new_delta - m_old_delta) / 1000.0f) : 0;*/
 
-	m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
+	
 }
 
 void AppWindow::onDestroy()
 {
 	Window::onDestroy();
-	m_vb->release();
+	//m_vb->release();
 	//onQuadRelease();
 	m_swap_chain->release();
 

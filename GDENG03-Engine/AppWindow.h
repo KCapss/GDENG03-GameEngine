@@ -62,6 +62,6 @@ private:
 
 	std::vector<AGameObject*> GameObjectList;
 	
-	
+	Cube* copy;
 };
 
