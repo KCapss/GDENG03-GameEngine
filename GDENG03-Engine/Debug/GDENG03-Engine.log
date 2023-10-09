@@ -1,5 +1,9 @@
 ﻿  AppWindow.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(38,37): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(67,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(241,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(64,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(116,64): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(124,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(130,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(136,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(143,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(166,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe
