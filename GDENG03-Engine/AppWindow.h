@@ -11,8 +11,9 @@
 
 //Primitives
 
+#include "AGameObject.h"
 #include "Quads.h"
-#include "Cube.h"
+
 
 class AppWindow : public Window
 {
@@ -27,18 +28,10 @@ public:
 
 // Assignment Based Solution
 	float lerp(float min, float max, float f);
-	
-	//Part 1: Quads:
-	void onQuadMultipleCreate();
-	void onQuadUpdate();
-	void onQuadRelease();
-	
-
 
 	//Part 2: Cube
-	void onCubeCreate();
-	void onCubeUpdate();
-	void onCubeRelease();
+	void onCubeCreate(void* shader_byte_code, size_t size_shader);
+	
 	
 
 
@@ -59,15 +52,13 @@ private:
 	float m_delta_rot;
 
 	
-	std::vector<Quads*> quadList;
-	std::vector<Cube*> cubeList;
+	/*std::vector<Quads*> quadList;
+	std::vector<Cube*> cubeList;*/
 
 
 	//extra
-	float transitionSpeed = 1.0f;
+	//float transitionSpeed = 1.0f;
 
-	
-	
-	
+	std::vector<AGameObject*> GameObjectList;
 };
 

@@ -21,6 +21,15 @@ public:
 		v.m_z = start.m_z * (1.0f - delta) + end.m_z * (delta);
 		return v;
 	}
+	static Vector3D zeros()
+	{
+		Vector3D v;
+		v.m_x = 0;
+		v.m_y = 0;
+		v.m_z = 0;
+
+		return v;
+	}
 
 
 	~Vector3D()

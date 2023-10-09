@@ -68,7 +68,7 @@ void Quads::onDestroy()
 	m_ps->release();*/
 }
 
-std::vector<vertex> Quads::RetrieveVertexList()
+std::vector<Vertex> Quads::RetrieveVertexList()
 {
 	return list;
 }

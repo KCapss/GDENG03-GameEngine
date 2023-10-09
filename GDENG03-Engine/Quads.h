@@ -19,13 +19,13 @@ public:
 	void onUpdate(VertexBuffer* m_vb);
 	void onDestroy();
 
-	std::vector<vertex> RetrieveVertexList();
+	std::vector<Vertex> RetrieveVertexList();
 	int RetrieveVertexSize();
 
 
 private:
 	int numVertex = 0;
-	std::vector<vertex> list;
+	std::vector<Vertex> list;
 	int vertexSize;
 
 

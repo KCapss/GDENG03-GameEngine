@@ -1,21 +1,15 @@
 #include "Cube.h"
 
-Cube::Cube(float xOffset, float yOffset)
-{
-	this->xOffset = xOffset;
-	this->yOffset = yOffset;
-}
+#include <list>
 
-void Cube::setPosAnimationOffset(float xOffset, float yOffset)
-{
-	this->xPosAnimation = xOffset;
-	this->yPosAnimation = yOffset;
-}
+#include "ConstantBuffer.h"
+#include "IndexBuffer.h"
+#include "VertexBuffer.h"
+#include "DeviceContext.h"
 
-void Cube::onCreate(VertexBuffer* m_vb)
+Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
 {
-
-	list =
+	Vertex cubeList[] =
 	{
 		//X - Y - Z
 		//FRONT FACE
@@ -31,8 +25,7 @@ void Cube::onCreate(VertexBuffer* m_vb)
 		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) }
 	};
 
-	index_list =
-
+	unsigned int index_list[] =
 	{
 		//FRONT SIDE
 		0,1,2,  //FIRST TRIANGLE
@@ -54,34 +47,118 @@ void Cube::onCreate(VertexBuffer* m_vb)
 		1,0,7
 	};
 
-	bufferSize = index_list.size();
+	vertexBuffer = GraphicsEngine::get()->createVertexBuffer();
+	indexBuffer = GraphicsEngine::get()->createIndexBuffer();
+
+
+	size_index_list = ARRAYSIZE(index_list);
+	indexBuffer->load(index_list, size_index_list);
+
+	size_list = ARRAYSIZE(cubeList);
+
+	vertexBuffer->load(cubeList, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
+
+
+	
+	cc.m_time = 0;
+
+	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
+	constantBuffer->load(&cc, sizeof(constant));
 }
 
-void Cube::onUpdate(VertexBuffer* m_vb)
+void Cube::update(float deltaTime)
 {
+	/*cc.m_time = ::GetTickCount();
+
+		m_delta_pos += m_delta_time / 10.0f;
+		if (m_delta_pos > 1.0f)
+			m_delta_pos = 0;*/
+
+			//Engine Time Conversion
+	cc.m_time = deltaTime / 0.55f;
+
+	/*m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
+	if (m_delta_pos > 1.0f)
+		m_delta_pos = 0;*/
+
+	Matrix4x4 temp;
+
+	ticks += (EngineTime::getDeltaTime()) * this->speed;
+
+	cc.m_world.setIdentity();
+	temp.setIdentity();
+	temp.setScale(this->getLocalScale());
+	cc.m_world *= temp;
+
+
+	Matrix4x4 Rot;
+	//Setting the Euler Rotaion
+	Rot.setIdentity();
+
+	temp.setIdentity();
+	temp.setRotationX(this->getLocalRotation().m_x);
+	Rot *= temp;
+	
+	temp.setIdentity();
+	temp.setRotationY(this->getLocalRotation().m_y);
+	Rot *= temp;
+
+	temp.setIdentity();
+	temp.setRotationZ(this->getLocalRotation().m_z);
+	Rot *= temp;
+	cc.m_world *= Rot;
+
+
+	temp.setIdentity();
+	temp.setRotationZ(ticks);
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	temp.setRotationY(ticks);
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	temp.setRotationX(ticks);
+	cc.m_world *= temp;
+
+	
+	temp.setIdentity();
+	temp.setTranslation(this->getLocalPosition());
+	cc.m_world *= temp;
 
 }
 
-void Cube::onDestroy()
+void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
 {
+
+	cc.m_view.setIdentity();
+	cc.m_proj.setOrthoLH
+	(
+		(width) / 300.0f,
+		(height) / 300.0f,
+		-4.0f,
+		4.0f
+	);
+
+	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(vertexShader, constantBuffer);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(pixelShader, constantBuffer);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(vertexShader);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(pixelShader);
+
+	//SET THE VERTICES OF THE TRIANGLE TO DRAW
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vertexBuffer);
+
+	//SET THE INDICES OF THE TRIANGLE TO DRAW
+	GraphicsEngine::get()->getImmediateDeviceContext()->setIndexBuffer(indexBuffer);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->drawIndexedTriangleList(indexBuffer->getSizeIndexList(), 0, 0);
+
 }
 
-std::vector<vertex> Cube::RetrieveVertexList()
+void Cube::setAnimSpeed(float speed)
 {
-	return list;
-}
-
-std::vector<unsigned> Cube::RetrieveIndexList()
-{
-	return index_list;
-}
-
-int Cube::RetrieveVertexSize()
-{
-	return vertexSize;
-}
-
-int Cube::RetrieveIndexBufferSize()
-{
-	return bufferSize;
+	this->speed = speed;
 }
