@@ -1,9 +1,12 @@
-﻿  AppWindow.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(64,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(116,64): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(124,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(130,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(136,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(143,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(166,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+﻿  InputSystem.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(40,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(143,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(150,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(157,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(164,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(171,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(178,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(185,20): warning C4018: '<': signed/unsigned mismatch
+  Point.cpp
+  Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe
