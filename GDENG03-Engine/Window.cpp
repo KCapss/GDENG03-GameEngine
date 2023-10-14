@@ -148,6 +148,7 @@ void Window::onDestroy()
 	m_is_run = false;
 }
 
+
 Window::~Window()
 {
 }

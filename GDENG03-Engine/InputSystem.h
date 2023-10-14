@@ -19,6 +19,9 @@ public:
 	void addListener(InputListener* listener);
 	void removeListener(InputListener* listener);
 
+	void setCursorPosition(const Point& pos);
+	void showCursor(bool show);
+
 	void update();
 
 	// Global methods for checking key input status
@@ -43,6 +46,7 @@ private:
 	// keyboard data
 	unsigned char keyStates[256] = {};
 	unsigned char oldKeyStates[256] = {};
+
 	// mouse data
 	Point oldMousePos;
 	bool firstTimeCall = true;

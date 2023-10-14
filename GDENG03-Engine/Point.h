@@ -10,7 +10,7 @@ public:
 	int getX() const;
 	int getY() const;
 
-private:
+public:
 	int x = 0;
 	int y = 0;
 };

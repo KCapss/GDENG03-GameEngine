@@ -48,6 +48,17 @@ void InputSystem::removeListener(InputListener* listener)
 	}
 }
 
+
+void InputSystem::setCursorPosition(const Point& pos)
+{
+	::SetCursorPos(pos.x, pos.y);
+}
+
+void InputSystem::showCursor(bool show)
+{
+	::ShowCursor(show);
+}
+
 void InputSystem::update()
 {
 	POINT currentPt = {};

@@ -8,6 +8,8 @@
 #include "IndexBuffer.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
+#include "InputListener.h"
+#include "Matrix4x4.h"
 
 //Primitives
 
@@ -15,7 +17,7 @@
 #include "Quads.h"
 
 
-class AppWindow : public Window
+class AppWindow : public Window, public InputListener
 {
 public:
 	AppWindow();
@@ -25,14 +27,28 @@ public:
 	virtual void onCreate() override;
 	virtual void onUpdate() override;
 	virtual void onDestroy() override;
+	
 
 // Assignment Based Solution
 	float lerp(float min, float max, float f);
-
 	//Part 2: Cube
 	void onCubeCreate(void* shader_byte_code, size_t size_shader);
+
+
+	// Inherited via InputListener
+	virtual void onKeyDown(int key) override;
+	virtual void onKeyUp(int key) override;
+
+	virtual void onMouseMove(const Point deltaPos);
+
+	virtual void onLeftMouseDown(const Point deltaPos);
+	virtual void onLeftMouseUp(const Point deltaPos);
+
+	virtual void onRightMouseDown(const Point deltaPos);
+	virtual void onRightMouseUp(const Point deltaPos);
 	
-	
+	//Tutorial Template
+	void update();
 
 
 private:
@@ -51,13 +67,15 @@ private:
 	float m_delta_scale;
 	float m_delta_rot;
 
-	
-	/*std::vector<Quads*> quadList;
-	std::vector<Cube*> cubeList;*/
 
+	//Added Template
+	float m_rot_x = 0.0f;
+	float m_rot_y = 0.0f;
 
-	//extra
-	//float transitionSpeed = 1.0f;
+	float m_scale_cube = 1;
+	float m_forward = 0.0f;
+	float m_rightward = 0.0f;
+	Matrix4x4 m_world_cam;
 
 	std::vector<AGameObject*> GameObjectList;
 };
