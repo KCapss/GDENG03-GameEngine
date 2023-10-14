@@ -3,20 +3,10 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(402,64): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(410,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(416,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(422,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(429,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(452,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  InputSystem.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(40,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(161,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(175,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(182,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(189,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp(196,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(410,64): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(418,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(424,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(430,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(437,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(460,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

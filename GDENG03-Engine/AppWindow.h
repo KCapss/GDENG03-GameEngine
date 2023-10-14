@@ -77,6 +77,9 @@ private:
 	float m_rightward = 0.0f;
 	Matrix4x4 m_world_cam;
 
+	bool isRightClick = false;
+	
+
 	std::vector<AGameObject*> GameObjectList;
 };
 

@@ -73,10 +73,16 @@ void InputSystem::update()
 	if (oldMousePos.getX() != currentPt.x || oldMousePos.getY() != currentPt.y)
 	{
 		Point deltaPt = Point(currentPt.x - oldMousePos.getX(), currentPt.y - oldMousePos.getY());
+
+		std::cout << "X Difference: " << deltaPt.getX() << endl;
+			/*<< "Y Difference: " << deltaPt.getY() << endl;*/
+
 		this->callOnMouseMove(deltaPt);
 	}
 
+	//std::cout << "X Old: " << oldMousePos.getX() << endl;
 	this->oldMousePos = Point(currentPt.x, currentPt.y);
+	//std::cout << "X New: " << oldMousePos.getX() << endl;
 
 	if (GetKeyboardState(keyStates)) //update keyStates
 	{

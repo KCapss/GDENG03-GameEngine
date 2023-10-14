@@ -66,7 +66,7 @@ void AppWindow::onCreate()
 
 	InputSystem::initialize();
 	InputSystem::getInstance()->addListener(this);
-	InputSystem::getInstance()->showCursor(false);
+	InputSystem::getInstance()->showCursor(true);
 	m_swap_chain = GraphicsEngine::get()->createSwapChain();
 
 	RECT rc = this->getClientWindowRect();
@@ -152,6 +152,7 @@ void AppWindow::onUpdate()
 {
 	//m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
 	//Window::onUpdate();
+	//InputSystem::getInstance()->update();
 	////CLEAR THE RENDER TARGET 
 	//GraphicsEngine::get()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain,
 	//	0, 0.3f, 0.4f, 1);
@@ -180,17 +181,13 @@ void AppWindow::onUpdate()
 	//CLEAR THE RENDER TARGET 
 	GraphicsEngine::get()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain,
 		0, 0.3f, 0.4f, 1);
+
 	//SET VIEWPORT OF RENDER TARGET IN WHICH WE HAVE TO DRAW
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 
-
-
 	update();
-
-
-
 
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
@@ -202,6 +199,7 @@ void AppWindow::onUpdate()
 
 	//SET THE VERTICES OF THE TRIANGLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
+
 	//SET THE INDICES OF THE TRIANGLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setIndexBuffer(m_ib);
 
@@ -280,17 +278,23 @@ void AppWindow::onMouseMove(const Point deltaPos)
 {
 	//Sir Neil Template
 	/*cout << " mouse moved: " << deltaPos.getX() << ", " << deltaPos.getY() << "\n";*/
+
 	int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
 	int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
 
+	//Final
+	if (isRightClick) {
+		m_rot_x += (deltaPos.getY()) * m_delta_time * 0.3f;
+		m_rot_y += (deltaPos.getX()) * m_delta_time * 0.3f;
 
 
-	m_rot_x += (deltaPos.getX() - (height / 2.0f)) * m_delta_time * 0.1f;
-	m_rot_y += (deltaPos.getY() - (width / 2.0f)) * m_delta_time * 0.1f;
+		//Template
+		/*m_rot_x += (deltaPos.getX() - (height / 2.0f)) * m_delta_time * 0.001f;
+		m_rot_y += (deltaPos.getY() - (width / 2.0f)) * m_delta_time * 0.001f;*/
 
+	}
 
-
-	InputSystem::getInstance()->setCursorPosition(Point ((int)(width / 2.0f), (int)(height / 2.0f)));
+	
 }
 
 void AppWindow::onLeftMouseDown(const Point deltaPos)
@@ -306,11 +310,13 @@ void AppWindow::onLeftMouseUp(const Point deltaPos)
 void AppWindow::onRightMouseDown(const Point deltaPos)
 {
 	m_scale_cube = 2.0f;
+	isRightClick = true;
 }
 
 void AppWindow::onRightMouseUp(const Point deltaPos)
 {
 	m_scale_cube = 1.0f;
+	isRightClick = false;
 }
 
 void AppWindow::update()
