@@ -1,5 +1,6 @@
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AGameObject.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\AGameObject.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\AppWindow.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Camera.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Camera.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\ConstantBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\ConstantBuffer.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Cube.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\DeviceContext.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\DeviceContext.obj
@@ -11,6 +12,7 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Main.cpp;C
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\PixelShader.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\PixelShader.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Point.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Point.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Quads.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Quads.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SceneCameraHandler.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SceneCameraHandler.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SwapChain.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SwapChain.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Vector3D.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Vector3D.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\VertexBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\VertexBuffer.obj
