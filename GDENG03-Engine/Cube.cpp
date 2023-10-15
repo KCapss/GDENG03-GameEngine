@@ -6,6 +6,7 @@
 #include "IndexBuffer.h"
 #include "VertexBuffer.h"
 #include "DeviceContext.h"
+#include "SceneCameraHandler.h"
 
 Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
 {
@@ -82,17 +83,16 @@ void Cube::update(float deltaTime)
 		m_delta_pos = 0;*/
 
 	Matrix4x4 temp;
-
 	ticks += (EngineTime::getDeltaTime()) * this->speed;
 
+	//Start of Converting Model to World view matrix
 	cc.m_world.setIdentity();
 	temp.setIdentity();
 	temp.setScale(this->getLocalScale());
 	cc.m_world *= temp;
 
-
+	
 	Matrix4x4 Rot;
-	//Setting the Euler Rotaion
 	Rot.setIdentity();
 
 	temp.setIdentity();
@@ -110,35 +110,44 @@ void Cube::update(float deltaTime)
 
 
 	temp.setIdentity();
-	temp.setRotationZ(ticks);
+	temp.setRotationZ(m_rot_z * speed);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationY(ticks);
+	temp.setRotationY(m_rot_y * speed);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationX(ticks);
+	temp.setRotationX(m_rot_x * speed);
 	cc.m_world *= temp;
 
-	
 	temp.setIdentity();
 	temp.setTranslation(this->getLocalPosition());
 	cc.m_world *= temp;
+
+	//Converting World to View Matrix
+
+	/*
+	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
+
+	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f); */
+
+	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 
 }
 
 void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
 {
 
-	cc.m_view.setIdentity();
-	cc.m_proj.setOrthoLH
+
+	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
+	/*cc.m_proj.setOrthoLH
 	(
 		(width) / 300.0f,
 		(height) / 300.0f,
 		-4.0f,
 		4.0f
-	);
+	);*/
 
 	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
 
@@ -161,4 +170,11 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 void Cube::setAnimSpeed(float speed)
 {
 	this->speed = speed;
+}
+
+void Cube::IncrementRot(float offsetIncrease)
+{
+	this->m_rot_x += offsetIncrease;
+	this->m_rot_y += offsetIncrease;
+	this->m_rot_z += offsetIncrease;
 }

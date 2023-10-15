@@ -41,12 +41,17 @@ public:
 	void setRotation(Vector3D rot);
 	Vector3D getLocalRotation();
 
+	virtual void IncrementRot(float offset);
+
+	
+
 private:
 	string name;
 	Vector3D localRotation;
 	Vector3D localPosition;
 	Vector3D localScale; 
 
-
+protected:
+	Matrix4x4 localMatrix;
 };
 
