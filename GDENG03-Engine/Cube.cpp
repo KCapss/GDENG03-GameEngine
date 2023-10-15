@@ -109,17 +109,17 @@ void Cube::update(float deltaTime)
 	cc.m_world *= Rot;
 
 
-	/*temp.setIdentity();
-	temp.setRotationZ(ticks);
+	temp.setIdentity();
+	temp.setRotationZ(m_rot_z * speed);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationY(ticks);
+	temp.setRotationY(m_rot_y * speed);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationX(ticks);
-	cc.m_world *= temp;*/
+	temp.setRotationX(m_rot_x * speed);
+	cc.m_world *= temp;
 
 	temp.setIdentity();
 	temp.setTranslation(this->getLocalPosition());
@@ -170,4 +170,11 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 void Cube::setAnimSpeed(float speed)
 {
 	this->speed = speed;
+}
+
+void Cube::IncrementRot(float offsetIncrease)
+{
+	this->m_rot_x += offsetIncrease;
+	this->m_rot_y += offsetIncrease;
+	this->m_rot_z += offsetIncrease;
 }

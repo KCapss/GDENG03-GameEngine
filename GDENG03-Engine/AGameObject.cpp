@@ -56,3 +56,7 @@ Vector3D AGameObject::getLocalRotation()
 {
 	return this->localRotation;
 }
+
+void AGameObject::IncrementRot(float offset)
+{
+}

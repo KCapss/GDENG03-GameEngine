@@ -78,6 +78,8 @@ private:
 	Matrix4x4 m_world_cam;
 
 	bool isRightClick = false;
+	bool isSPress = false;
+	bool isWPress = false;
 	
 
 	std::vector<AGameObject*> GameObjectList;

@@ -17,6 +17,8 @@ public:
 	void draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader) override;
 	void setAnimSpeed(float speed);
 
+	void IncrementRot(float offsetIncrease) override;
+
 
 
 private:
@@ -35,8 +37,12 @@ private:
 	//Buffer Size
 	UINT size_list = 0;
 	UINT size_index_list = 0;
-	
 
+	
+	//Vid 2 specification
+	float m_rot_x = 0;
+	float m_rot_y = 0;
+	float m_rot_z = 0;
 
 
 };

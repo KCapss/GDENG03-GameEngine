@@ -93,6 +93,11 @@ void AppWindow::onUpdate()
 	//Other Primitive
 	for (AGameObject* gameobject : GameObjectList)
 	{
+		if (isWPress)
+			gameobject->IncrementRot(m_delta_time);
+		else if (isSPress)
+			gameobject->IncrementRot(-m_delta_time);
+
 		gameobject->update(m_delta_time);
 	}
 
@@ -130,24 +135,13 @@ void AppWindow::onKeyDown(int key)
 
 	if (key == 'W')
 	{
-		//m_rot_x += 3.14f*m_delta_time;
-		m_forward = 1.0f;
+		isWPress = true;
 	}
 	else if (key == 'S')
 	{
-		//m_rot_x -= 3.14f*m_delta_time;
-		m_forward = -1.0f;
+		isSPress = true;
 	}
-	else if (key == 'A')
-	{
-		//m_rot_y += 3.14f*m_delta_time;
-		m_rightward = -1.0f;
-	}
-	else if (key == 'D')
-	{
-		//m_rot_y -= 3.14f*m_delta_time;
-		m_rightward = 1.0f;
-	}
+	
 
 
 }
@@ -162,6 +156,12 @@ void AppWindow::onKeyUp(int key)
 
 	m_forward = 0.0f;
 	m_rightward = 0.0f;
+
+	if (key == 'W')
+		isWPress = false;
+
+	if (key == 'S')
+		isSPress = false;
 }
 
 void AppWindow::onMouseMove(const Point deltaPos)

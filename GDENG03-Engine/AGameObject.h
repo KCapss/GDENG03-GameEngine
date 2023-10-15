@@ -41,6 +41,8 @@ public:
 	void setRotation(Vector3D rot);
 	Vector3D getLocalRotation();
 
+	virtual void IncrementRot(float offset);
+
 	
 
 private:
