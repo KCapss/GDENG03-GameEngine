@@ -111,6 +111,9 @@
     <ClCompile Include="SceneCameraHandler.cpp">
       <Filter>GameEngine\Primitives\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>GameEngine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="SceneCameraHandler.h">
       <Filter>GameEngine\Primitives\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>GameEngine\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
