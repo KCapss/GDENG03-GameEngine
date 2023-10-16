@@ -3,7 +3,9 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(78,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(280,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(298,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(79,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(279,59): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(309,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  MathUtils.cpp
+  Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

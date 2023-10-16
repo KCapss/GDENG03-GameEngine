@@ -36,6 +36,7 @@ AppWindow::~AppWindow()
 
 void AppWindow::onCreate()
 {
+	 
 	//Creating Windows and Background
 	Window::onCreate();
 	
@@ -93,10 +94,11 @@ void AppWindow::onUpdate()
 	//Other Primitive
 	for (AGameObject* gameobject : GameObjectList)
 	{
-		if (isWPress)
-			gameobject->IncrementRot(m_delta_time);
+		//TODO: Animation for input press
+		/*if (isWPress)
+			gameobject->IncrePmentRot(m_delta_time);
 		else if (isSPress)
-			gameobject->IncrementRot(-m_delta_time);
+			gameobject->IncrementRot(-m_delta_time);*/
 
 		gameobject->update(m_delta_time);
 	}
@@ -274,8 +276,17 @@ void AppWindow::update()
 
 void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 {
+	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+	Copy->setPosition(Vector3D(MathUtils::randomFloat(-1.0f, 1.0f),
+		MathUtils::randomFloat(-1.0f, 1.0f),
+		MathUtils::randomFloat(0.0f, 10.0f )));
+	GameObjectList.push_back(Copy);
 
-	for (int i = 0; i < 20; i++)
+
+
+
+	//TODO: Multiple Random Instancing of Cubes
+	/*for (int i = 0; i < 20; i++)
 	{
 		Cube* Copy = new Cube("1", shader_byte_code, size_shader);
 		Copy->setPosition(Vector3D(MathUtils::randomFloat(-1, 1), 
@@ -287,7 +298,7 @@ void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 			MathUtils::randomFloat(-180, 180)));
 
 		GameObjectList.push_back(Copy);
-	}
+	}*/
 
 }
 
