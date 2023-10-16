@@ -12,41 +12,41 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 {
 	
 	//TODO: White Version of the Shaders
-	Vertex cubeList[] =
-	{
-		//X - Y - Z
-		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),  Vector3D(1,1,1)},
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
-		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,1),  Vector3D(1,1,1) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),  Vector3D(1,1,1)},
+	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,1),  Vector3D(1,1,1) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
 
-		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
-		{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,1), Vector3D(1,1,1) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) }
-	};
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,1), Vector3D(1,1,1) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) }
+	//};
 
 
 
 
 	//TODO: Rainbow Version of the Shaders
-	//Vertex cubeList[] =
-	//{
-	//	//X - Y - Z
-	//	//FRONT FACE
-	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
-	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,0), Vector3D(0.2f,0.2f,0) },
-	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
-	//	{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+	Vertex cubeList[] =
+	{
+		//X - Y - Z
+		//FRONT FACE
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
+		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
 
-	//	//BACK FACE
-	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
-	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
-	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
-	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) }
-	//};
+		//BACK FACE
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
+	};
 
 	unsigned int index_list[] =
 	{

@@ -100,6 +100,7 @@ void AppWindow::onUpdate()
 		else if (isSPress)
 			gameobject->IncrementRot(-m_delta_time);*/
 
+		gameobject->IncrementRot(m_delta_time);
 		gameobject->update(m_delta_time);
 	}
 
@@ -276,29 +277,32 @@ void AppWindow::update()
 
 void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 {
+	//Single Instance of the object
 	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
 	Copy->setPosition(Vector3D(MathUtils::randomFloat(-1.0f, 1.0f),
 		MathUtils::randomFloat(-1.0f, 1.0f),
 		MathUtils::randomFloat(0.0f, 10.0f )));
+	Copy->setAnimSpeed(3.0f);
 	GameObjectList.push_back(Copy);
 
 
+	
 
+	////TODO: Multiple Random Instancing of Cubes
+	//for (int i = 0; i < 50; i++)
+	//{
+	//	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+	//	Copy->setPosition(Vector3D(MathUtils::randomFloat(-0.5f, 0.5f),
+	//		MathUtils::randomFloat(-0.5f, 0.5f),
+	//		MathUtils::randomFloat(-0.5f, 0.5f)));
+	//	Copy->setScale(Vector3D(0.75f, 0.75f, 0.75f));
+	//	/*Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
+	//		MathUtils::randomFloat(-180, 180),
+	//		MathUtils::randomFloat(-180, 180)));*/
 
-	//TODO: Multiple Random Instancing of Cubes
-	/*for (int i = 0; i < 20; i++)
-	{
-		Cube* Copy = new Cube("1", shader_byte_code, size_shader);
-		Copy->setPosition(Vector3D(MathUtils::randomFloat(-1, 1), 
-			MathUtils::randomFloat(-1, 1),
-			MathUtils::randomFloat(-3, 3)));
-		Copy->setScale(Vector3D(0.5f, 0.5f, 0.5f));
-		Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
-			MathUtils::randomFloat(-180, 180),
-			MathUtils::randomFloat(-180, 180)));
-
-		GameObjectList.push_back(Copy);
-	}*/
+	//	Copy->setAnimSpeed(3.0f);
+	//	GameObjectList.push_back(Copy);
+	//}
 
 }
 
