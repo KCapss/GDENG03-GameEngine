@@ -113,9 +113,9 @@ void AppWindow::onUpdate()
 void AppWindow::onDestroy()
 {
 	Window::onDestroy();
-	m_vb->release();
-	m_ib->release(); 
-	m_cb->release();
+	//m_vb->release();
+	//m_ib->release(); 
+	//m_cb->release();
 	m_swap_chain->release();
 	m_vs->release();
 	m_ps->release();
