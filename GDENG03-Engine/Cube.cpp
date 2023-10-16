@@ -32,20 +32,38 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 
 
 	//TODO: Rainbow Version of the Shaders
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
+	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
+	//};
+
+
+	//TODO: Custom Version of the Shaders Blue to Red
 	Vertex cubeList[] =
 	{
 		//X - Y - Z
 		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0)},
+		{Vector3D(-0.5f,0.5f,-0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) },
+		{ Vector3D(0.5f,0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
 
 		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,0,1),  Vector3D(1,0,0) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) }
 	};
 
 	unsigned int index_list[] =
@@ -111,7 +129,7 @@ void Cube::update(float deltaTime)
 	cc.m_time = ticks;
 
 	Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
-	Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
+	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
 	//Start of Converting Model to World view matrix
 	cc.m_world.setIdentity();
@@ -168,13 +186,13 @@ void Cube::update(float deltaTime)
 	cc.m_world *= temp;
 
 	//Translation animation
-	Matrix4x4 Translate;
+	/*Matrix4x4 Translate;
 	Translate.setIdentity();
 
 	temp.setIdentity();
 	temp.setTranslation(currentTranslate);
 	Translate *= temp;
-	cc.m_world *= Translate;
+	cc.m_world *= Translate;*/
 
 	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 
@@ -184,14 +202,14 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 {
 
 
-	//cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
-	cc.m_proj.setOrthoLH
+	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
+	/*cc.m_proj.setOrthoLH
 	(
 		(width) / 300.0f,
 		(height) / 300.0f,
 		-4.0f,
 		4.0f
-	);
+	);*/
 
 	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
 

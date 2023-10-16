@@ -1,8 +1,47 @@
-﻿  Cube.cpp
+﻿  AGameObject.cpp
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp(109,54): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp(111,14): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  AppWindow.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(79,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(289,59): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\AppWindow.cpp(319,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ConstantBuffer.cpp
+  Cube.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp(127,54): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp(129,14): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  GraphicsEngine.cpp
+  IndexBuffer.cpp
+  Main.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  PixelShader.cpp
+  Quads.cpp
+  SceneCameraHandler.cpp
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SceneCameraHandler.cpp(30,82): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  SwapChain.cpp
+  Vector3D.cpp
+  VertexBuffer.cpp
+  VertexShader.cpp
+  Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

@@ -287,11 +287,11 @@ void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 
 	//Non Random Instance
 	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
-	Copy->setPosition(Vector3D(0,0,0));
-	Copy->setAnimSpeed(3.0f);
+	Copy->setPosition(Vector3D(0,-1.25f,0));
+	Copy->setAnimSpeed(20.0f);
 	GameObjectList.push_back(Copy);
-
-
+	
+	
 	
 
 	////TODO: Multiple Random Instancing of Cubes
