@@ -8,6 +8,7 @@
 
 //Primitives
 #include "Cube.h"
+#include "Quads.h"
 #include "InputSystem.h"
 #include "SceneCameraHandler.h"
 
@@ -286,10 +287,26 @@ void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 	GameObjectList.push_back(Copy);*/
 
 	//Non Random Instance
-	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
-	Copy->setPosition(Vector3D(0,-1.25f,0));
-	Copy->setAnimSpeed(20.0f);
-	GameObjectList.push_back(Copy);
+	Cube* First = new Cube("1", shader_byte_code, size_shader);
+	First->setPosition(Vector3D(-1.5f,1.0f,-3.0f));
+	First->setAnimSpeed(20.0f);
+	GameObjectList.push_back(First);
+
+	Cube* Second = new Cube("1", shader_byte_code, size_shader);
+	Second->setPosition(Vector3D(0, 1.0f, 0));
+	Second->setAnimSpeed(20.0f);
+	GameObjectList.push_back(Second);
+
+	Cube* Third = new Cube("1", shader_byte_code, size_shader);
+	Third->setPosition(Vector3D(2.6f, 1.0f, 2.0f));
+	Third->setAnimSpeed(20.0f);
+	GameObjectList.push_back(Third);
+
+	Quads* Plane = new Quads("2", shader_byte_code, size_shader);
+	Plane->setPosition(Vector3D(0, 0, 0));
+	//Plane->setRotation(90.0f, 0, 0);
+	Plane->setScale(Vector3D(10.0f, 10.0f, 10.0f));
+	GameObjectList.push_back(Plane);
 	
 	
 	

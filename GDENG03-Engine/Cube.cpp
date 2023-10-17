@@ -12,21 +12,21 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 {
 	
 	//TODO: White Version of the Shaders
-	//Vertex cubeList[] =
-	//{
-	//	//X - Y - Z
-	//	//FRONT FACE
-	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),  Vector3D(1,1,1)},
-	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
-	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,1),  Vector3D(1,1,1) },
-	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
+	Vertex cubeList[] =
+	{
+		//X - Y - Z
+		//FRONT FACE
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1)},
+		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0.95f,1), Vector3D(1,0.95f,1) },
+		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0.95f),  Vector3D(1,1,0.95f) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
 
-	//	//BACK FACE
-	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,1),Vector3D(1,1,1) },
-	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) },
-	//	{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,1), Vector3D(1,1,1) },
-	//	{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,1,1), Vector3D(1,1,1) }
-	//};
+		//BACK FACE
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
+		{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) }
+	};
 
 
 
@@ -50,21 +50,21 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 
 
 	//TODO: Custom Version of the Shaders Blue to Red
-	Vertex cubeList[] =
-	{
-		//X - Y - Z
-		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0)},
-		{Vector3D(-0.5f,0.5f,-0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) },
-		{ Vector3D(0.5f,0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0)},
+	//	{Vector3D(-0.5f,0.5f,-0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
 
-		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
-		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,0,1),  Vector3D(1,0,0) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) }
-	};
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) }
+	//};
 
 	unsigned int index_list[] =
 	{
@@ -128,7 +128,7 @@ void Cube::update(float deltaTime)
 	float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
 	cc.m_time = ticks;
 
-	Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
+	//Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
 	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
 	//Start of Converting Model to World view matrix
@@ -139,14 +139,14 @@ void Cube::update(float deltaTime)
 
 
 	//Animation Scale
-	Matrix4x4 Scaling;
+	/*Matrix4x4 Scaling;
 	Scaling.setIdentity();
 
 	temp.setIdentity();
 	temp.setScale(currentScale);
 	Scaling *= temp;
 
-	cc.m_world *= Scaling;
+	cc.m_world *= Scaling;*/
 
 
 
