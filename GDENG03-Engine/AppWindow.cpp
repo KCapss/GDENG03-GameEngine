@@ -73,6 +73,19 @@ void AppWindow::onCreate()
 
 
 	SceneCameraHandler::initialize();
+
+
+	// Setup Dear ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
+
+	// Setup Platform/Renderer backends
+	ImGui_ImplWin32_Init(m_hwnd);
+	ImGui_ImplDX11_Init(GraphicsEngine::get()->getDirectD3D11Device(), GraphicsEngine::get()->getImmediateDeviceContext()->getDeviceContext());
 }
 
 void AppWindow::onUpdate()
@@ -81,10 +94,22 @@ void AppWindow::onUpdate()
 	Window::onUpdate();
 	InputSystem::getInstance()->update();
 
+	// (Your code process and dispatch Win32 messages)
+	// Start the Dear ImGui frame
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+	
+	
+	this->onImGUICreate();
+
+	if(isDemoActive)
+		ImGui::ShowDemoWindow(); // Show demo window! :)
+
 
 	//CLEAR THE RENDER TARGET 
 	GraphicsEngine::get()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain,
-		0, 0.3f, 0.4f, 1);
+		bgColor[0], bgColor[1], bgColor[2], 1);
 
 	//VIEWPORT
 	RECT rc = this->getClientWindowRect();
@@ -100,8 +125,8 @@ void AppWindow::onUpdate()
 			gameobject->IncrePmentRot(m_delta_time);
 		else if (isSPress)
 			gameobject->IncrementRot(-m_delta_time);*/
-
-		//gameobject->IncrementRot(m_delta_time);
+		if(isAnimationActive)
+			gameobject->IncrementRot(m_delta_time);
 		gameobject->update(m_delta_time);
 	}
 
@@ -109,6 +134,12 @@ void AppWindow::onUpdate()
 	{
 		gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
 	}
+
+	// Rendering
+    // (Your code clears your framebuffer, renders your other stuff etc.)
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	// (Your code calls swapchain's Present() function)
 
 	m_swap_chain->present(true);
 
@@ -123,7 +154,15 @@ void AppWindow::onDestroy()
 	m_swap_chain->release();
 	m_vs->release();
 	m_ps->release();
+
+	ImGui_ImplDX11_Shutdown();
+    ImGui_ImplWin32_Shutdown();
+    ImGui::DestroyContext();
+
+	InputSystem::destroy();
 	GraphicsEngine::get()->release();
+
+
 }
 
 
@@ -158,9 +197,6 @@ void AppWindow::onKeyUp(int key)
 		cout << "W released\n";
 	}*/
 
-	m_forward = 0.0f;
-	m_rightward = 0.0f;
-
 	if (key == 'W')
 		isWPress = false;
 
@@ -192,87 +228,131 @@ void AppWindow::onMouseMove(const Point deltaPos)
 
 void AppWindow::onLeftMouseDown(const Point deltaPos)
 {
-	m_scale_cube = 0.5f;
+	
 }
 
 void AppWindow::onLeftMouseUp(const Point deltaPos)
 {
-	m_scale_cube = 1.0f;
+	
 }
 
 void AppWindow::onRightMouseDown(const Point deltaPos)
 {
-	m_scale_cube = 2.0f;
+	
 	isRightClick = true;
 }
 
 void AppWindow::onRightMouseUp(const Point deltaPos)
 {
-	m_scale_cube = 1.0f;
+	
 	isRightClick = false;
 }
 
 void AppWindow::update()
 {
-	constant cc;
-	cc.m_time = ::GetTickCount();
+	//constant cc;
+	//cc.m_time = ::GetTickCount();
 
-	m_delta_pos += m_delta_time / 10.0f;
-	if (m_delta_pos > 1.0f)
-		m_delta_pos = 0;
+	//m_delta_pos += m_delta_time / 10.0f;
+	//if (m_delta_pos > 1.0f)
+	//	m_delta_pos = 0;
 
 
-	Matrix4x4 temp;
+	//Matrix4x4 temp;
 
-	m_delta_scale += m_delta_time / 0.55f;
+	//m_delta_scale += m_delta_time / 0.55f;
 
+	//
+
+	//cc.m_world.setIdentity();
+
+	//Matrix4x4 world_cam;
+	//world_cam.setIdentity();
+
+	//temp.setIdentity();
+	//temp.setRotationX(m_rot_x);
+	//world_cam *= temp;
+
+	//temp.setIdentity();
+	//temp.setRotationY(m_rot_y);
+	//world_cam *= temp;
+
+
+	//Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
+
+	//new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f);
+
+	//world_cam.setTranslation(new_pos);
+
+	//m_world_cam = world_cam;
+
+
+	//world_cam.inverse();
+
+
+
+
+	//cc.m_view = world_cam;
+	///*cc.m_proj.setOrthoLH
+	//(
+	//	(this->getClientWindowRect().right - this->getClientWindowRect().left)/300.0f,
+	//	(this->getClientWindowRect().bottom - this->getClientWindowRect().top)/300.0f,
+	//	-4.0f,
+	//	4.0f
+	//);*/
+
+	//int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
+	//int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
+
+
+	//cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
+
+
+	//m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+}
+
+void AppWindow::onImGUICreate()
+{
+	
+	/*if (ImGui::Button("Save"))
+		MySaveFunction();
+	ImGui::InputText("string", buf, IM_ARRAYSIZE(buf));
+	ImGui::SliderFloat("float", &f, 0.0f, 1.0f);*/
+
+
+	static float f = 0.0f;
+	static int counter = 0;
+
+	ImGui::Begin("Scene Settings!");                          // Create a window called "Hello, world!" and append into it.
+
+	ImGui::Text("Below are the text for configuring the Scene");               // Display some text (you can use a format strings too)
+	ImGui::Checkbox("Show Demo Window", &isDemoActive);       // Edit bools storing our window open/close state
 	
 
-	cc.m_world.setIdentity();
-
-	Matrix4x4 world_cam;
-	world_cam.setIdentity();
-
-	temp.setIdentity();
-	temp.setRotationX(m_rot_x);
-	world_cam *= temp;
-
-	temp.setIdentity();
-	temp.setRotationY(m_rot_y);
-	world_cam *= temp;
+	//ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+	ImGui::ColorEdit3("clear color", (float*)&bgColor);       // Edit 3 floats representing a color
 
 
-	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
+	//TODO Everytime a button is presed change its Text to Resume Animation or Pause Animation
+	if (ImGui::Button(animationIndicator.c_str()))                              // Buttons return true when clicked (most widgets return true when edited/activated)
+	{
+		if (animationIndicator == "Pause Animation")
+		{
+			isAnimationActive = false;
+			animationIndicator = "Resume Animation";
+		}
+			
 
-	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f);
+		else if (animationIndicator == "Resume Animation")
+		{
+			isAnimationActive = true;
+			animationIndicator = "Pause Animation";
+		}
+			
+	}
 
-	world_cam.setTranslation(new_pos);
-
-	m_world_cam = world_cam;
-
-
-	world_cam.inverse();
-
-
-
-
-	cc.m_view = world_cam;
-	/*cc.m_proj.setOrthoLH
-	(
-		(this->getClientWindowRect().right - this->getClientWindowRect().left)/300.0f,
-		(this->getClientWindowRect().bottom - this->getClientWindowRect().top)/300.0f,
-		-4.0f,
-		4.0f
-	);*/
-
-	int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
-	int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
-
-
-	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
-
-
-	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+	
+	ImGui::End();
 }
 
 
@@ -286,46 +366,48 @@ void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 	Copy->setAnimSpeed(3.0f);
 	GameObjectList.push_back(Copy);*/
 
-	//Non Random Instance
-	Cube* First = new Cube("1", shader_byte_code, size_shader);
-	First->setPosition(Vector3D(-1.5f,1.0f,-3.0f));
-	First->setAnimSpeed(20.0f);
-	GameObjectList.push_back(First);
+	////Non Random Instance
+	//Cube* First = new Cube("1", shader_byte_code, size_shader);
+	//First->setPosition(Vector3D(-1.5f,1.0f,-3.0f));
+	//First->setAnimSpeed(20.0f);
+	//GameObjectList.push_back(First);
 
-	Cube* Second = new Cube("1", shader_byte_code, size_shader);
-	Second->setPosition(Vector3D(0, 1.0f, 0));
-	Second->setAnimSpeed(20.0f);
-	GameObjectList.push_back(Second);
+	//Cube* Second = new Cube("1", shader_byte_code, size_shader);
+	//Second->setPosition(Vector3D(0, 1.0f, 0));
+	//Second->setAnimSpeed(20.0f);
+	//GameObjectList.push_back(Second);
 
-	Cube* Third = new Cube("1", shader_byte_code, size_shader);
-	Third->setPosition(Vector3D(2.6f, 1.0f, 2.0f));
-	Third->setAnimSpeed(20.0f);
-	GameObjectList.push_back(Third);
+	//Cube* Third = new Cube("1", shader_byte_code, size_shader);
+	//Third->setPosition(Vector3D(2.6f, 1.0f, 2.0f));
+	//Third->setAnimSpeed(20.0f);
+	//GameObjectList.push_back(Third);
 
-	Quads* Plane = new Quads("2", shader_byte_code, size_shader);
-	Plane->setPosition(Vector3D(0, 0, 0));
-	//Plane->setRotation(90.0f, 0, 0);
-	Plane->setScale(Vector3D(10.0f, 10.0f, 10.0f));
-	GameObjectList.push_back(Plane);
-	
+	//Quads* Plane = new Quads("2", shader_byte_code, size_shader);
+	//Plane->setPosition(Vector3D(0, 0, 0));
+	////Plane->setRotation(90.0f, 0, 0);
+	//Plane->setScale(Vector3D(10.0f, 10.0f, 10.0f));
+	//GameObjectList.push_back(Plane);
+	//
 	
 	
 
 	////TODO: Multiple Random Instancing of Cubes
-	//for (int i = 0; i < 50; i++)
-	//{
-	//	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
-	//	Copy->setPosition(Vector3D(MathUtils::randomFloat(-0.5f, 0.5f),
-	//		MathUtils::randomFloat(-0.5f, 0.5f),
-	//		MathUtils::randomFloat(-0.5f, 0.5f)));
-	//	Copy->setScale(Vector3D(0.75f, 0.75f, 0.75f));
-	//	/*Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
-	//		MathUtils::randomFloat(-180, 180),
-	//		MathUtils::randomFloat(-180, 180)));*/
+	for (int i = 0; i < 50; i++)
+	{
+		Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+		Copy->setPosition(Vector3D(MathUtils::randomFloat(-0.9f, 0.9f),
+			MathUtils::randomFloat(-0.9f, 0.9f),
+			MathUtils::randomFloat(-0.9f, 0.9f)));
+		Copy->setScale(Vector3D(0.25f, 0.25f, 0.25f));
+		Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
+			MathUtils::randomFloat(-180, 180),
+			MathUtils::randomFloat(-180, 180)));
 
-	//	Copy->setAnimSpeed(3.0f);
-	//	GameObjectList.push_back(Copy);
-	//}
+		float speed = MathUtils::randomFloat(-0.01f, 0.95f) * 10.0f;
+
+		Copy->setAnimSpeed(speed);
+		GameObjectList.push_back(Copy);
+	}
 
 }
 

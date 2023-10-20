@@ -23,6 +23,7 @@ public:
 public:
 	SwapChain* createSwapChain();
 	DeviceContext* getImmediateDeviceContext();
+	ID3D11Device* getDirectD3D11Device();
 	VertexBuffer* createVertexBuffer();
 	IndexBuffer* createIndexBuffer();
 	ConstantBuffer* createConstantBuffer();

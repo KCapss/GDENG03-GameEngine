@@ -6,6 +6,14 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp;C
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\DeviceContext.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\DeviceContext.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\EngineTime.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\EngineTime.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\GraphicsEngine.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\GraphicsEngine.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_demo.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_demo.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_draw.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_draw.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_impl_dx11.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_impl_dx11.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_impl_win32.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_impl_win32.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_stdlib.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_stdlib.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_tables.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_tables.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_widgets.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_widgets.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\IndexBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\IndexBuffer.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\InputSystem.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Main.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Main.obj
