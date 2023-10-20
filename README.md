@@ -10,10 +10,16 @@ Commit History Reference:
 6) HO6 Game and Cube Wrapper - [[08b2e6f](https://github.com/KCapss/GameEngine/tree/08b2e6fd3fc15edcdf7ea2e6fc12dbaa54de9cb4)]
 7) HO7a Camera Movement -  [[5a7e80a](https://github.com/KCapss/GameEngine/commit/5a7e80a151ec5c889995bfce08a370b6032b4dc3)]
 8) HO7b Input Based Animation -  [[205a29e](https://github.com/KCapss/GameEngine/commit/205a29e4ea40cee0a466ab514555faacbaa701ce)]
+================= Dear IMgui Integration ===========================
+9) HO8 Dear IMGUI Simple Window  [[8379a4f](https://github.com/KCapss/GameEngine/commit/8379a4faa573595d96876c6ea9f76b8667956fc2)]
 
 
 Rendering System Instruction:
-- To run the program kindly clone the file, and to double check the commit history u can download the specific commit history on the reference and run as intended.
+- To run the program kindly clone/download the zip the file,
+- Open the solution folder
+- Run the through debug mode
+- and to double check the commit history u can download the specific commit history on the reference and run as intended for each test cases.
+  
 
 Rendering System Reference: Commit History for TestCase **(TC)**
 1) TC1 -  [[de4fee0](https://github.com/KCapss/GameEngine/commit/de4fee049c222cddc8d94d78a7553b1644b33472)]
