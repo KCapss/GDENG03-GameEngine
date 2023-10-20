@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Vector3D
 {
@@ -19,6 +20,11 @@ public:
 		v.m_x = start.m_x * (1.0f - delta) + end.m_x * (delta);
 		v.m_y = start.m_y * (1.0f - delta) + end.m_y * (delta);
 		v.m_z = start.m_z * (1.0f - delta) + end.m_z * (delta);
+
+		/*std::cout << "X: " << v.m_x
+			<< " Y: " << v.m_y
+			<< " Z: " << v.m_z << std::endl;*/
+
 		return v;
 	}
 	static Vector3D zeros()

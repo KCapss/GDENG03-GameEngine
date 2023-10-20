@@ -8,6 +8,7 @@
 
 //Primitives
 #include "Cube.h"
+#include "Quads.h"
 #include "InputSystem.h"
 #include "SceneCameraHandler.h"
 
@@ -36,6 +37,7 @@ AppWindow::~AppWindow()
 
 void AppWindow::onCreate()
 {
+	 
 	//Creating Windows and Background
 	Window::onCreate();
 	
@@ -93,11 +95,13 @@ void AppWindow::onUpdate()
 	//Other Primitive
 	for (AGameObject* gameobject : GameObjectList)
 	{
-		if (isWPress)
-			gameobject->IncrementRot(m_delta_time);
+		//TODO: Animation for input press
+		/*if (isWPress)
+			gameobject->IncrePmentRot(m_delta_time);
 		else if (isSPress)
-			gameobject->IncrementRot(-m_delta_time);
+			gameobject->IncrementRot(-m_delta_time);*/
 
+		//gameobject->IncrementRot(m_delta_time);
 		gameobject->update(m_delta_time);
 	}
 
@@ -274,20 +278,54 @@ void AppWindow::update()
 
 void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 {
+	//Single Random Instance of the object
+	/*Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+	Copy->setPosition(Vector3D(MathUtils::randomFloat(-1.0f, 1.0f),
+		MathUtils::randomFloat(-1.0f, 1.0f),
+		MathUtils::randomFloat(0.0f, 10.0f )));
+	Copy->setAnimSpeed(3.0f);
+	GameObjectList.push_back(Copy);*/
 
-	for (int i = 0; i < 20; i++)
-	{
-		Cube* Copy = new Cube("1", shader_byte_code, size_shader);
-		Copy->setPosition(Vector3D(MathUtils::randomFloat(-1, 1), 
-			MathUtils::randomFloat(-1, 1),
-			MathUtils::randomFloat(-3, 3)));
-		Copy->setScale(Vector3D(0.5f, 0.5f, 0.5f));
-		Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
-			MathUtils::randomFloat(-180, 180),
-			MathUtils::randomFloat(-180, 180)));
+	//Non Random Instance
+	Cube* First = new Cube("1", shader_byte_code, size_shader);
+	First->setPosition(Vector3D(-1.5f,1.0f,-3.0f));
+	First->setAnimSpeed(20.0f);
+	GameObjectList.push_back(First);
 
-		GameObjectList.push_back(Copy);
-	}
+	Cube* Second = new Cube("1", shader_byte_code, size_shader);
+	Second->setPosition(Vector3D(0, 1.0f, 0));
+	Second->setAnimSpeed(20.0f);
+	GameObjectList.push_back(Second);
+
+	Cube* Third = new Cube("1", shader_byte_code, size_shader);
+	Third->setPosition(Vector3D(2.6f, 1.0f, 2.0f));
+	Third->setAnimSpeed(20.0f);
+	GameObjectList.push_back(Third);
+
+	Quads* Plane = new Quads("2", shader_byte_code, size_shader);
+	Plane->setPosition(Vector3D(0, 0, 0));
+	//Plane->setRotation(90.0f, 0, 0);
+	Plane->setScale(Vector3D(10.0f, 10.0f, 10.0f));
+	GameObjectList.push_back(Plane);
+	
+	
+	
+
+	////TODO: Multiple Random Instancing of Cubes
+	//for (int i = 0; i < 50; i++)
+	//{
+	//	Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+	//	Copy->setPosition(Vector3D(MathUtils::randomFloat(-0.5f, 0.5f),
+	//		MathUtils::randomFloat(-0.5f, 0.5f),
+	//		MathUtils::randomFloat(-0.5f, 0.5f)));
+	//	Copy->setScale(Vector3D(0.75f, 0.75f, 0.75f));
+	//	/*Copy->setRotation(Vector3D(MathUtils::randomFloat(-180, 180),
+	//		MathUtils::randomFloat(-180, 180),
+	//		MathUtils::randomFloat(-180, 180)));*/
+
+	//	Copy->setAnimSpeed(3.0f);
+	//	GameObjectList.push_back(Copy);
+	//}
 
 }
 

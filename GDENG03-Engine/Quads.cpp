@@ -1,84 +1,129 @@
 #include "Quads.h"
+
+#include "ConstantBuffer.h"
 #include "DeviceContext.h"
+#include "SceneCameraHandler.h"
 
 
 
-Quads::Quads(float xOffset, float yOffset)
+
+Quads::Quads(string name, void* shaderByteCode, size_t sizeShader) : AGameObject(name)
 {
-	this->xOffset = xOffset;
-	this->yOffset = yOffset;
-}
-
-void Quads::setPosAnimationOffset(float xOffset, float yOffset)
-{
-	this->xPosAnimation = xOffset;
-	this->yPosAnimation = yOffset;
-}
-
-void Quads::onCreate(VertexBuffer* m_vb)
-{
-	list =
+	Vertex list[] =
 	{
 		//X - Y - Z
-		//X - Y - Z
-		
-		
-		//Part 1: Simple Animation Sequences
-		//{ Vector3D(-0.6f + xOffset, -0.8f + yOffset, 0.0f),    Vector3D( -0.3f + xPosAnimation, -0.1f + yPosAnimation, 0.0f), Vector3D(0,0,0), Vector3D(0,1,0) }, //POS4
-		//{  Vector3D(-0.9f + xOffset, 0.1f + yOffset, 0.0f),    Vector3D(-0.1f + xPosAnimation, 0.75f + yPosAnimation, 0.0f),  Vector3D(1,1,0),  Vector3D(0,1,1) }, // POS1
-		//{  Vector3D(1.0f + xOffset, -0.3f + yOffset, 0.0f),      Vector3D(0.0f + xPosAnimation, -0.75f + yPosAnimation, 0.0f),  Vector3D(0,0,1),  Vector3D (1,0,0) }, //POS3
-		//{  Vector3D(-0.20f + xOffset, -0.30f + yOffset, -0.0f),  Vector3D(0.8f + xPosAnimation, 0.75f + yPosAnimation, 0.0f),  Vector3D(1,0,0),   Vector3D(0,0,1) } // POS2
-		
 
-		//Part 2: Lerping Speed of the Animation
-		//{ Vector3D ( - 0.75f + xOffset, -0.9f + yOffset, 0.0f), Vector3D( - 0.25f + xPosAnimation, -0.1f + yPosAnimation, 0.0f), Vector3D (0,0,0), Vector3D(0,1,0)}, //POS4
-		//{ Vector3D ( - 0.9f + xOffset, 0.1f + yOffset, 0.0f),   Vector3D( - 0.1f + xPosAnimation, 0.75f + yPosAnimation, 0.0f),  Vector3D (1,1,0), Vector3D(0,1,1)}, // POS1
-		//{ Vector3D ( 0.25f + xOffset, -0.25f + yOffset, 0.0f),  Vector3D(0.75f + xPosAnimation, -0.75f + yPosAnimation, 0.0f),   Vector3D (0,0,1), Vector3D(1,0,0) }, //POS3
-		//{ Vector3D (0.1f + xOffset, 0.1f + yOffset, -0.0f),     Vector3D(0.8f + xPosAnimation, 0.75f + yPosAnimation, 0.0f),     Vector3D(1,0,0),  Vector3D(0,0,1) } // POS2
-
-		//Template
-		{ Vector3D(-0.5f,-0.5f,0.0f), Vector3D(-0.32f,-0.11f,0.0f), Vector3D(0,0,0), Vector3D(0,1,0) }, // POS1
-		{ Vector3D(-0.5f,0.5f,0.0f),  Vector3D(-0.11f,0.78f,0.0f),  Vector3D(1,1,0), Vector3D(0,1,1) }, // POS2
-		{ Vector3D(0.5f,-0.5f,0.0f),  Vector3D(0.75f,-0.73f,0.0f),  Vector3D(0,0,1), Vector3D(1,0,0) },// POS2
-		{ Vector3D(0.5f,0.5f,0.0f),   Vector3D(0.88f,0.77f,0.0f),   Vector3D(1,1,1), Vector3D(0,0,1) }
+		////Template
+		{ Vector3D(-0.5f,0.0f,-0.5f),  Vector3D(0.9f,0.9f,0.9f), Vector3D(0.9f,0.9f,0.9f) }, // POS1
+		{ Vector3D(-0.5f,0.0f,0.5f),  Vector3D(0.9f,0.9f,0.9f), Vector3D(0.9f,0.9f,0.9f)}, // POS2
+		{ Vector3D(0.5f,0.0f,-0.5f),    Vector3D(0.9f,0.9f,0.9f), Vector3D(0.9f,0.9f,0.9f) },// POS2
+		{ Vector3D(0.5f,0.0f,0.5f),   Vector3D(0.9f,0.9f,0.9f), Vector3D(0.9f,0.9f,0.9f) }
 	};
 
 
-	vertexSize = list.size();
+	vertexBuffer = GraphicsEngine::get()->createVertexBuffer();
+
+	size_list = ARRAYSIZE(list);
+
+	vertexBuffer->load(list, sizeof(Vertex), size_list, shaderByteCode, sizeShader);
 
 
+
+	cc.m_time = 0;
+
+	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
+	constantBuffer->load(&cc, sizeof(constant));
 }
 
-void Quads::onUpdate(VertexBuffer* m_vb)
+void Quads::update(float deltaTime)
 {
-	////SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
+	/*cc.m_time = ::GetTickCount();
 
-	////SET THE VERTICES OF THE TRIANGLE TO DRAW
-	//GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
-	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
+		m_delta_pos += m_delta_time / 10.0f;
+		if (m_delta_pos > 1.0f)
+			m_delta_pos = 0;*/
+
+			//Engine Time Conversion
+			//cc.m_time = deltaTime / 0.55f;
+
+			/*m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
+			if (m_delta_pos > 1.0f)
+				m_delta_pos = 0;*/
+
+	Matrix4x4 temp;
+
+	ticks += (EngineTime::getDeltaTime()) * this->speed * 100.0f;
+	float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
+	cc.m_time = ticks;
+
+
+
+	//Start of Converting Model to World view matrix
+	cc.m_world.setIdentity();
+	temp.setIdentity();
+	temp.setScale(this->getLocalScale());
+	cc.m_world *= temp;
+
+
+
+	//Initial Rotation
+	Matrix4x4 Rot;
+	Rot.setIdentity();
+
+	temp.setIdentity();
+	temp.setRotationX(this->getLocalRotation().m_x);
+	Rot *= temp;
+
+	temp.setIdentity();
+	temp.setRotationY(this->getLocalRotation().m_y);
+	Rot *= temp;
+
+	temp.setIdentity();
+	temp.setRotationZ(this->getLocalRotation().m_z);
+	Rot *= temp;
+	cc.m_world *= Rot;
+
 
 	
+
+	temp.setIdentity();
+	temp.setTranslation(this->getLocalPosition());
+	cc.m_world *= temp;
+
+
+
+	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 }
 
-void Quads::onDestroy()
+void Quads::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
 {
-	/*m_vs->release();
-	m_ps->release();*/
+	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
+	/*cc.m_proj.setOrthoLH
+	(
+		(width) / 300.0f,
+		(height) / 300.0f,
+		-4.0f,
+		4.0f
+	);*/
+
+	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(vertexShader, constantBuffer);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(pixelShader, constantBuffer);
+
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(vertexShader);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(pixelShader);
+
+	//SET THE VERTICES OF THE TRIANGLE TO DRAW
+	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vertexBuffer);
+
+	
+	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(vertexBuffer->getSizeVertexList(), 0);
 }
 
-std::vector<Vertex> Quads::RetrieveVertexList()
+void Quads::setAnimSpeed(float speed)
 {
-	return list;
+	this->speed = speed;
 }
-
-int Quads::RetrieveVertexSize()
-{
-	return vertexSize;
-}
-
-
-
 
 

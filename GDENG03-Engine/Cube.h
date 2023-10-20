@@ -43,6 +43,14 @@ private:
 	float m_rot_x = 0;
 	float m_rot_y = 0;
 	float m_rot_z = 0;
+	
+
+	//Rendering system test case 3:
+	Vector3D scale1 = Vector3D(1,  1, 1);
+	Vector3D scale2 = Vector3D(2.0f, 0.01f, 2.0f);
+
+	Vector3D translate1 = Vector3D(1, 1, 0);
+	Vector3D translate2 = Vector3D(-1, -1, 0);
 
 
 };

@@ -10,21 +10,61 @@
 
 Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
 {
+	
+	//TODO: White Version of the Shaders
 	Vertex cubeList[] =
 	{
 		//X - Y - Z
 		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,1,0), Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1)},
+		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0.95f,1), Vector3D(1,0.95f,1) },
+		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0.95f),  Vector3D(1,1,0.95f) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
 
 		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) }
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
+		{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) }
 	};
+
+
+
+
+	//TODO: Rainbow Version of the Shaders
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
+	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
+	//};
+
+
+	//TODO: Custom Version of the Shaders Blue to Red
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0)},
+	//	{Vector3D(-0.5f,0.5f,-0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,0,1),  Vector3D(1,0,0) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1),  Vector3D(1,0,0) }
+	//};
 
 	unsigned int index_list[] =
 	{
@@ -75,15 +115,21 @@ void Cube::update(float deltaTime)
 		if (m_delta_pos > 1.0f)
 			m_delta_pos = 0;*/
 
-			//Engine Time Conversion
-	cc.m_time = deltaTime / 0.55f;
+	//Engine Time Conversion
+	//cc.m_time = deltaTime / 0.55f;
 
 	/*m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
 	if (m_delta_pos > 1.0f)
 		m_delta_pos = 0;*/
 
 	Matrix4x4 temp;
-	ticks += (EngineTime::getDeltaTime()) * this->speed;
+	
+	ticks += (EngineTime::getDeltaTime()) * this->speed * 100.0f;
+	float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
+	cc.m_time = ticks;
+
+	//Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
+	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
 	//Start of Converting Model to World view matrix
 	cc.m_world.setIdentity();
@@ -91,7 +137,20 @@ void Cube::update(float deltaTime)
 	temp.setScale(this->getLocalScale());
 	cc.m_world *= temp;
 
-	
+
+	//Animation Scale
+	/*Matrix4x4 Scaling;
+	Scaling.setIdentity();
+
+	temp.setIdentity();
+	temp.setScale(currentScale);
+	Scaling *= temp;
+
+	cc.m_world *= Scaling;*/
+
+
+
+	//Initial Rotation
 	Matrix4x4 Rot;
 	Rot.setIdentity();
 
@@ -109,6 +168,7 @@ void Cube::update(float deltaTime)
 	cc.m_world *= Rot;
 
 
+	//Animation Rotation
 	temp.setIdentity();
 	temp.setRotationZ(m_rot_z * speed);
 	cc.m_world *= temp;
@@ -125,12 +185,14 @@ void Cube::update(float deltaTime)
 	temp.setTranslation(this->getLocalPosition());
 	cc.m_world *= temp;
 
-	//Converting World to View Matrix
+	//Translation animation
+	/*Matrix4x4 Translate;
+	Translate.setIdentity();
 
-	/*
-	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
-
-	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f); */
+	temp.setIdentity();
+	temp.setTranslation(currentTranslate);
+	Translate *= temp;
+	cc.m_world *= Translate;*/
 
 	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 
