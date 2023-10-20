@@ -12,6 +12,8 @@ Commit History Reference:
 8) HO7b Input Based Animation -  [[205a29e](https://github.com/KCapss/GameEngine/commit/205a29e4ea40cee0a466ab514555faacbaa701ce)]
 
 
+Rendering System Instruction:
+- To run the program kindly clone the file, and to double check the commit history u can download the specific commit history on the reference and run as intended.
 
 Rendering System Reference: Commit History for TestCase **(TC)**
 1) TC1 -  [[de4fee0](https://github.com/KCapss/GameEngine/commit/de4fee049c222cddc8d94d78a7553b1644b33472)]
