@@ -323,7 +323,7 @@ void AppWindow::onImGUICreate()
 	static float f = 0.0f;
 	static int counter = 0;
 
-	ImGui::Begin("Scene Settings!");                          // Create a window called "Hello, world!" and append into it.
+	ImGui::Begin("Scene Settings!", NULL, ImGuiWindowFlags_NoResize);           // Create a window called "Hello, world!" and append into it.
 
 	ImGui::Text("Below are the text for configuring the Scene");               // Display some text (you can use a format strings too)
 	ImGui::Checkbox("Show Demo Window", &isDemoActive);       // Edit bools storing our window open/close state
