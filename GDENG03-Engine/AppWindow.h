@@ -58,6 +58,7 @@ public:
 
 	//IMGUI TEMPLATE
 	void onImGUICreate();
+	void onImGUIUnityTemplate();
 
 
 private:
@@ -90,6 +91,8 @@ private:
 	bool isAnimationActive = true;
 	float bgColor[3] = { 0, 0.3f, 0.4f };
 	string animationIndicator = "Pause Animation";
+
+	//UI Manager reference
 
 
 

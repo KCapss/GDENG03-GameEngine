@@ -52,6 +52,12 @@
     <Filter Include="GameEngine\imgui">
       <UniqueIdentifier>{8805f525-f8df-4a83-be97-7a392623d111}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\UI">
+      <UniqueIdentifier>{bacaeb07-d427-4a40-bda3-ef1a777e97c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Interface">
+      <UniqueIdentifier>{990f8d10-8a11-45f4-91d5-fd995fda300d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -140,6 +146,27 @@
     </ClCompile>
     <ClCompile Include="imgui\imgui_stdlib.cpp">
       <Filter>GameEngine\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>GameEngine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="AUIScreen.cpp">
+      <Filter>GameEngine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Toolbar.cpp">
+      <Filter>GameEngine\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOutliner.cpp">
+      <Filter>GameEngine\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="InspectorWindow.cpp">
+      <Filter>GameEngine\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineProfiler.cpp">
+      <Filter>GameEngine\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>GameEngine\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +265,30 @@
     </ClInclude>
     <ClInclude Include="imgui\imgui_stdlib.h">
       <Filter>GameEngine\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>GameEngine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="AUIScreen.h">
+      <Filter>GameEngine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UINames.h">
+      <Filter>GameEngine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Toolbar.h">
+      <Filter>GameEngine\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOutliner.h">
+      <Filter>GameEngine\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="InspectorWindow.h">
+      <Filter>GameEngine\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineProfiler.h">
+      <Filter>GameEngine\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>GameEngine\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

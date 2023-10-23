@@ -5,6 +5,7 @@
 #include "EngineTime.h"
 #include "Vector3D.h"
 #include "Matrix4x4.h"
+#include "UIManager.h"
 
 //Primitives
 #include "Cube.h"
@@ -12,8 +13,11 @@
 #include "InputSystem.h"
 #include "SceneCameraHandler.h"
 
+#include "Toolbar.h"
+
 //Helper
 #include "MathUtils.h"
+
 
 
 //__declspec(align(16))
@@ -73,19 +77,19 @@ void AppWindow::onCreate()
 
 
 	SceneCameraHandler::initialize();
+	UIManager::initialize(m_hwnd);
 
+	//// Setup Dear ImGui context
+	//IMGUI_CHECKVERSION();
+	//ImGui::CreateContext();
+	//ImGuiIO& io = ImGui::GetIO();
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	////io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
 
-	// Setup Dear ImGui context
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
-
-	// Setup Platform/Renderer backends
-	ImGui_ImplWin32_Init(m_hwnd);
-	ImGui_ImplDX11_Init(GraphicsEngine::get()->getDirectD3D11Device(), GraphicsEngine::get()->getImmediateDeviceContext()->getDeviceContext());
+	//// Setup Platform/Renderer backends
+	//ImGui_ImplWin32_Init(m_hwnd);
+	//ImGui_ImplDX11_Init(GraphicsEngine::get()->getDirectD3D11Device(), GraphicsEngine::get()->getImmediateDeviceContext()->getDeviceContext());
 }
 
 void AppWindow::onUpdate()
@@ -94,17 +98,16 @@ void AppWindow::onUpdate()
 	Window::onUpdate();
 	InputSystem::getInstance()->update();
 
-	// (Your code process and dispatch Win32 messages)
-	// Start the Dear ImGui frame
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
-	
-	
-	this->onImGUICreate();
-
-	if(isDemoActive)
-		ImGui::ShowDemoWindow(); // Show demo window! :)
+	//// (Your code process and dispatch Win32 messages)
+	//// Start the Dear ImGui frame
+	//ImGui_ImplDX11_NewFrame();
+	//ImGui_ImplWin32_NewFrame();
+	//ImGui::NewFrame();
+	//
+	//
+	////this->onImGUICreate();
+	////if(isDemoActive)
+	////	ImGui::ShowDemoWindow(); // Show demo window! :)
 
 
 	//CLEAR THE RENDER TARGET 
@@ -135,11 +138,14 @@ void AppWindow::onUpdate()
 		gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
 	}
 
-	// Rendering
-    // (Your code clears your framebuffer, renders your other stuff etc.)
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-	// (Your code calls swapchain's Present() function)
+	//// Rendering
+ //   // (Your code clears your framebuffer, renders your other stuff etc.)
+	//ImGui::Render();
+	//ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	//// (Your code calls swapchain's Present() function)
+	///
+
+	UIManager::getInstance()->drawAllUI();
 
 	m_swap_chain->present(true);
 
@@ -353,6 +359,10 @@ void AppWindow::onImGUICreate()
 
 	
 	ImGui::End();
+}
+
+void AppWindow::onImGUIUnityTemplate()
+{
 }
 
 

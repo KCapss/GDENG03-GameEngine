@@ -1,0 +1,43 @@
+#pragma once
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+#include "VertexShader.h"
+
+
+class PixelShader;
+class AGameObject;
+
+class GameObjectManager
+{
+public:
+	typedef std::string String;
+	typedef std::vector<AGameObject*> List;
+	typedef std::unordered_map<String, AGameObject*> HashTable;
+
+	enum PrimitiveType
+	{
+		CUBE,
+		PLANE,
+		SPHERE
+	};
+
+	static GameObjectManager* getInstance();
+	static void initialize();
+	static void destroy();
+
+	AGameObject* findObjectByName(String name);
+	List getAllObjects();
+	int activeObjects();
+
+	void updateAll();
+	void renderAll(int viewportWidth, int viewportHeight, VertexShader* vertexShader, PixelShader* pixels_shader);
+	void addObject(AGameObject* gameObject);
+	void createObject(PrimitiveType type, void* shaderByteCode, size_t sizeShader);
+	void deleteObject(AGameObject* gameObject);
+	void setSelectedObject(AGameObject* gameObject);
+	AGameObject* getSelectedObject();
+
+};
+
