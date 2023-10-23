@@ -39,5 +39,14 @@ public:
 	void setSelectedObject(AGameObject* gameObject);
 	AGameObject* getSelectedObject();
 
+private:
+	static GameObjectManager* sharedInstance;
+
+	HashTable aTable;
+	List aList;
+	AGameObject* selectedObject;
+
+
+
 };
 

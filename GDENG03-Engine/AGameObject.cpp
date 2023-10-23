@@ -60,3 +60,18 @@ Vector3D AGameObject::getLocalRotation()
 void AGameObject::IncrementRot(float offset)
 {
 }
+
+string AGameObject::RetrieveName()
+{
+	return this->name;
+}
+
+void AGameObject::setEnabled(bool flag)
+{
+	isEnabled = flag;
+}
+
+bool AGameObject::IsEnabled()
+{
+	return this->isEnabled;
+}

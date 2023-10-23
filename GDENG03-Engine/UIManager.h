@@ -22,8 +22,8 @@ public:
 
 	void drawAllUI();
 
-	static const int WINDOW_WIDTH = 1440;
-	static const int WINDOW_HEIGHT = 900;
+	static const int WINDOW_WIDTH = 1024; //Based on Window.cpp
+	static const int WINDOW_HEIGHT = 768;
 
 	//Boilerplate to be remove
 	

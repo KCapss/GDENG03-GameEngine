@@ -10,7 +10,7 @@ public:
 	void drawUI() override;
 
 private:
-	bool isActive;
+	
 
 };
 

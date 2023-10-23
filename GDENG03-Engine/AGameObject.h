@@ -43,13 +43,19 @@ public:
 
 	virtual void IncrementRot(float offset);
 
+
+	string RetrieveName();
+	void setEnabled(bool flag);
+	bool IsEnabled();
+
 	
 
 private:
 	string name;
 	Vector3D localRotation;
 	Vector3D localPosition;
-	Vector3D localScale; 
+	Vector3D localScale;
+	bool isEnabled = true;
 
 protected:
 	Matrix4x4 localMatrix;

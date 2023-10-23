@@ -5,7 +5,9 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Camera.cpp
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\ConstantBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\ConstantBuffer.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Cube.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\DeviceContext.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\DeviceContext.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\EngineProfiler.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\EngineProfiler.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\EngineTime.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\EngineTime.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\GameObjectManager.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\GameObjectManager.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\GraphicsEngine.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\GraphicsEngine.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_demo.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_demo.obj
@@ -17,12 +19,14 @@ C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgu
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\imgui\imgui_widgets.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\imgui_widgets.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\IndexBuffer.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\IndexBuffer.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InputSystem.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\InputSystem.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\InspectorWindow.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\InspectorWindow.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Main.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Main.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\MathUtils.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\MathUtils.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\PixelShader.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\PixelShader.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Point.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Point.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Quads.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Quads.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SceneCameraHandler.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SceneCameraHandler.obj
+C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SceneOutliner.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SceneOutliner.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\SwapChain.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\SwapChain.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Toolbar.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\Toolbar.obj
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\UIManager.cpp;C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Debug\UIManager.obj

@@ -1,5 +1,9 @@
 #include "UIManager.h"
 
+#include "EngineProfiler.h"
+#include "InspectorWindow.h"
+#include "SceneOutliner.h"
+
 UIManager* UIManager::sharedInstance = nullptr;
 
 
@@ -63,4 +67,13 @@ void UIManager::OnCreateInterface()
 {
 	toolbar = new Toolbar("Name");
 	uiList.push_back(toolbar);
+
+	SceneOutliner* sceneOutliner = new SceneOutliner("New");
+	uiList.push_back(sceneOutliner);
+
+	InspectorWindow* inspectorWindow = new InspectorWindow("New");
+	uiList.push_back(inspectorWindow);
+
+	EngineProfiler* engineProfiler = new EngineProfiler("New");
+	uiList.push_back(engineProfiler);
 }

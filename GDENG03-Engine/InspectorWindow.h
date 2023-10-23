@@ -1,5 +1,12 @@
 #pragma once
-class InspectorWindow
+#include "UINames.h"
+
+class InspectorWindow: public AUIScreen
 {
+public:
+	InspectorWindow(const String name);
+	~InspectorWindow();
+
+	void drawUI() override;
 };
 
