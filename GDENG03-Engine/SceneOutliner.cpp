@@ -1,5 +1,6 @@
 #include "SceneOutliner.h"
 
+#include "GameObjectManager.h"
 #include "UIManager.h"
 
 SceneOutliner::SceneOutliner(const String name) : AUIScreen(name)
@@ -27,8 +28,20 @@ void SceneOutliner::drawUI()
 	ImGui::SetWindowSize( ImVec2(xLength, yLength));
 	ImGui::SetWindowPos(ImVec2(xPos, yPos));
 
-	//GameObject Spawning
-	ImGui::Button("Sample", ImVec2(xButtonSize, yButtonSize));
+	std::vector<AGameObject* >list = GameObjectManager::getInstance()->getAllObjects();
+	int id = 0;
+	for(AGameObject* aObject : list)
+	{
+		id++;
+		//GameObject Spawning
+		String name = aObject->RetrieveName();
+		name.append("##"); name.append(to_string(id));
+		if(ImGui::Button(name.c_str(), ImVec2(xButtonSize, yButtonSize)))
+		{
+			GameObjectManager::getInstance()->setSelectedObject(aObject);
+		}
+	}
+	
 	
 	ImGui::End();
 }

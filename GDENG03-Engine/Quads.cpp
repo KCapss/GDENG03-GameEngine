@@ -9,6 +9,7 @@
 
 Quads::Quads(string name, void* shaderByteCode, size_t sizeShader) : AGameObject(name)
 {
+	typeName = "Plane";
 	Vertex list[] =
 	{
 		//X - Y - Z

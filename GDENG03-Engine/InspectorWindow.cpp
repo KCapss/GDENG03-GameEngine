@@ -1,4 +1,6 @@
 #include "InspectorWindow.h"
+
+#include "GameObjectManager.h"
 #include "UIManager.h"
 
 InspectorWindow::InspectorWindow(const String name) : AUIScreen(name)
@@ -36,10 +38,50 @@ void InspectorWindow::drawUI()
 	//
 	//
 
-	ImGui::TextWrapped("No Object Selected, Select an object");
+	AGameObject* selectedObject = GameObjectManager::getInstance()->getSelectedObject();
 
-	ImGui::Checkbox("Enabled", &dare);
-	ImGui::InputFloat3("Position", copy);
-	
+	if(selectedObject == nullptr)
+		ImGui::TextWrapped("No Object Selected, Select an object");
+
+	else
+	{
+		String text = "Object Selected: ";
+		text.append(selectedObject->RetrieveName());
+		bool isEnable = selectedObject->IsEnabled();
+		float t[3] = {
+			selectedObject->getLocalPosition().m_x,
+			selectedObject->getLocalPosition().m_y,
+			selectedObject->getLocalPosition().m_z
+		};
+		float r[3] = {
+			selectedObject->getLocalRotation().m_x,
+			selectedObject->getLocalRotation().m_y,
+			selectedObject->getLocalRotation().m_z
+		};
+		float s[3] = {
+			selectedObject->getLocalScale().m_x,
+			selectedObject->getLocalScale().m_y,
+			selectedObject->getLocalScale().m_z
+		};
+
+		
+
+		ImGui::TextWrapped(text.c_str());
+
+		if(ImGui::Checkbox("Enabled", &isEnable))
+		{
+			selectedObject->setEnabled(isEnable);
+		};
+
+		ImGui::InputFloat3("Position", t);
+		ImGui::InputFloat3("Rotation", r);
+		ImGui::InputFloat3("Scale", s);
+
+		selectedObject->setPosition(t[0], t[1], t[2]);
+		selectedObject->setRotation(r[0], r[1], r[2]);
+		selectedObject->setScale(s[0], s[1], s[2]);
+
+		
+	}
 	ImGui::End();
 }

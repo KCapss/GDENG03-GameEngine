@@ -5,7 +5,7 @@ AGameObject::AGameObject(string name)
 	this->name = name;
 	this->localPosition = Vector3D::zeros();
 	this->localRotation = Vector3D::zeros();
-	this->localScale = Vector3D(1, 1, 1);
+	this->localScale = Vector3D(1.0f, 1.0f, 1.0f);
 }
 
 AGameObject::~AGameObject()
@@ -62,6 +62,11 @@ void AGameObject::IncrementRot(float offset)
 }
 
 string AGameObject::RetrieveName()
+{
+	return this->typeName;
+}
+
+string AGameObject::RetrieveObjName()
 {
 	return this->name;
 }

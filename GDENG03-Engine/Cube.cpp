@@ -10,7 +10,7 @@
 
 Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
 {
-	
+	typeName = "Cube";
 	//TODO: White Version of the Shaders
 	//Vertex cubeList[] =
 	//{
@@ -156,18 +156,18 @@ void Cube::update(float deltaTime)
 	cc.m_world *= Rot;
 
 
-	//Animation Rotation
-	temp.setIdentity();
-	temp.setRotationZ(m_rot_z * speed);
-	cc.m_world *= temp;
+	////Animation Rotation
+	//temp.setIdentity();
+	//temp.setRotationZ(m_rot_z * speed);
+	//cc.m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationY(m_rot_y * speed);
-	cc.m_world *= temp;
+	//temp.setIdentity();
+	//temp.setRotationY(m_rot_y * speed);
+	//cc.m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationX(m_rot_x * speed);
-	cc.m_world *= temp;
+	//temp.setIdentity();
+	//temp.setRotationX(m_rot_x * speed);
+	//cc.m_world *= temp;
 
 	temp.setIdentity();
 	temp.setTranslation(this->getLocalPosition());

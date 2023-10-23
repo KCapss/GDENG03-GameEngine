@@ -3,11 +3,17 @@
 #include <unordered_map>
 #include <vector>
 
-#include "VertexShader.h"
 
-
+class Quads;
+//Primitive
+class Cube;
 class PixelShader;
+class VertexShader;
 class AGameObject;
+
+//Graphics
+
+
 
 class GameObjectManager
 {
@@ -44,8 +50,10 @@ private:
 
 	HashTable aTable;
 	List aList;
-	AGameObject* selectedObject;
+	AGameObject* selectedObject = nullptr;
 
+
+	
 
 
 };

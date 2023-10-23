@@ -16,6 +16,7 @@
 #include "Toolbar.h"
 
 //Helper
+#include "GameObjectManager.h"
 #include "MathUtils.h"
 
 
@@ -63,10 +64,10 @@ void AppWindow::onCreate()
 	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
 
 	//TODO: Draw create here
-	onCubeCreate(shader_byte_code, size_shader);
+	//onCubeCreate(shader_byte_code, size_shader);
 	//TODO: STOP DRAWING
 
-	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
+	
 	
 	GraphicsEngine::get()->releaseCompiledShader();
 
@@ -74,10 +75,13 @@ void AppWindow::onCreate()
 	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::get()->releaseCompiledShader();
 
+	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
+
 
 
 	SceneCameraHandler::initialize();
 	UIManager::initialize(m_hwnd);
+	GameObjectManager::initialize();
 
 	//// Setup Dear ImGui context
 	//IMGUI_CHECKVERSION();
@@ -119,24 +123,26 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 	SceneCameraHandler::getInstance()->update();
+	GameObjectManager::getInstance()->updateAll();
+	GameObjectManager::getInstance()->renderAll(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
 
-	//Other Primitive
-	for (AGameObject* gameobject : GameObjectList)
-	{
-		//TODO: Animation for input press
-		/*if (isWPress)
-			gameobject->IncrePmentRot(m_delta_time);
-		else if (isSPress)
-			gameobject->IncrementRot(-m_delta_time);*/
-		if(isAnimationActive)
-			gameobject->IncrementRot(m_delta_time);
-		gameobject->update(m_delta_time);
-	}
+	////Other Primitive
+	//for (AGameObject* gameobject : GameObjectList)
+	//{
+	//	//TODO: Animation for input press
+	//	/*if (isWPress)
+	//		gameobject->IncrePmentRot(m_delta_time);
+	//	else if (isSPress)
+	//		gameobject->IncrementRot(-m_delta_time);*/
+	//	if(isAnimationActive)
+	//		gameobject->IncrementRot(m_delta_time);
+	//	gameobject->update(m_delta_time);
+	//}
 
-	for (AGameObject* gameobject : GameObjectList)
-	{
-		gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
-	}
+	//for (AGameObject* gameobject : GameObjectList)
+	//{
+	//	gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
+	//}
 
 	//// Rendering
  //   // (Your code clears your framebuffer, renders your other stuff etc.)

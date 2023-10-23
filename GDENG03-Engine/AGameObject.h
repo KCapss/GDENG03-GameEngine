@@ -45,13 +45,15 @@ public:
 
 
 	string RetrieveName();
+	string RetrieveObjName();
 	void setEnabled(bool flag);
 	bool IsEnabled();
 
 	
-
 private:
 	string name;
+	
+
 	Vector3D localRotation;
 	Vector3D localPosition;
 	Vector3D localScale;
@@ -59,5 +61,7 @@ private:
 
 protected:
 	Matrix4x4 localMatrix;
+	string typeName;
+
 };
 

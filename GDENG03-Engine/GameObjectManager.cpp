@@ -45,7 +45,7 @@ GameObjectManager::List GameObjectManager::getAllObjects()
 int GameObjectManager::activeObjects()
 {
 	//TODO: Retrieve the total number of object
-	return 0;
+	return aList.size();
 }
 
 void GameObjectManager::updateAll()
@@ -69,9 +69,18 @@ void GameObjectManager::renderAll(int viewportWidth, int viewportHeight, VertexS
 
 void GameObjectManager::addObject(AGameObject* gameObject)
 {
+	
+	String Key = gameObject->RetrieveName();
+	int i = 0;
+	while (aTable[Key] != nullptr)
+	{
+		i++;
+		Key = gameObject->RetrieveName();
+		Key.append(std::to_string(i));
+	}
+	std::pair<String, AGameObject*> pair(Key, gameObject);
+	aTable[Key] = gameObject;
 	aList.push_back(gameObject);
-	std::pair<String, AGameObject*> pair(gameObject->RetrieveName(), gameObject);
-	aTable.insert(pair);
 }
 
 void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, size_t sizeShader)
@@ -80,7 +89,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 	{
 		case PrimitiveType::CUBE:
 		{
-			Cube* cube = new Cube("cube", shaderByteCode, sizeShader);
+			Cube* cube = new Cube("Cube", shaderByteCode, sizeShader);
 			addObject((AGameObject*)cube);
 		}
 		break;
@@ -110,6 +119,8 @@ void GameObjectManager::deleteObject(AGameObject* gameObject)
 			++it;
 	}*/
 
+	
+
 	//First Method
 	for(int i = 0; i < aList.size(); i++)
 	{
@@ -124,6 +135,8 @@ void GameObjectManager::deleteObject(AGameObject* gameObject)
 	}
 
 	
+
+	
 	//for (AGameObject* aObject : aList)
 	//{
 	//	if (aObject == gameObject)
@@ -136,11 +149,18 @@ void GameObjectManager::deleteObject(AGameObject* gameObject)
 
 void GameObjectManager::setSelectedObject(AGameObject* gameObject)
 {
-	selectedObject = gameObject;
+	String Key = gameObject->RetrieveName();
+	int i = 0;
+	while (aTable[Key] != gameObject)
+	{
+		i++;
+		Key = gameObject->RetrieveName();
+		Key.append(std::to_string(i));
+	}
+	selectedObject = aTable[Key];
 }
 
 AGameObject* GameObjectManager::getSelectedObject()
 {
-
 	return selectedObject;
 }
