@@ -1,5 +1,6 @@
 #pragma once
 #include "UINames.h"
+#include <iomanip>
 
 class EngineProfiler: public AUIScreen
 {

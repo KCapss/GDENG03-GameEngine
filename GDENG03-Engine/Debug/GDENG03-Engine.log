@@ -1,14 +1,6 @@
-﻿  Cube.cpp
+﻿  EngineProfiler.cpp
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\Cube.cpp(117,36): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-  EngineTime.cpp
-C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\GDENG03-Engine\EngineTime.cpp(22,21): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-  Generating Code...
   GDENG03-Engine.vcxproj -> C:\Users\Kevin\Documents\Project\GameEngine\GameEngine\Debug\GDENG03-Engine.exe

@@ -1,4 +1,7 @@
 #include "EngineProfiler.h"
+
+#include <sstream>
+
 #include "UIManager.h"
 EngineProfiler::EngineProfiler(const String name): AUIScreen(name)
 {
@@ -26,8 +29,10 @@ void EngineProfiler::drawUI()
 	ImGui::SetWindowPos(ImVec2(xPos, yPos));
 
 	//GameObject Spawning
-	ImGui::TextWrapped("Application average"
-					, ImVec2(xButtonSize, yButtonSize));
+	ImGui::TextWrapped("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate, ImVec2(xButtonSize, yButtonSize));
+
+	/*ImGui::TextWrapped(Message.c_str()
+					, ImVec2(xButtonSize, yButtonSize));*/
 
 	ImGui::End();
 }
