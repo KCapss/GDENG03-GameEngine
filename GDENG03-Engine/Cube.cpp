@@ -10,43 +10,43 @@
 
 Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
 {
-	
+	typeName = "Cube";
 	//TODO: White Version of the Shaders
-	Vertex cubeList[] =
-	{
-		//X - Y - Z
-		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1)},
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0.95f,1), Vector3D(1,0.95f,1) },
-		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0.95f),  Vector3D(1,1,0.95f) },
-		{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
+	//Vertex cubeList[] =
+	//{
+	//	//X - Y - Z
+	//	//FRONT FACE
+	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1)},
+	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0.95f,1), Vector3D(1,0.95f,1) },
+	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0.95f),  Vector3D(1,1,0.95f) },
+	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
 
-		//BACK FACE
-		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
-		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
-		{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
-		{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) }
-	};
+	//	//BACK FACE
+	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
+	//	{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
+	//	{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) }
+	//};
 
 
 
 
 	//TODO: Rainbow Version of the Shaders
-	//Vertex cubeList[] =
-	//{
-	//	//X - Y - Z
-	//	//FRONT FACE
-	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
-	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
-	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
-	//	{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
+	Vertex cubeList[] =
+	{
+		//X - Y - Z
+		//FRONT FACE
+		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) },
+		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0,1), Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0),  Vector3D(0.2f,0.2f,0) },
+		{ Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1,0,0), Vector3D(0.2f,0,0) },
 
-	//	//BACK FACE
-	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
-	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
-	//	{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
-	//	{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
-	//};
+		//BACK FACE
+		{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) },
+		{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,0.5f,0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) },
+		{ Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(0,0,1), Vector3D(0,0.2f,0) }
+	};
 
 
 	//TODO: Custom Version of the Shaders Blue to Red
@@ -109,29 +109,17 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 
 void Cube::update(float deltaTime)
 {
-	/*cc.m_time = ::GetTickCount();
-
-		m_delta_pos += m_delta_time / 10.0f;
-		if (m_delta_pos > 1.0f)
-			m_delta_pos = 0;*/
-
-	//Engine Time Conversion
-	//cc.m_time = deltaTime / 0.55f;
-
-	/*m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
-	if (m_delta_pos > 1.0f)
-		m_delta_pos = 0;*/
-
 	Matrix4x4 temp;
 	
-	ticks += (EngineTime::getDeltaTime()) * this->speed * 100.0f;
+	ticks += (deltaTime) * this->speed * 100.0f;
 	float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
-	cc.m_time = ticks;
+
+	cc.m_time = (m_rot_x)*this->speed * 100.0f;
 
 	//Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
 	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
-	//Start of Converting Model to World view matrix
+	
 	cc.m_world.setIdentity();
 	temp.setIdentity();
 	temp.setScale(this->getLocalScale());
@@ -168,18 +156,18 @@ void Cube::update(float deltaTime)
 	cc.m_world *= Rot;
 
 
-	//Animation Rotation
-	temp.setIdentity();
-	temp.setRotationZ(m_rot_z * speed);
-	cc.m_world *= temp;
+	////Animation Rotation
+	//temp.setIdentity();
+	//temp.setRotationZ(m_rot_z * speed);
+	//cc.m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationY(m_rot_y * speed);
-	cc.m_world *= temp;
+	//temp.setIdentity();
+	//temp.setRotationY(m_rot_y * speed);
+	//cc.m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationX(m_rot_x * speed);
-	cc.m_world *= temp;
+	//temp.setIdentity();
+	//temp.setRotationX(m_rot_x * speed);
+	//cc.m_world *= temp;
 
 	temp.setIdentity();
 	temp.setTranslation(this->getLocalPosition());

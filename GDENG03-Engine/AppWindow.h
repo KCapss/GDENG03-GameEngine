@@ -17,6 +17,11 @@
 #include "Quads.h"
 
 
+// Dear IMGUI
+#include "imgui.h"
+#include "imgui_impl_win32.h"
+#include "imgui_impl_dx11.h"
+
 class AppWindow : public Window, public InputListener
 {
 public:
@@ -51,7 +56,14 @@ public:
 	void update();
 
 
+	//IMGUI TEMPLATE
+	void onImGUICreate();
+	void onImGUIUnityTemplate();
+
+
 private:
+
+	//Graphics Engine
 	SwapChain* m_swap_chain;
 	VertexBuffer* m_vb;
 	VertexShader* m_vs;
@@ -59,29 +71,32 @@ private:
 	ConstantBuffer* m_cb;
 	IndexBuffer* m_ib;
 
-	long m_old_delta;
-	long m_new_delta;
+	
 	float m_delta_time;
-
-	float m_delta_pos;
-	float m_delta_scale;
-	float m_delta_rot;
-
-
-	//Added Template
 	float m_rot_x = 0.0f;
 	float m_rot_y = 0.0f;
 
-	float m_scale_cube = 1;
-	float m_forward = 0.0f;
-	float m_rightward = 0.0f;
-	Matrix4x4 m_world_cam;
 
 	bool isRightClick = false;
 	bool isSPress = false;
 	bool isWPress = false;
+
+	Vector4D backColor = Vector4D();
 	
 
 	std::vector<AGameObject*> GameObjectList;
+
+	//ImGUI System
+	bool isDemoActive = false;
+	bool isAnimationActive = true;
+	float bgColor[3] = { 0, 0.3f, 0.4f };
+	string animationIndicator = "Pause Animation";
+
+	//UI Manager reference
+
+
+
+
+	
 };
 

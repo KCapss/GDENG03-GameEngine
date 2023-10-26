@@ -18,7 +18,7 @@ void SceneCameraHandler::initialize()
 		sharedInstance = new SceneCameraHandler;
 	}
 	SceneCameraHandler::sharedInstance->sceneCamera = new Camera("Default Camera");
-	SceneCameraHandler::sharedInstance->sceneCamera->setPosition(0, 3, -5.0f);
+	SceneCameraHandler::sharedInstance->sceneCamera->setPosition(0, 1.0f, -3.0f);
 }
 
 void SceneCameraHandler::destroy()

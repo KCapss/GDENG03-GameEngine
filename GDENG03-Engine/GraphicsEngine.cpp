@@ -88,6 +88,11 @@ DeviceContext* GraphicsEngine::getImmediateDeviceContext()
 	return this->m_imm_device_context;
 }
 
+ID3D11Device* GraphicsEngine::getDirectD3D11Device()
+{
+	return this->m_d3d_device;
+}
+
 VertexBuffer* GraphicsEngine::createVertexBuffer()
 {
 	return new VertexBuffer();

@@ -29,13 +29,13 @@ private:
 
 
 	//Added Template
-	long m_old_delta;
-	long m_new_delta;
 	float m_delta_time;
 
 	float m_rot_x = 0.0f;
 	float m_rot_y = 0.0f;
-
+	Vector3D forwardDirection;
+	Vector3D backwardDirection;
+	Matrix4x4 viewMatrix;
 	Matrix4x4 m_world_cam;
 	bool isRightClick = false;
 
