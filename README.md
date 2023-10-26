@@ -12,6 +12,7 @@ Commit History Reference:
 8) HO7b Input Based Animation -  [[205a29e](https://github.com/KCapss/GameEngine/commit/205a29e4ea40cee0a466ab514555faacbaa701ce)]
 ================= Dear IMgui Integration ===========================
 9) HO8 Dear IMGUI Simple Window  [[8379a4f](https://github.com/KCapss/GameEngine/commit/8379a4faa573595d96876c6ea9f76b8667956fc2)]
+10) HO9 UI and GameObject Manager [[16432f6](https://github.com/KCapss/GameEngine/commit/16432f606033ba86063d0df31e869d61063cfa60)]
 
 
 Rendering System Instruction:
@@ -28,3 +29,6 @@ Rendering System Reference: Commit History for TestCase **(TC)**
 4) TC4 -  [[7850268](https://github.com/KCapss/GameEngine/commit/7850268721c32450be2138252784f9946caf7b6b)]
 5) TC5 -  [[e55da7e](https://github.com/KCapss/GameEngine/commit/e55da7e2b870330f4e8b344ae2c6dfbf9edb718c)]
 6) TC6 -  [[b15fbbd](https://github.com/KCapss/GameEngine/commit/b15fbbd73b533be607e05b927b476b6612ce31f8)]
+
+Engine Features Replication:
+
