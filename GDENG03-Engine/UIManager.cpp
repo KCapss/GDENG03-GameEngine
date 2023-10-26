@@ -65,7 +65,7 @@ UIManager::~UIManager()
 
 void UIManager::OnCreateInterface()
 {
-	toolbar = new Toolbar("Name");
+	Toolbar* toolbar = new Toolbar("New");
 	uiList.push_back(toolbar);
 
 	SceneOutliner* sceneOutliner = new SceneOutliner("New");

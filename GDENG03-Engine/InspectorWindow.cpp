@@ -31,12 +31,6 @@ void InspectorWindow::drawUI()
 	ImGui::SetWindowSize(ImVec2(xLength, yLength));
 	ImGui::SetWindowPos(ImVec2(xPos, yPos));
 
-	//TODO: CREATE THE FF
-	// 1) Text = Selected Object: (Primitive Type)
-	// 2) Checkbox default
-	// 3) Transform (3 Inputs) per type (Transform, Rotate-Euler, Scale -> Same Line (Transform Type)
-	//
-	//
 
 	AGameObject* selectedObject = GameObjectManager::getInstance()->getSelectedObject();
 

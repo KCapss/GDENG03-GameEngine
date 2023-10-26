@@ -92,15 +92,6 @@ void Camera::update(float deltaTime)
 		this->setPosition(newPos.m_x, newPos.m_y, newPos.m_z);
 		this->UpdateViewMatrix();
 	}
-
-	
-	/*cout << "Postion (" << getLocalPosition().m_x << ", "
-		<< getLocalPosition().m_y << ", "
-		<< getLocalPosition().m_z << ")" << endl;
-
-	cout << "Rotation (" << getLocalRotation().m_x << ", "
-		<< getLocalRotation().m_y << ", "
-		<< getLocalRotation().m_z << ")" << endl;*/
 }
 
 void Camera::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)

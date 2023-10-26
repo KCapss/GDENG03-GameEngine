@@ -21,22 +21,24 @@ private:
 	~EngineTime();
 	EngineTime(EngineTime const&); // copy  constructor
 	EngineTime& operator=(EngineTime const&){} // assignment operator
-	
 
-	
 	static EngineTime* sharedInstance;
 
 	std::chrono::system_clock::time_point start;
 	std::chrono::system_clock::time_point end;
+
+	
+	
+	
+	static void LogFrameStart();
+	static void LogFrameEnd();
+
+
+	void UpdateFrames();
 	double deltaTime = 0;
 	double msPerFrame = 0;
 	int frames = 0;
 	int fps = 0;
-
-	void UpdateFrames();
-	
-	static void LogFrameStart();
-	static void LogFrameEnd();
 
 	friend class Window;
 };

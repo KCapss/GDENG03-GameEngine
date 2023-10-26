@@ -23,13 +23,13 @@ void Toolbar::drawUI()
 
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Create")) {
+			if (ImGui::MenuItem("New")) {
 			}
-			if (ImGui::MenuItem("Open", "Ctrl+O")) {
+			if (ImGui::MenuItem("Save", "Ctrl+s")) {
 			}
-			if (ImGui::MenuItem("Save", "Ctrl+S")) {
+			if (ImGui::MenuItem("Open", "Ctrl+o")) {
 			}
-			if (ImGui::MenuItem("Save as..")) {
+			if (ImGui::MenuItem("Exit")) {
 			}
 			ImGui::EndMenu();
 		}

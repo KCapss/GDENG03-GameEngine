@@ -119,7 +119,7 @@ void Cube::update(float deltaTime)
 	//Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
 	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
-	//Start of Converting Model to World view matrix
+	
 	cc.m_world.setIdentity();
 	temp.setIdentity();
 	temp.setScale(this->getLocalScale());

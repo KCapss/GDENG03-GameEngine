@@ -30,12 +30,14 @@ void SceneOutliner::drawUI()
 
 	std::vector<AGameObject* >list = GameObjectManager::getInstance()->getAllObjects();
 	int id = 0;
+
+	//TODO for Engine Replication: Check button -> clickable text w/ drop down
+
 	for(AGameObject* aObject : list)
 	{
 		id++;
-		//GameObject Spawning
 		String name = aObject->RetrieveName();
-		name.append("##"); name.append(to_string(id));
+		name.append("##"); name.append(to_string(id)); //id for gameobject
 		if(ImGui::Button(name.c_str(), ImVec2(xButtonSize, yButtonSize)))
 		{
 			GameObjectManager::getInstance()->setSelectedObject(aObject);

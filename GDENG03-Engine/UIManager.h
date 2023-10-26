@@ -41,7 +41,5 @@ private:
 
 	//BoilerPlate
 	void OnCreateInterface();
-	Toolbar* toolbar;
-
 };
 
