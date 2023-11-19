@@ -4,6 +4,7 @@
 #include "Matrix4x4.h"
 #include "Vector3D.h"
 #include "EngineTime.h"
+#include "AComponent.h"
 
 __declspec(align(16))
 
@@ -49,6 +50,12 @@ public:
 	void setEnabled(bool flag);
 	bool IsEnabled();
 
+
+	// openGL matrix to our matrix implementation
+	void recomputeMatrix(float matrix[16]);
+	// our matrix implementation to openGL matrix
+	float* getPhysicsLocalMatrix();
+
 	
 private:
 	string name;
@@ -58,6 +65,9 @@ private:
 	Vector3D localPosition;
 	Vector3D localScale;
 	bool isEnabled = true;
+
+	//OpenGl Matrix
+	float oneDLocalMatrix [16];
 
 protected:
 	Matrix4x4 localMatrix;

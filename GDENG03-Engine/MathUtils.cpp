@@ -16,3 +16,17 @@ int MathUtils::randomInt(int a, int b)
 
     return num;
 }
+
+float* MathUtils::convertInto1D(Matrix4x4 mat)
+{
+    float copy[16];
+    for (int i = 0; i < 4; i++)
+    {
+	    for(int j = 0; j < 4; j++)
+	    {
+            copy[(i * 4) + j] = mat.m_mat[i][j];
+	    }
+    }
+
+    return copy;
+}

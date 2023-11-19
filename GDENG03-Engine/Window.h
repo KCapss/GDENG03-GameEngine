@@ -1,4 +1,6 @@
 #pragma once
+#define NOMINAX
+
 #include <Windows.h>
 
 

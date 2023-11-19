@@ -1,40 +1,563 @@
-﻿  AppWindow.cpp
+﻿  AComponent.cpp
+  AGameObject.cpp
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.h(21,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  AppWindow.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.cpp(101,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.cpp(413,60): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.cpp(434,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  AUIScreen.cpp
+  BaseComponentSystem.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(353,14): message : while compiling class template member function 'bool reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add(const reactphysics3d::Pair<K,reactphysics3d::Entity> &,bool)'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(109,26): message : see reference to class template instantiation 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(420,18): message : while compiling class template member function 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::Iterator reactphysics3d::Set<V,std::hash<V>,std::equal_to<V>>::remove(const V &)'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(418,29): message : see the first reference to 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::remove' in 'reactphysics3d::CollisionDetectionSystem::removeNoCollisionPair'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(97,23): message : see reference to class template instantiation 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(538,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find(const K &) const'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(396,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find' in 'reactphysics3d::OverlappingPairs::setNeedToTestOverlap'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(289,29): message : see reference to class template instantiation 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>' being compiled
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(510,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(485,14): message : while compiling class template member function 'void reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear(bool)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(208,50): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::destroyLastFrameCollisionInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(511,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(512,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(417,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(404,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::clear(bool)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(156,42): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::clear' in 'reactphysics3d::Islands::clear'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\components\RigidBodyComponents.h(846,57): message : see reference to class template instantiation 'reactphysics3d::Array<reactphysics3d::uint>' being compiled
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(255,60): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(250,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::reserve(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(134,44): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::reserve' in 'reactphysics3d::Islands::reserveMemory'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(272,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(276,84): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(260,14): message : while compiling class template member function 'void reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve(reactphysics3d::uint64)'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(398,24): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(281,102): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(282,98): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(297,79): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,53): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,42): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(325,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(326,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(327,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(87,16): message : while compiling class template member function 'reactphysics3d::uint64 reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry(const K &) const'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(348,13): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(410,5): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(434,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove(const K &)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(428,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(259,32): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::clearObsoleteLastFrameInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(362,86): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(348,18): message : while compiling class template member function 'reactphysics3d::Array<reactphysics3d::Collider *>::Iterator reactphysics3d::Array<reactphysics3d::Collider *>::removeAt(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(344,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::removeAt' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(337,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\collision\shapes\CollisionShape.h(199,22): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::CollisionShape::removeCollider'
+  Camera.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Camera.cpp(118,60): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Camera.cpp(119,60): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ConstantBuffer.cpp
   Cube.cpp
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Cube.cpp(116,36): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  DeviceContext.cpp
   EngineProfiler.cpp
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\UINames.h(7,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   EngineTime.cpp
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\EngineTime.cpp(57,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  GameObjectManager.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\GameObjectManager.cpp(56,47): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\GameObjectManager.cpp(92,61): warning C4316: 'Cube': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\GameObjectManager.cpp(98,65): warning C4316: 'Quads': object allocated on the heap may not be aligned 16
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\GameObjectManager.cpp(125,19): warning C4018: '<': signed/unsigned mismatch
+  GraphicsEngine.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_dx11.cpp
+  imgui_impl_win32.cpp
+  imgui_stdlib.cpp
+  imgui_tables.cpp
+  Generating Code...
+  Compiling...
+  imgui_widgets.cpp
+  IndexBuffer.cpp
+  InputSystem.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(40,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(156,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(163,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(170,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(177,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(184,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(191,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\InputSystem.cpp(198,20): warning C4018: '<': signed/unsigned mismatch
   InspectorWindow.cpp
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\UINames.h(7,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Main.cpp
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.h(21,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
   MathUtils.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  PhysicsComponent.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(353,14): message : while compiling class template member function 'bool reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add(const reactphysics3d::Pair<K,reactphysics3d::Entity> &,bool)'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(109,26): message : see reference to class template instantiation 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(420,18): message : while compiling class template member function 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::Iterator reactphysics3d::Set<V,std::hash<V>,std::equal_to<V>>::remove(const V &)'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(418,29): message : see the first reference to 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::remove' in 'reactphysics3d::CollisionDetectionSystem::removeNoCollisionPair'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(97,23): message : see reference to class template instantiation 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(538,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find(const K &) const'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(396,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find' in 'reactphysics3d::OverlappingPairs::setNeedToTestOverlap'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(289,29): message : see reference to class template instantiation 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>' being compiled
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(510,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(485,14): message : while compiling class template member function 'void reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear(bool)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(208,50): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::destroyLastFrameCollisionInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(511,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(512,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(417,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(404,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::clear(bool)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(156,42): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::clear' in 'reactphysics3d::Islands::clear'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\components\RigidBodyComponents.h(846,57): message : see reference to class template instantiation 'reactphysics3d::Array<reactphysics3d::uint>' being compiled
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(255,60): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(250,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::reserve(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(134,44): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::reserve' in 'reactphysics3d::Islands::reserveMemory'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(272,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(276,84): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(260,14): message : while compiling class template member function 'void reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve(reactphysics3d::uint64)'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(398,24): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(281,102): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(282,98): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(297,79): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,53): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,42): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(325,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(326,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(327,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(87,16): message : while compiling class template member function 'reactphysics3d::uint64 reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry(const K &) const'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(348,13): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(410,5): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(434,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove(const K &)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(428,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(259,32): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::clearObsoleteLastFrameInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(362,86): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(348,18): message : while compiling class template member function 'reactphysics3d::Array<reactphysics3d::Collider *>::Iterator reactphysics3d::Array<reactphysics3d::Collider *>::removeAt(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(344,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::removeAt' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(337,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\collision\shapes\CollisionShape.h(199,22): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::CollisionShape::removeCollider'
+  PhysicsSystem.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\PhysicsSystem.cpp(15,33): warning C4305: 'argument': truncation from 'double' to 'reactphysics3d::decimal'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\PhysicsSystem.cpp(39,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\PhysicsSystem.cpp(81,54): warning C4244: 'argument': conversion from 'double' to 'reactphysics3d::decimal', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\PhysicsSystem.cpp(82,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\PhysicsSystem.cpp(83,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(353,14): message : while compiling class template member function 'bool reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add(const reactphysics3d::Pair<K,reactphysics3d::Entity> &,bool)'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(109,26): message : see reference to class template instantiation 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(363,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(401,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(420,18): message : while compiling class template member function 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::Iterator reactphysics3d::Set<V,std::hash<V>,std::equal_to<V>>::remove(const V &)'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(418,29): message : see the first reference to 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>::remove' in 'reactphysics3d::CollisionDetectionSystem::removeNoCollisionPair'
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(97,23): message : see reference to class template instantiation 'reactphysics3d::Set<reactphysics3d::bodypair,std::hash<V>,std::equal_to<V>>' being compiled
+          with
+          [
+              V=reactphysics3d::bodypair
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Set.h(426,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(538,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find(const K &) const'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(396,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>::find' in 'reactphysics3d::OverlappingPairs::setNeedToTestOverlap'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(289,29): message : see reference to class template instantiation 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::uint64,std::hash<K>,std::equal_to<K>>' being compiled
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(546,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(510,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(485,14): message : while compiling class template member function 'void reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear(bool)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(208,50): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::clear' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::destroyLastFrameCollisionInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(511,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(512,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(417,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(404,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::clear(bool)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(156,42): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::clear' in 'reactphysics3d::Islands::clear'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\components\RigidBodyComponents.h(846,57): message : see reference to class template instantiation 'reactphysics3d::Array<reactphysics3d::uint>' being compiled
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(255,60): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(250,14): message : while compiling class template member function 'void reactphysics3d::Array<reactphysics3d::uint>::reserve(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\Islands.h(134,44): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::uint>::reserve' in 'reactphysics3d::Islands::reserveMemory'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(272,55): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(276,84): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(260,14): message : while compiling class template member function 'void reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve(reactphysics3d::uint64)'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(398,24): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::reserve' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(413,41): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::add' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(281,102): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(282,98): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(297,79): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,53): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(308,42): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(325,56): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(326,66): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(327,70): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,49): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(87,16): message : while compiling class template member function 'reactphysics3d::uint64 reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry(const K &) const'
+          with
+          [
+              V=int,
+              K=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(348,13): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::findEntry' in 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\systems\CollisionDetectionSystem.h(410,5): message : see the first reference to 'reactphysics3d::Map<int,reactphysics3d::Entity,std::hash<int>,std::equal_to<V>>::containsKey' in 'reactphysics3d::CollisionDetectionSystem::addCollider'
+          with
+          [
+              V=int
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(92,37): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,50): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(434,18): message : while compiling class template member function 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::Iterator reactphysics3d::Map<K,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove(const K &)'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(428,13): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\engine\OverlappingPairs.h(259,32): message : see the first reference to 'reactphysics3d::Map<reactphysics3d::uint64,reactphysics3d::LastFrameCollisionInfo *,std::hash<K>,std::equal_to<K>>::remove' in 'reactphysics3d::OverlappingPairs::ConcaveOverlappingPair::clearObsoleteLastFrameInfos'
+          with
+          [
+              K=reactphysics3d::uint64
+          ]
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Map.h(440,38): warning C4244: 'initializing': conversion from 'reactphysics3d::uint64' to 'const size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(362,86): warning C4244: 'argument': conversion from 'reactphysics3d::uint64' to 'size_t', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(348,18): message : while compiling class template member function 'reactphysics3d::Array<reactphysics3d::Collider *>::Iterator reactphysics3d::Array<reactphysics3d::Collider *>::removeAt(reactphysics3d::uint64)'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(344,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::removeAt' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\containers\Array.h(337,12): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::Array<reactphysics3d::Collider *>::remove'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\include\reactphysics3d\collision\shapes\CollisionShape.h(199,22): message : see the first reference to 'reactphysics3d::Array<reactphysics3d::Collider *>::remove' in 'reactphysics3d::CollisionShape::removeCollider'
+  PixelShader.cpp
+  Point.cpp
+  Quads.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Quads.cpp(56,54): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Quads.cpp(58,14): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  SceneCameraHandler.cpp
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\SceneCameraHandler.cpp(30,82): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   SceneOutliner.cpp
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\UINames.h(7,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   SwapChain.cpp
   Toolbar.cpp
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\UINames.h(7,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   UIManager.cpp
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(104,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(105,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(106,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Matrix4x4.h(107,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\AppWindow.h(21,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\UIManager.cpp(45,19): warning C4018: '<': signed/unsigned mismatch
   Vector3D.cpp
+  VertexBuffer.cpp
+  VertexShader.cpp
   Window.cpp
-C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Window.cpp(5,10): fatal  error C1083: Cannot open include file: 'imgui.h': No such file or directory
   Generating Code...
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\MathUtils.cpp(31): warning C4172: returning address of local variable or temporary: copy
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::Transform::setFromOpenGL(float *)" (?setFromOpenGL@Transform@reactphysics3d@@QAEXPAM@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::Transform::getOpenGLMatrix(float *)const " (?getOpenGLMatrix@Transform@reactphysics3d@@QBEXPAM@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: class reactphysics3d::Transform const & __thiscall reactphysics3d::CollisionBody::getTransform(void)const " (?getTransform@CollisionBody@reactphysics3d@@QBEABVTransform@2@XZ) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::RigidBody::setMass(float)" (?setMass@RigidBody@reactphysics3d@@QAEXM@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::RigidBody::updateMassPropertiesFromColliders(void)" (?updateMassPropertiesFromColliders@RigidBody@reactphysics3d@@QAEXXZ) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::RigidBody::setType(enum reactphysics3d::BodyType)" (?setType@RigidBody@reactphysics3d@@QAEXW4BodyType@2@@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: class reactphysics3d::RigidBody * __thiscall reactphysics3d::PhysicsWorld::createRigidBody(class reactphysics3d::Transform const &)" (?createRigidBody@PhysicsWorld@reactphysics3d@@QAEPAVRigidBody@2@ABVTransform@2@@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsComponent.obj : error LNK2019: unresolved external symbol "public: class reactphysics3d::BoxShape * __thiscall reactphysics3d::PhysicsCommon::createBoxShape(struct reactphysics3d::Vector3 const &)" (?createBoxShape@PhysicsCommon@reactphysics3d@@QAEPAVBoxShape@2@ABUVector3@2@@Z) referenced in function "public: __thiscall PhysicsComponent::PhysicsComponent(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AGameObject *)" (??0PhysicsComponent@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVAGameObject@@@Z)
+PhysicsSystem.obj : error LNK2019: unresolved external symbol "public: void __thiscall reactphysics3d::PhysicsWorld::update(float)" (?update@PhysicsWorld@reactphysics3d@@QAEXM@Z) referenced in function "public: void __thiscall PhysicsSystem::updateAllComponents(void)" (?updateAllComponents@PhysicsSystem@@QAEXXZ)
+PhysicsSystem.obj : error LNK2019: unresolved external symbol "public: __thiscall reactphysics3d::PhysicsCommon::PhysicsCommon(class reactphysics3d::MemoryAllocator *)" (??0PhysicsCommon@reactphysics3d@@QAE@PAVMemoryAllocator@1@@Z) referenced in function "public: __thiscall PhysicsSystem::PhysicsSystem(void)" (??0PhysicsSystem@@QAE@XZ)
+PhysicsSystem.obj : error LNK2019: unresolved external symbol "public: __thiscall reactphysics3d::PhysicsCommon::~PhysicsCommon(void)" (??1PhysicsCommon@reactphysics3d@@QAE@XZ) referenced in function "public: void * __thiscall reactphysics3d::PhysicsCommon::`scalar deleting destructor'(unsigned int)" (??_GPhysicsCommon@reactphysics3d@@QAEPAXI@Z)
+PhysicsSystem.obj : error LNK2019: unresolved external symbol "public: class reactphysics3d::PhysicsWorld * __thiscall reactphysics3d::PhysicsCommon::createPhysicsWorld(struct reactphysics3d::PhysicsWorld::WorldSettings const &)" (?createPhysicsWorld@PhysicsCommon@reactphysics3d@@QAEPAVPhysicsWorld@2@ABUWorldSettings@32@@Z) referenced in function "public: __thiscall PhysicsSystem::PhysicsSystem(void)" (??0PhysicsSystem@@QAE@XZ)
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\GDENG03-Engine\Libraries\reactphysics3d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\Kevin\Documents\Project\Unity\Github\GameEngine\Debug\GDENG03-Engine.exe : fatal error LNK1120: 12 unresolved externals
