@@ -60,7 +60,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="AppWindow.cpp">
@@ -168,10 +168,6 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>GameEngine\Primitives</Filter>
     </ClCompile>
-    <ClCompile Include="AComponent.cpp" />
-    <ClCompile Include="BaseComponentSystem.cpp" />
-    <ClCompile Include="PhysicsComponent.cpp" />
-    <ClCompile Include="PhysicsSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -294,10 +290,6 @@
     <ClInclude Include="GameObjectManager.h">
       <Filter>GameEngine\Primitives</Filter>
     </ClInclude>
-    <ClInclude Include="AComponent.h" />
-    <ClInclude Include="BaseComponentSystem.h" />
-    <ClInclude Include="PhysicsComponent.h" />
-    <ClInclude Include="PhysicsSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">
