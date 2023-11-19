@@ -16,9 +16,10 @@
 #include "Toolbar.h"
 
 //Helper
+#include "BaseComponentSystem.h"
 #include "GameObjectManager.h"
 #include "MathUtils.h"
-
+#include "PhysicsSystem.h"
 
 
 //__declspec(align(16))
@@ -77,23 +78,14 @@ void AppWindow::onCreate()
 
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
+	//Initialize the Base System
+	BaseComponentSystem::getInstance()->initialize();
 
 
 	SceneCameraHandler::initialize();
 	UIManager::initialize(m_hwnd);
 	GameObjectManager::initialize();
 
-	//// Setup Dear ImGui context
-	//IMGUI_CHECKVERSION();
-	//ImGui::CreateContext();
-	//ImGuiIO& io = ImGui::GetIO();
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	////io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
-
-	//// Setup Platform/Renderer backends
-	//ImGui_ImplWin32_Init(m_hwnd);
-	//ImGui_ImplDX11_Init(GraphicsEngine::get()->getDirectD3D11Device(), GraphicsEngine::get()->getImmediateDeviceContext()->getDeviceContext());
 }
 
 void AppWindow::onUpdate()
@@ -102,16 +94,7 @@ void AppWindow::onUpdate()
 	Window::onUpdate();
 	InputSystem::getInstance()->update();
 
-	//// (Your code process and dispatch Win32 messages)
-	//// Start the Dear ImGui frame
-	//ImGui_ImplDX11_NewFrame();
-	//ImGui_ImplWin32_NewFrame();
-	//ImGui::NewFrame();
-	//
-	//
-	////this->onImGUICreate();
-	////if(isDemoActive)
-	////	ImGui::ShowDemoWindow(); // Show demo window! :)
+	
 
 
 	//CLEAR THE RENDER TARGET 
@@ -122,34 +105,14 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
+	//Update All Components;
+	//BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
+
 	SceneCameraHandler::getInstance()->update();
 	GameObjectManager::getInstance()->updateAll();
 	GameObjectManager::getInstance()->renderAll(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
 
-	////Other Primitive
-	//for (AGameObject* gameobject : GameObjectList)
-	//{
-	//	//TODO: Animation for input press
-	//	/*if (isWPress)
-	//		gameobject->IncrePmentRot(m_delta_time);
-	//	else if (isSPress)
-	//		gameobject->IncrementRot(-m_delta_time);*/
-	//	if(isAnimationActive)
-	//		gameobject->IncrementRot(m_delta_time);
-	//	gameobject->update(m_delta_time);
-	//}
-
-	//for (AGameObject* gameobject : GameObjectList)
-	//{
-	//	gameobject->draw(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
-	//}
-
-	//// Rendering
- //   // (Your code clears your framebuffer, renders your other stuff etc.)
-	//ImGui::Render();
-	//ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-	//// (Your code calls swapchain's Present() function)
-	///
+	
 
 	UIManager::getInstance()->drawAllUI();
 

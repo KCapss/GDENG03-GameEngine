@@ -5,6 +5,8 @@
 
 //Primitives
 #include "Cube.h"
+#include "PhysicsComponent.h"
+#include "PhysicsSystem.h"
 #include "Quads.h"
 
 GameObjectManager* GameObjectManager::sharedInstance = nullptr;
@@ -93,12 +95,46 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			addObject((AGameObject*)cube);
 		}
 		break;
+
+		case PrimitiveType::PHYSICS_CUBE:
+		{
+			for (int i = 0; i < 10; i++)
+			{
+				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
+				cube->setPosition(0.0f, 2.0f, 0.0f);
+				cube->setScale(1.0f, 1.0f, 1.0f);
+				this->addObject(cube);
+
+				// add the Physics Component
+				string componentName = "Physics_Component" + cube->RetrieveName();
+				PhysicsComponent* component = new PhysicsComponent(componentName, cube);
+
+				BaseComponentSystem::getInstance()->getPhysicsSystem()->registerComponent(component);
+			}
+		}
+		break;
+
 		case PrimitiveType::PLANE:
 		{
 			Quads* quads = new Quads("Plane", shaderByteCode, sizeShader);
 			addObject((AGameObject*)quads);
 		}
 		break;
+
+		case PrimitiveType::PHYSICS_PLANE:
+		{
+			Quads* plane = new Quads("Plane_Physics", shaderByteCode, sizeShader);
+			this->addObject(plane);
+
+			// add the Physics Component
+			string componentName = "Physics_Component" + plane->RetrieveName();
+			PhysicsComponent* component = new PhysicsComponent(componentName, plane);
+
+			component->getRigidBody()->setType(BodyType::STATIC);
+			BaseComponentSystem::getInstance()->getPhysicsSystem()->registerComponent(component);
+		}
+		break;
+
 
 		case PrimitiveType::SPHERE:
 		{std::cout << "Choose Sphere" << std::endl;}

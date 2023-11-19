@@ -51,6 +51,7 @@ public:
 	bool IsEnabled();
 
 
+
 	// openGL matrix to our matrix implementation
 	void recomputeMatrix(float matrix[16]);
 	// our matrix implementation to openGL matrix

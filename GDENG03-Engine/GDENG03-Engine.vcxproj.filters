@@ -58,6 +58,15 @@
     <Filter Include="GameEngine\Interface">
       <UniqueIdentifier>{990f8d10-8a11-45f4-91d5-fd995fda300d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\ECS">
+      <UniqueIdentifier>{be4249e4-97a6-4d48-980e-8ed26158ca89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\ECS\Physics">
+      <UniqueIdentifier>{cf7d59a8-136c-4d2b-893e-3bc3c7c42a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Primitives\PhysicsPrimitive">
+      <UniqueIdentifier>{c4ecd727-8ff8-40d0-9c15-dd03ba6cfd05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -167,6 +176,18 @@
     </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>GameEngine\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="AComponent.cpp">
+      <Filter>GameEngine\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseComponentSystem.cpp">
+      <Filter>GameEngine\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>GameEngine\ECS\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsSystem.cpp">
+      <Filter>GameEngine\ECS\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +310,18 @@
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
       <Filter>GameEngine\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="AComponent.h">
+      <Filter>GameEngine\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseComponentSystem.h">
+      <Filter>GameEngine\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>GameEngine\ECS\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSystem.h">
+      <Filter>GameEngine\ECS\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

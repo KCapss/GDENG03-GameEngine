@@ -189,7 +189,7 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 {
 
 
-	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)width / (float)height), 0.1f, 100.0f);
+	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)height / (float)width), 0.1f, 100.0f);
 	/*cc.m_proj.setOrthoLH
 	(
 		(width) / 300.0f,

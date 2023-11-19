@@ -4,7 +4,7 @@
 #include "BaseComponentSystem.h"
 #include <reactphysics3d/reactphysics3d.h>
 
-#include "PhysicsComponent.h"
+class PhysicsComponent;
 
 using namespace reactphysics3d;
 
