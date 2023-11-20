@@ -10,7 +10,6 @@ BaseComponentSystem* BaseComponentSystem::getInstance()
 void BaseComponentSystem::initialize()
 {
 	sharedInstance = new BaseComponentSystem();
-	BaseComponentSystem::getInstance()->physicsSystem = new PhysicsSystem();
 }
 
 void BaseComponentSystem::destroy()
@@ -25,7 +24,7 @@ PhysicsSystem* BaseComponentSystem::getPhysicsSystem()
 
 BaseComponentSystem::BaseComponentSystem()
 {
-	
+	physicsSystem = new PhysicsSystem();
 }
 
 BaseComponentSystem::~BaseComponentSystem()

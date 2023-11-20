@@ -3,19 +3,24 @@
 #include <iostream>
 #include "EngineTime.h"
 
-using namespace reactphysics3d;
-
 PhysicsSystem::PhysicsSystem()
 {
 	std::cout << "Loading Physics System. \n";
 	// Create the physics engine and world
 	this->physicsCommon = new PhysicsCommon();
 	PhysicsWorld::WorldSettings settings;
-	settings.defaultVelocitySolverNbIterations = 50;
-	settings.gravity = Vector3(0, -9.81, 0);
-
+	settings.defaultVelocitySolverNbIterations = 150; //Modified from 50
+	settings.defaultPositionSolverNbIterations = 150; //Modified from 50
+	settings.defaultBounciness = 1.5f;
+	settings.persistentContactDistanceThreshold = 0.20f;
+	settings.gravity = Vector3(0, -0.981f, 0);
 	this->physicsWorld = this->physicsCommon->createPhysicsWorld(settings);
 	std::cout << "Successfully created physics world. \n";
+
+	//this->physicsWorld->setIsDebugRenderingEnabled(true);
+	
+
+
 }
 
 PhysicsSystem::~PhysicsSystem()
@@ -80,6 +85,7 @@ void PhysicsSystem::updateAllComponents()
 	if (EngineTime::getDeltaTime() > 0.0f) {
 		//update physics world
 		this->physicsWorld->update(EngineTime::getDeltaTime());
+
 		for (int i = 0; i < this->componentList.size(); i++) {
 			this->componentList[i]->perform(EngineTime::getDeltaTime());
 		}

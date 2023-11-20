@@ -19,9 +19,7 @@ public:
 
 	void IncrementRot(float offsetIncrease) override;
 
-
-
-private:
+protected:
 	//Buffers
 	VertexBuffer* vertexBuffer;
 	IndexBuffer* indexBuffer;
@@ -29,14 +27,19 @@ private:
 
 	constant cc;
 
+	//Buffer Size
+	UINT size_list = 0;
+	UINT size_index_list = 0;
+
+private:
+	
+
 	float ticks = 0.0f;
 	float deltaPos = 0.0f;
 	float deltaTime = 0.0f;
 	float speed = 10.0f;
 
-	//Buffer Size
-	UINT size_list = 0;
-	UINT size_index_list = 0;
+
 
 	
 	//Vid 2 specification

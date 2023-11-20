@@ -59,6 +59,11 @@ public:
 		m_mat[1][1] = cos(z);
 	}
 
+	float* getFloatArray()
+	{
+		return *this->m_mat;
+	}
+
 
 	float getDeterminant()
 	{

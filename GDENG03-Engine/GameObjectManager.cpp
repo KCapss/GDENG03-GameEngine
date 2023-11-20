@@ -5,6 +5,10 @@
 
 //Primitives
 #include "Cube.h"
+#include "PhysicsPlane.h"
+#include "MathUtils.h"
+#include "PhysicsComponent.h"
+#include "PhysicsSystem.h"
 #include "Quads.h"
 
 GameObjectManager* GameObjectManager::sharedInstance = nullptr;
@@ -93,12 +97,49 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			addObject((AGameObject*)cube);
 		}
 		break;
+
+		case PrimitiveType::PHYSICS_CUBE:
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
+				cube->setPosition(MathUtils::randomFloat(-0.8f, 0.8f) ,
+					2.0f, 
+					MathUtils::randomFloat(-0.8f, 0.8f));
+				cube->setRotation(0, MathUtils::randomInt(0, 180), 0);
+				cube->setScale(1.0f, 1.0f, 1.0f);
+				this->addObject(cube);
+
+				// add the Physics Component
+				string componentName = "Physics_Component" + cube->RetrieveName();
+				PhysicsComponent* component = new PhysicsComponent(componentName, cube, BodyType::DYNAMIC);
+				
+				//component->getRigidBody()->setAngularDamping(10.0f);
+				component->getRigidBody()->setLinearDamping(0.60f);
+			}
+		}
+		break;
+
 		case PrimitiveType::PLANE:
 		{
 			Quads* quads = new Quads("Plane", shaderByteCode, sizeShader);
 			addObject((AGameObject*)quads);
 		}
 		break;
+
+		case PrimitiveType::PHYSICS_PLANE:
+		{
+			PhysicsPlane* plane = new PhysicsPlane("Plane_Physics", shaderByteCode, sizeShader);
+			this->addObject(plane);
+
+			// add the Physics Component
+			string componentName = "Physics_Component" + plane->RetrieveName();
+			PhysicsComponent* component = new PhysicsComponent(componentName, plane, BodyType::STATIC);
+			
+			
+		}
+		break;
+
 
 		case PrimitiveType::SPHERE:
 		{std::cout << "Choose Sphere" << std::endl;}

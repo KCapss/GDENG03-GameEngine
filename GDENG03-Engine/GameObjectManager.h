@@ -25,7 +25,9 @@ public:
 	enum PrimitiveType
 	{
 		CUBE,
+		PHYSICS_CUBE,
 		PLANE,
+		PHYSICS_PLANE,
 		SPHERE
 	};
 
