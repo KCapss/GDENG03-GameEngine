@@ -106,7 +106,7 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 	//Update All Components;
-	//BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
+	BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
 
 	SceneCameraHandler::getInstance()->update();
 	GameObjectManager::getInstance()->updateAll();

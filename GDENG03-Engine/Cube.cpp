@@ -106,6 +106,10 @@ Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(na
 	constantBuffer->load(&cc, sizeof(constant));
 }
 
+Cube::~Cube()
+{
+}
+
 void Cube::update(float deltaTime)
 {
 	Matrix4x4 temp;
