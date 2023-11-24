@@ -100,14 +100,10 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 
 		case PrimitiveType::PHYSICS_CUBE:
 		{
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 30; i++)
 			{
 				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
-				cube->setPosition(MathUtils::randomFloat(-0.8f, 0.8f) ,
-					2.0f, 
-					MathUtils::randomFloat(-0.8f, 0.8f));
-				cube->setRotation(0, MathUtils::randomInt(0, 180), 0);
-				cube->setScale(1.0f, 1.0f, 1.0f);
+				cube->setPosition(0, 5.0f, 0);
 				this->addObject(cube);
 
 				// add the Physics Component

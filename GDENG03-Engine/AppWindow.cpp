@@ -79,12 +79,12 @@ void AppWindow::onCreate()
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	//Initialize the Base System
-	BaseComponentSystem::getInstance()->initialize();
-
-
-	SceneCameraHandler::initialize();
-	UIManager::initialize(m_hwnd);
 	GameObjectManager::initialize();
+	BaseComponentSystem::getInstance()->initialize();
+	SceneCameraHandler::initialize();
+
+	UIManager::initialize(m_hwnd);
+	
 
 }
 

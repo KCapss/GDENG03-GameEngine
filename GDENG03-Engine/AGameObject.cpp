@@ -17,50 +17,79 @@ AGameObject::~AGameObject()
 void AGameObject::setPosition(float x, float y, float z)
 {
 	this->localPosition = Vector3D(x, y, z);
+	this->overrideMatrix = false;
 }
 
 void AGameObject::setPosition(Vector3D pos)
 {
 	this->localPosition = pos;
+	this->overrideMatrix = false;
 }
 
 Vector3D AGameObject::getLocalPosition()
 {
 	return this->localPosition;
+
 }
 
 void AGameObject::setScale(float x, float y, float z)
 {
 	this->localScale = Vector3D(x, y, z);
+	this->overrideMatrix = false;
 }
 
 void AGameObject::setScale(Vector3D scale)
 {
 	this->localScale = scale;
+	this->overrideMatrix = false;
 }
 
 Vector3D AGameObject::getLocalScale()
 {
 	return localScale;
+
 }
 
 void AGameObject::setRotation(float x, float y, float z)
 {
 	this->localRotation = Vector3D(x, y, z);
+	this->overrideMatrix = false;
 }
 
 void AGameObject::setRotation(Vector3D rot)
 {
 	this->localRotation = rot;
+	this->overrideMatrix = false;
 }
 
 Vector3D AGameObject::getLocalRotation()
 {
 	return this->localRotation;
+	this->overrideMatrix = false;
 }
 
 void AGameObject::IncrementRot(float offset)
 {
+}
+
+void AGameObject::updateLocalMatrix()
+{
+	//setup transformation matrix for drawing.
+	Matrix4x4 allMatrix; allMatrix.setIdentity();
+	Matrix4x4 translationMatrix; translationMatrix.setIdentity();  translationMatrix.setTranslation(this->getLocalPosition());
+	Matrix4x4 scaleMatrix; scaleMatrix.setScale(this->getLocalScale());
+	Vector3D rotation = this->getLocalRotation();
+	Matrix4x4 xMatrix; xMatrix.setRotationX(rotation.m_x);
+	Matrix4x4 yMatrix; yMatrix.setRotationY(rotation.m_y);
+	Matrix4x4 zMatrix; zMatrix.setRotationZ(rotation.m_z);
+
+	//Scale --> Rotate --> Transform as recommended order.
+	Matrix4x4 rotMatrix; rotMatrix.setIdentity();
+	rotMatrix = rotMatrix.multiplyTo(xMatrix.multiplyTo(yMatrix.multiplyTo(zMatrix)));
+
+	allMatrix = allMatrix.multiplyTo(scaleMatrix.multiplyTo(rotMatrix));
+	allMatrix = allMatrix.multiplyTo(translationMatrix);
+	this->localMatrix = allMatrix;
 }
 
 string AGameObject::RetrieveName()
@@ -111,6 +140,7 @@ void AGameObject::recomputeMatrix(float matrix[16])
 	Matrix4x4 transMatrix; transMatrix.setIdentity(); transMatrix.setTranslation(this->localPosition);
 
 	this->localMatrix = scaleMatrix.multiplyTo(transMatrix.multiplyTo(newMatrix));
+	this->overrideMatrix = true;
 }
 
 float* AGameObject::getPhysicsLocalMatrix()

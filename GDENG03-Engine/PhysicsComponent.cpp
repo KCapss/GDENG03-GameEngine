@@ -21,23 +21,14 @@ PhysicsComponent::PhysicsComponent(String name, AGameObject* owner, BodyType typ
 	BoxShape* boxShape;
 	//Resolving Issues With Rigid Body Type
 
-	if(type == BodyType::DYNAMIC) // For Cubes
-	{
-		boxShape = physicsCommon->createBoxShape(Vector3(scale.m_x / 2.0f,
-			scale.m_z / 2.0f, scale.m_y / 2.0f)); //half extentP
-	}
+	boxShape = physicsCommon->createBoxShape(Vector3(scale.m_x / 2.0f,
+		scale.m_y / 2.0f, scale.m_z / 2.0f)); //half extentP
 
-	else // For non cubes
-	{
-		boxShape = physicsCommon->createBoxShape(Vector3(scale.m_x/2.0f,
-			scale.m_y * 40.0f, scale.m_z / 2.0f)); //half extent
-		 //half extent
-		
-	}
+	
 
 
 	this->rigidBody = physicsWorld->createRigidBody(transform);
-	this->rigidBody->setLocalCenterOfMass(Vector3(owner->getLocalPosition().m_x, owner->getLocalPosition().m_y, owner->getLocalPosition().m_z));
+	//this->rigidBody->setLocalCenterOfMass(Vector3(owner->getLocalPosition().m_x, owner->getLocalPosition().m_y, owner->getLocalPosition().m_z));
 	collider = this->rigidBody->addCollider(boxShape, transform);
 	this->rigidBody->updateMassPropertiesFromColliders();
 	this->rigidBody->setMass(this->mass);
@@ -45,7 +36,6 @@ PhysicsComponent::PhysicsComponent(String name, AGameObject* owner, BodyType typ
 	
 
 	transform = this->rigidBody->getTransform();
-
 	float matrix[16];
 	transform.getOpenGLMatrix(matrix);
 
@@ -54,15 +44,15 @@ PhysicsComponent::PhysicsComponent(String name, AGameObject* owner, BodyType typ
 	//Collision Filtering 
 	if (type == BodyType::DYNAMIC) 
 	{
-		/*collider->setCollisionCategoryBits(CATEGORY1);
-		collider->setCollideWithMaskBits(CATEGORY2 | CATEGORY3);*/
+		collider->setCollisionCategoryBits(CATEGORY1);
+		collider->setCollideWithMaskBits(CATEGORY2 | CATEGORY3);
 		this->rigidBody->setType(BodyType::DYNAMIC);
 	}
 
 	else
 	{
-		/*collider->setCollisionCategoryBits(CATEGORY2);
-		collider->setCollideWithMaskBits(CATEGORY1 | CATEGORY3);*/
+		collider->setCollisionCategoryBits(CATEGORY2);
+		collider->setCollideWithMaskBits(CATEGORY1 | CATEGORY3);
 		rigidBody->setType(BodyType::STATIC);
 	}
 }
@@ -81,13 +71,13 @@ void PhysicsComponent::perform(float deltaTime)
 
 	this->getOwner()->recomputeMatrix(matrix);
 
-	getOwner()->setRotation(transform.getOrientation().x, transform.getOrientation().y, transform.getOrientation().z);
-	getOwner()->setPosition(transform.getPosition().x, transform.getPosition().y, transform.getPosition().z);
+	//getOwner()->setRotation(transform.getOrientation().x, transform.getOrientation().y, transform.getOrientation().z);
+	//getOwner()->setPosition(transform.getPosition().x, transform.getPosition().y, transform.getPosition().z);
 
 	
 
 	timer += deltaTime;
-	/*if(timer > 5.0f)
+	if(timer > 2.0f)
 	{
 		if(rigidBody->getType() == BodyType::DYNAMIC && !isSelfCollision )
 		{
@@ -97,7 +87,7 @@ void PhysicsComponent::perform(float deltaTime)
 			std::cout << "My component is UPDATED: " << this->name << "\n";
 		}
 			
-	}*/
+	}
 	
 	//std::cout << "My component is updating: " << this->name << "\n";
 }

@@ -10,10 +10,10 @@ PhysicsSystem::PhysicsSystem()
 	this->physicsCommon = new PhysicsCommon();
 	PhysicsWorld::WorldSettings settings;
 	settings.defaultVelocitySolverNbIterations = 150; //Modified from 50
-	settings.defaultPositionSolverNbIterations = 150; //Modified from 50
-	settings.defaultBounciness = 1.5f;
-	settings.persistentContactDistanceThreshold = 0.20f;
-	settings.gravity = Vector3(0, -0.981f, 0);
+	//settings.defaultPositionSolverNbIterations = 150; //Modified from 50
+	//settings.defaultBounciness = 1.5f;
+	//settings.persistentContactDistanceThreshold = 0.20f;
+	settings.gravity = Vector3(0, -9.81f, 0);
 	this->physicsWorld = this->physicsCommon->createPhysicsWorld(settings);
 	std::cout << "Successfully created physics world. \n";
 

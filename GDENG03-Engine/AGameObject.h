@@ -43,7 +43,7 @@ public:
 	Vector3D getLocalRotation();
 
 	virtual void IncrementRot(float offset);
-
+	void updateLocalMatrix();
 
 	string RetrieveName();
 	string RetrieveObjName();
@@ -56,6 +56,7 @@ public:
 	void recomputeMatrix(float matrix[16]);
 	// our matrix implementation to openGL matrix
 	float* getPhysicsLocalMatrix();
+
 
 	
 private:
@@ -70,9 +71,12 @@ private:
 	//OpenGl Matrix
 	float oneDLocalMatrix [16];
 
+	
+
 protected:
 	Matrix4x4 localMatrix;
 	string typeName;
+	bool overrideMatrix = false;
 
 };
 
