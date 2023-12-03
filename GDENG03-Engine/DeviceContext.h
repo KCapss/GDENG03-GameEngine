@@ -7,6 +7,8 @@ class VertexBuffer;
 class IndexBuffer;
 class VertexShader;
 class PixelShader;
+class Texture;
+
 
 class DeviceContext
 {
@@ -16,6 +18,10 @@ public:
 	void clearRenderTargetColor(SwapChain* swap_chain, float red, float green, float blue, float alpha);
 	void setVertexBuffer(VertexBuffer* vertex_buffer);
 	void setIndexBuffer(IndexBuffer* index_buffer);
+
+	void setRenderConfig(VertexShader* vertexShader, PixelShader* pixelShader);
+	void setTexture(Texture* texture);
+	
 
 
 	void drawTriangleList(UINT vertex_count, UINT start_vertex_index);
@@ -29,6 +35,7 @@ public:
 
 	void setConstantBuffer(VertexShader* vertex_shader, ConstantBuffer* buffer);
 	void setConstantBuffer(PixelShader* pixel_shader, ConstantBuffer* buffer);
+	void setConstantBuffer(ConstantBuffer* buffer);
 
 	bool release();
 	~DeviceContext();

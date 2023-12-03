@@ -223,6 +223,9 @@
     <ClCompile Include="TexturedCube.cpp">
       <Filter>GameEngine\Primitives\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>GameEngine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -378,6 +381,9 @@
     </ClInclude>
     <ClInclude Include="TexturedCube.h">
       <Filter>GameEngine\Primitives\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>GameEngine\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

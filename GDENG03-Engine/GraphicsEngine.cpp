@@ -6,6 +6,7 @@
 #include "ConstantBuffer.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
+#include "TexturedVertexBuffer.h"
 
 #include <d3dcompiler.h>
 
@@ -96,6 +97,11 @@ ID3D11Device* GraphicsEngine::getDirectD3D11Device()
 VertexBuffer* GraphicsEngine::createVertexBuffer()
 {
 	return new VertexBuffer();
+}
+
+TexturedVertexBuffer* GraphicsEngine::createTexturedBuffer()
+{
+	return new TexturedVertexBuffer();
 }
 
 IndexBuffer* GraphicsEngine::createIndexBuffer()

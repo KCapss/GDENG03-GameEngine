@@ -7,28 +7,17 @@
 #include "VertexBuffer.h"
 #include "DeviceContext.h"
 #include "SceneCameraHandler.h"
+#include "ShaderLibrary.h"
 
-Cube::Cube(string name, void* shaderByteCode, size_t sizeShader): AGameObject(name)
+Cube::Cube(string name): AGameObject(name)
 {
 	typeName = "Cube";
-	//TODO: White Version of the Shaders
-	//Vertex cubeList[] =
-	//{
-	//	//X - Y - Z
-	//	//FRONT FACE
-	//	{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1)},
-	//	{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1,0.95f,1), Vector3D(1,0.95f,1) },
-	//	{ Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1,1,0.95f),  Vector3D(1,1,0.95f) },
-	//	{ Vector3D(0.5f,-0.5f,-0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
+	
 
-	//	//BACK FACE
-	//	{ Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
-	//	{ Vector3D(0.5f,0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) },
-	//	{ Vector3D(-0.5f,0.5f,0.5f),  Vector3D(1,1,0.95f),  Vector3D(1,0.95f,1) },
-	//	{ Vector3D(-0.5f,-0.5f,0.5f),    Vector3D(1,0.95f,1),Vector3D(1,0.95f,1) }
-	//};
-
-
+	ShaderNames shaderNames;
+	void* shaderByteCode = NULL;
+	size_t sizeShader = 0;
+	ShaderLibrary::getInstance()->requestVertexShaderData(shaderNames.BASE_VERTEX_SHADER_NAME, &shaderByteCode, &sizeShader);
 
 
 	//TODO: Rainbow Version of the Shaders
@@ -114,84 +103,11 @@ void Cube::update(float deltaTime)
 {
 	this->deltaTime = deltaTime;
 
-	//Matrix4x4 temp;
-	//
-	//ticks += (deltaTime) * this->speed * 100.0f;
-	//float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
-	//cc.m_time = (m_rot_x)*this->speed * 100.0f;
-
-	////Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
-	////Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
-
-	//
-	//cc.m_world.setIdentity();
-	//temp.setIdentity();
-	//temp.setScale(this->getLocalScale());
-	//cc.m_world *= temp;
-
-
-	////Animation Scale
-	///*Matrix4x4 Scaling;
-	//Scaling.setIdentity();
-
-	//temp.setIdentity();
-	//temp.setScale(currentScale);
-	//Scaling *= temp;
-
-	//cc.m_world *= Scaling;*/
-
-
-
-	////Initial Rotation
-	//Matrix4x4 Rot;
-	//Rot.setIdentity();
-
-	//temp.setIdentity();
-	//temp.setRotationX(this->getLocalRotation().m_x);
-	//Rot *= temp;
-	//
-	//temp.setIdentity();
-	//temp.setRotationY(this->getLocalRotation().m_y);
-	//Rot *= temp;
-
-	//temp.setIdentity();
-	//temp.setRotationZ(this->getLocalRotation().m_z);
-	//Rot *= temp;
-	//cc.m_world *= Rot;
-
-
-	//////Animation Rotation
-	////temp.setIdentity();
-	////temp.setRotationZ(m_rot_z * speed);
-	////cc.m_world *= temp;
-
-	////temp.setIdentity();
-	////temp.setRotationY(m_rot_y * speed);
-	////cc.m_world *= temp;
-
-	////temp.setIdentity();
-	////temp.setRotationX(m_rot_x * speed);
-	////cc.m_world *= temp;
-
-	//temp.setIdentity();
-	//temp.setTranslation(this->getLocalPosition());
-	//cc.m_world *= temp;
-
-	////Translation animation
-	///*Matrix4x4 Translate;
-	//Translate.setIdentity();
-
-	//temp.setIdentity();
-	//temp.setTranslation(currentTranslate);
-	//Translate *= temp;
-	//cc.m_world *= Translate;*/
-
-	//cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
-
 }
 
-void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
+void Cube::draw(int width, int height)
 {
+	ShaderNames shaderNames;
 
 	if(this->overrideMatrix)
 	{
@@ -215,12 +131,11 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 	);*/
 
 	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+	GraphicsEngine::get()->getImmediateDeviceContext()->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.BASE_VERTEX_SHADER_NAME), 
+		ShaderLibrary::getInstance()->getPixelShader(shaderNames.BASE_PIXEL_SHADER_NAME));
+	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(constantBuffer); // Does both vertex + pixel
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(vertexShader, constantBuffer);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(pixelShader, constantBuffer);
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(vertexShader);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(pixelShader);
 
 	//SET THE VERTICES OF THE TRIANGLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vertexBuffer);

@@ -21,16 +21,11 @@
 #include "MathUtils.h"
 #include "PhysicsSystem.h"
 
+// Shaders
+#include "ShaderLibrary.h"
+#include "TextureManager.h"
 
-//__declspec(align(16))
-//
-//struct constant
-//{
-//	Matrix4x4 m_world;
-//	Matrix4x4 m_view;
-//	Matrix4x4 m_proj;
-//	unsigned int m_time;
-//};
+
 
 AppWindow::AppWindow()
 {
@@ -46,6 +41,9 @@ void AppWindow::onCreate()
 	 
 	//Creating Windows and Background
 	Window::onCreate();
+	GraphicsEngine::get()->init();
+	ShaderLibrary::initialize();
+	TextureManager::initialize();
 	
 	InputSystem::initialize();
 	InputSystem::getInstance()->addListener(this);
@@ -60,30 +58,25 @@ void AppWindow::onCreate()
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
 
-	//Vertex Shader
-	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-	m_vs = GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-
-	//TODO: Draw create here
-	//onCubeCreate(shader_byte_code, size_shader);
-	//TODO: STOP DRAWING
+	
 
 	
 	
-	GraphicsEngine::get()->releaseCompiledShader();
+	/*GraphicsEngine::get()->releaseCompiledShader();
 
 	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader();
+	GraphicsEngine::get()->releaseCompiledShader();*/
 
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	//Initialize the Base System
-	GameObjectManager::initialize();
 	BaseComponentSystem::getInstance()->initialize();
-	SceneCameraHandler::initialize();
 
+
+	SceneCameraHandler::initialize();
 	UIManager::initialize(m_hwnd);
+	GameObjectManager::initialize();
 	
 
 }
@@ -110,7 +103,7 @@ void AppWindow::onUpdate()
 
 	SceneCameraHandler::getInstance()->update();
 	GameObjectManager::getInstance()->updateAll();
-	GameObjectManager::getInstance()->renderAll(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
+	GameObjectManager::getInstance()->renderAll(rc.right - rc.left, rc.bottom - rc.top);
 
 	
 
@@ -126,9 +119,11 @@ void AppWindow::onDestroy()
 	//m_vb->release();
 	//m_ib->release(); 
 	//m_cb->release();
+	ShaderLibrary::destroy();
+	TextureManager::destroy();
 	m_swap_chain->release();
-	m_vs->release();
-	m_ps->release();
+	/*m_vs->release();
+	m_ps->release();*/
 
 	ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
@@ -373,7 +368,7 @@ void AppWindow::onCubeCreate(void* shader_byte_code, size_t size_shader)
 	////TODO: Multiple Random Instancing of Cubes
 	for (int i = 0; i < 50; i++)
 	{
-		Cube* Copy = new Cube("1", shader_byte_code, size_shader);
+		Cube* Copy = new Cube("1");
 		Copy->setPosition(Vector3D(MathUtils::randomFloat(-0.9f, 0.9f),
 			MathUtils::randomFloat(-0.9f, 0.9f),
 			MathUtils::randomFloat(-0.9f, 0.9f)));
