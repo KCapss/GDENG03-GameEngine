@@ -1,6 +1,7 @@
-#include "Texture.h"
 #include <iostream>
+#pragma comment(lib,"d3d11.lib")
 #include <DirectXTex.h>
+#include "Texture.h"
 #include "GraphicsEngine.h"
 
 Texture::Texture(const wchar_t* fullPath) : AResource(fullPath)

@@ -29,7 +29,7 @@ void ShaderLibrary::requestVertexShaderData(String vertexShaderName, void** shad
 VertexShader* ShaderLibrary::getVertexShader(String vertexShaderName)
 {
 	if (this->activeVertexShaders[vertexShaderName] == NULL) {
-		//std::cout << "Vertex shader " << vertexShaderName.c_str() << " not found. Have you initialized it? \n";
+		std::cout << "Vertex shader " << vertexShaderName.c_str() << " not found. Have you initialized it? \n";
 	}
 	return this->activeVertexShaders[vertexShaderName];
 }
@@ -37,7 +37,7 @@ VertexShader* ShaderLibrary::getVertexShader(String vertexShaderName)
 PixelShader* ShaderLibrary::getPixelShader(String pixelShaderName)
 {
 	if (this->activePixelShaders[pixelShaderName] == NULL) {
-		//std::cout << "Pixel shader " << pixelShaderName.c_str() << " not found. Have you initialized it? \n";
+		std::cout << "Pixel shader " << pixelShaderName.c_str() << " not found. Have you initialized it? \n";
 	}
 	return this->activePixelShaders[pixelShaderName];
 }

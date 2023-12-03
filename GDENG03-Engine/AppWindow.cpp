@@ -119,8 +119,7 @@ void AppWindow::onDestroy()
 	//m_vb->release();
 	//m_ib->release(); 
 	//m_cb->release();
-	ShaderLibrary::destroy();
-	TextureManager::destroy();
+	
 	m_swap_chain->release();
 	/*m_vs->release();
 	m_ps->release();*/

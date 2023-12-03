@@ -131,8 +131,7 @@ void Cube::draw(int width, int height)
 	);*/
 
 	constantBuffer->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.BASE_VERTEX_SHADER_NAME), 
-		ShaderLibrary::getInstance()->getPixelShader(shaderNames.BASE_PIXEL_SHADER_NAME));
+	GraphicsEngine::get()->getImmediateDeviceContext()->setRenderConfig(ShaderLibrary::getInstance()->getVertexShader(shaderNames.BASE_VERTEX_SHADER_NAME), ShaderLibrary::getInstance()->getPixelShader(shaderNames.BASE_PIXEL_SHADER_NAME));
 	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(constantBuffer); // Does both vertex + pixel
 
 

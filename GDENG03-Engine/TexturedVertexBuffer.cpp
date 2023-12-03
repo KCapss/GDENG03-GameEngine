@@ -11,10 +11,11 @@ TexturedVertexBuffer::~TexturedVertexBuffer()
 	VertexBuffer::~VertexBuffer();
 }
 
+//void* vertexList, UINT vertexSize, UINT listSize, void* shaderByteCode, UINT byteShaderSize
 bool TexturedVertexBuffer::load(void* list_vertices, UINT size_vertex, UINT size_list, void* shader_byte_code, size_t size_byte_shader)
 {
 	//release if previous buffer and input layout are used from previous frame update.
-	if (this->m_buffer!= NULL) {
+	if (this->m_buffer != NULL) {
 		this->m_buffer->Release();
 	}
 
@@ -55,9 +56,11 @@ bool TexturedVertexBuffer::load(void* list_vertices, UINT size_vertex, UINT size
 	HRESULT layoutResult = directXDevice->CreateInputLayout(layout, layoutSize, shader_byte_code, size_byte_shader, &this->m_layout);
 	if (SUCCEEDED(layoutResult)) {
 		std::cout << "Creation of input layout succeeded. \n";
+		return true;
 	}
 	else {
 		std::cout << "An error occurred in creating an input layout. \n";
+		return false;
 	}
-	return true;
+
 }
