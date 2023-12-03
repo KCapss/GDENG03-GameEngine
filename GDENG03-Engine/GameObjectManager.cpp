@@ -91,6 +91,7 @@ void GameObjectManager::addObject(AGameObject* gameObject)
 
 void GameObjectManager::createObject(PrimitiveType type)
 {
+	
 	switch (type)
 	{
 		case PrimitiveType::CUBE:

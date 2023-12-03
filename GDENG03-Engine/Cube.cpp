@@ -11,8 +11,8 @@
 
 Cube::Cube(string name): AGameObject(name)
 {
+
 	typeName = "Cube";
-	
 
 	ShaderNames shaderNames;
 	void* shaderByteCode = NULL;
@@ -93,6 +93,7 @@ Cube::Cube(string name): AGameObject(name)
 
 	constantBuffer = GraphicsEngine::get()->createConstantBuffer();
 	constantBuffer->load(&cc, sizeof(constant));
+
 }
 
 Cube::~Cube()
@@ -107,6 +108,7 @@ void Cube::update(float deltaTime)
 
 void Cube::draw(int width, int height)
 {
+	cout << " Push" << endl;
 	ShaderNames shaderNames;
 
 	if(this->overrideMatrix)
@@ -143,6 +145,7 @@ void Cube::draw(int width, int height)
 	GraphicsEngine::get()->getImmediateDeviceContext()->setIndexBuffer(indexBuffer);
 
 	GraphicsEngine::get()->getImmediateDeviceContext()->drawIndexedTriangleList(indexBuffer->getSizeIndexList(), 0, 0);
+	cout << " Done" << endl;
 
 }
 

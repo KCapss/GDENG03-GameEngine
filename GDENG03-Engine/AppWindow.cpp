@@ -83,6 +83,8 @@ void AppWindow::onCreate()
 
 void AppWindow::onUpdate()
 {
+	
+
 	m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
 	Window::onUpdate();
 	InputSystem::getInstance()->update();
@@ -98,6 +100,8 @@ void AppWindow::onUpdate()
 	RECT rc = this->getClientWindowRect();
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
+	
+
 	//Update All Components;
 	BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
 
@@ -108,6 +112,8 @@ void AppWindow::onUpdate()
 	
 
 	UIManager::getInstance()->drawAllUI();
+
+	
 
 	m_swap_chain->present(true);
 
