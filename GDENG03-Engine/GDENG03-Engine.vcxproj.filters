@@ -67,6 +67,18 @@
     <Filter Include="GameEngine\Primitives\PhysicsPrimitive">
       <UniqueIdentifier>{c4ecd727-8ff8-40d0-9c15-dd03ba6cfd05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\GraphicsEngine\ResourceManager">
+      <UniqueIdentifier>{8f9ee77d-4121-4864-8b7d-674bc862a09a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\GraphicsEngine\ResourceManager\TextureManager">
+      <UniqueIdentifier>{5691c80e-790e-4fc0-8a52-6a928e4d5ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Primitives\Basic">
+      <UniqueIdentifier>{780fff2f-0de8-40a3-af77-2be4ce7e30be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Primitives\Texture">
+      <UniqueIdentifier>{dabbdba4-027e-4099-99be-d9df3578cec4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,9 +108,6 @@
     <ClCompile Include="VertexShader.cpp">
       <Filter>GameEngine\GraphicsEngine\VertexShader</Filter>
     </ClCompile>
-    <ClCompile Include="Quads.cpp">
-      <Filter>GameEngine\Primitives</Filter>
-    </ClCompile>
     <ClCompile Include="ConstantBuffer.cpp">
       <Filter>GameEngine\GraphicsEngine\ConstantBuffer</Filter>
     </ClCompile>
@@ -110,9 +119,6 @@
     </ClCompile>
     <ClCompile Include="IndexBuffer.cpp">
       <Filter>GameEngine\GraphicsEngine\IndexBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>GameEngine\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="AGameObject.cpp">
       <Filter>GameEngine\Primitives</Filter>
@@ -192,6 +198,31 @@
     <ClCompile Include="PhysicsPlane.cpp">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderLibrary.cpp" />
+    <ClCompile Include="Resource.cpp">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedVertexBuffer.cpp">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>GameEngine\Primitives\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Quads.cpp">
+      <Filter>GameEngine\Primitives\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedCube.cpp">
+      <Filter>GameEngine\Primitives\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -218,9 +249,6 @@
     <ClInclude Include="VertexShader.h">
       <Filter>GameEngine\GraphicsEngine\VertexShader</Filter>
     </ClInclude>
-    <ClInclude Include="Quads.h">
-      <Filter>GameEngine\Primitives</Filter>
-    </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
       <Filter>GameEngine\GraphicsEngine\ConstantBuffer</Filter>
     </ClInclude>
@@ -235,9 +263,6 @@
     </ClInclude>
     <ClInclude Include="IndexBuffer.h">
       <Filter>GameEngine\GraphicsEngine\IndexBuffer</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>GameEngine\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="AGameObject.h">
       <Filter>GameEngine\Primitives</Filter>
@@ -329,12 +354,43 @@
     <ClInclude Include="PhysicsPlane.h">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderLibrary.h" />
+    <ClInclude Include="Resource.h">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedVertexBuffer.h">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>GameEngine\GraphicsEngine\ResourceManager\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>GameEngine\Primitives\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Quads.h">
+      <Filter>GameEngine\Primitives\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedCube.h">
+      <Filter>GameEngine\Primitives\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">
       <Filter>App</Filter>
     </FxCompile>
     <FxCompile Include="VertexShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturedPixelShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturedVertexShader.hlsl">
       <Filter>App</Filter>
     </FxCompile>
   </ItemGroup>
