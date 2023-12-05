@@ -77,7 +77,7 @@ void AGameObject::updateLocalMatrix()
 	//setup transformation matrix for drawing.
 	Matrix4x4 allMatrix; allMatrix.setIdentity();
 	Matrix4x4 translationMatrix; translationMatrix.setIdentity();  translationMatrix.setTranslation(this->getLocalPosition());
-	Matrix4x4 scaleMatrix; scaleMatrix.setScale(this->getLocalScale());
+	Matrix4x4 scaleMatrix; scaleMatrix.setIdentity();  scaleMatrix.setScale(this->getLocalScale());
 	Vector3D rotation = this->getLocalRotation();
 	Matrix4x4 xMatrix; xMatrix.setRotationX(rotation.m_x);
 	Matrix4x4 yMatrix; yMatrix.setRotationY(rotation.m_y);
@@ -89,6 +89,7 @@ void AGameObject::updateLocalMatrix()
 
 	allMatrix = allMatrix.multiplyTo(scaleMatrix.multiplyTo(rotMatrix));
 	allMatrix = allMatrix.multiplyTo(translationMatrix);
+
 	this->localMatrix = allMatrix;
 }
 
@@ -110,6 +111,75 @@ void AGameObject::setEnabled(bool flag)
 bool AGameObject::IsEnabled()
 {
 	return this->isEnabled;
+}
+
+
+void AGameObject::attachComponent(AComponent* component)
+{
+	this->componentList.push_back(component);
+	component->attachOwner(this);
+}
+
+void AGameObject::detachComponent(AComponent* component)
+{
+	int index = -1;
+	for (int i = 0; i < this->componentList.size(); i++) {
+		if (this->componentList[i] == component) {
+			index = i;
+			break;
+		}
+	}
+	if (index != -1) {
+		this->componentList.erase(this->componentList.begin() + index);
+	}
+}
+
+AComponent* AGameObject::findComponentByName(string name)
+{
+	for (int i = 0; i < this->componentList.size(); i++) {
+		if (this->componentList[i]->getName() == name) {
+			return this->componentList[i];
+		}
+	}
+
+	return NULL;
+}
+
+AComponent* AGameObject::findComponentOfType(AComponent::ComponentType type, string name)
+{
+	for (int i = 0; i < this->componentList.size(); i++) {
+		if (this->componentList[i]->getName() == name && this->componentList[i]->getType() == type) {
+			return this->componentList[i];
+		}
+	}
+
+	return NULL;
+}
+
+
+
+AGameObject::ComponentList AGameObject::getComponentsOfType(AComponent::ComponentType type)
+{
+	ComponentList foundList;
+	for (int i = 0; i < this->componentList.size(); i++) {
+		if (this->componentList[i]->getType() == type) {
+			foundList.push_back(this->componentList[i]);
+		}
+	}
+
+	return foundList;
+}
+
+AGameObject::ComponentList AGameObject::getComponentsOfTypeRecursive(AComponent::ComponentType type)
+{
+	ComponentList foundList;
+	for (int i = 0; i < this->componentList.size(); i++) {
+		if (this->componentList[i]->getType() == type) {
+			foundList.push_back(this->componentList[i]);
+		}
+	}
+
+	return foundList;
 }
 
 void AGameObject::recomputeMatrix(float matrix[16])

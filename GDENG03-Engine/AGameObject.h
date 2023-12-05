@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 #include "Matrix4x4.h"
 #include "Vector3D.h"
@@ -27,6 +28,8 @@ public:
 	AGameObject(string name);
 	~AGameObject();
 
+	typedef vector<AComponent*> ComponentList;
+
 	virtual void update(float deltaTime) = 0;
 	virtual void draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader) = 0;
 
@@ -49,6 +52,16 @@ public:
 	string RetrieveObjName();
 	void setEnabled(bool flag);
 	bool IsEnabled();
+
+	//ComponentSystem
+	void attachComponent(AComponent* component);
+	void detachComponent(AComponent* component);
+
+	AComponent* findComponentByName(string name);
+	AComponent* findComponentOfType(AComponent::ComponentType type, string name);
+	ComponentList getComponentsOfType(AComponent::ComponentType type);
+	ComponentList getComponentsOfTypeRecursive(AComponent::ComponentType type);
+
 
 
 
@@ -77,6 +90,8 @@ protected:
 	Matrix4x4 localMatrix;
 	string typeName;
 	bool overrideMatrix = false;
+
+	ComponentList componentList;
 
 };
 

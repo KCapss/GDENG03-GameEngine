@@ -107,11 +107,12 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 				this->addObject(cube);
 
 				// add the Physics Component
-				string componentName = "Physics_Component" + cube->RetrieveName();
+				string componentName = "Physics_Component";
 				PhysicsComponent* component = new PhysicsComponent(componentName, cube, BodyType::DYNAMIC);
 				
 				//component->getRigidBody()->setAngularDamping(10.0f);
 				component->getRigidBody()->setLinearDamping(0.60f);
+				cube->attachComponent((AComponent*)component);
 			}
 		}
 		break;
@@ -129,8 +130,9 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			this->addObject(plane);
 
 			// add the Physics Component
-			string componentName = "Physics_Component" + plane->RetrieveName();
+			string componentName = "Physics_Component";
 			PhysicsComponent* component = new PhysicsComponent(componentName, plane, BodyType::STATIC);
+			plane->attachComponent((AComponent*)component);
 			
 			
 		}
