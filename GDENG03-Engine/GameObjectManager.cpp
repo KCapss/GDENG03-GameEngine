@@ -100,7 +100,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 
 		case PrimitiveType::PHYSICS_CUBE:
 		{
-			for (int i = 0; i < 30; i++)
+			for (int i = 0; i < 1; i++)
 			{
 				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
 				cube->setPosition(0, 5.0f, 0);

@@ -10,12 +10,15 @@ ActionMemento::~ActionMemento()
 
 EditorAction* ActionMemento::getOldAction()
 {
+	return oldAction;
 }
 
 EditorAction* ActionMemento::getNewAction()
 {
+	return newAction;
 }
 
 std::string ActionMemento::getOwnerName()
 {
+	return "Null";
 }
