@@ -67,6 +67,9 @@
     <Filter Include="GameEngine\Primitives\PhysicsPrimitive">
       <UniqueIdentifier>{c4ecd727-8ff8-40d0-9c15-dd03ba6cfd05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Backend">
+      <UniqueIdentifier>{1e69ccbc-bd2e-4479-8ebb-dd1095fc0d8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -192,6 +195,11 @@
     <ClCompile Include="PhysicsPlane.cpp">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClCompile>
+    <ClCompile Include="EngineBackend.cpp" />
+    <ClCompile Include="ScenePlaySettings.cpp" />
+    <ClCompile Include="ActionMomento.cpp" />
+    <ClCompile Include="ActionHistory.cpp" />
+    <ClCompile Include="EditorAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -329,6 +337,11 @@
     <ClInclude Include="PhysicsPlane.h">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClInclude>
+    <ClInclude Include="EngineBackend.h" />
+    <ClInclude Include="ScenePlaySettings.h" />
+    <ClInclude Include="ActionMomento.h" />
+    <ClInclude Include="ActionHistory.h" />
+    <ClInclude Include="EditorAction.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">
