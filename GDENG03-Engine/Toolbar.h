@@ -1,5 +1,6 @@
 #pragma once
 #include "UINames.h"
+#include "imfilebrowser.h"
 
 class Toolbar : public AUIScreen
 {
@@ -10,7 +11,8 @@ public:
 	void drawUI() override;
 
 private:
-	
+	ImGui::FileBrowser* openFileDialog;
+	ImGui::FileBrowser* saveFileDialog;
 
 };
 

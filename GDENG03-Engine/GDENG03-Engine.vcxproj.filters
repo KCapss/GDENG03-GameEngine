@@ -70,6 +70,9 @@
     <Filter Include="GameEngine\Backend">
       <UniqueIdentifier>{1e69ccbc-bd2e-4479-8ebb-dd1095fc0d8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Backend\SceneSaving">
+      <UniqueIdentifier>{15e9d257-5082-4ed4-9c04-494297856da5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -200,6 +203,8 @@
     <ClCompile Include="ActionMomento.cpp" />
     <ClCompile Include="ActionHistory.cpp" />
     <ClCompile Include="EditorAction.cpp" />
+    <ClCompile Include="SceneReader.cpp" />
+    <ClCompile Include="SceneWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -342,6 +347,9 @@
     <ClInclude Include="ActionMomento.h" />
     <ClInclude Include="ActionHistory.h" />
     <ClInclude Include="EditorAction.h" />
+    <ClInclude Include="imgui\imfilebrowser.h" />
+    <ClInclude Include="SceneReader.h" />
+    <ClInclude Include="SceneWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">
