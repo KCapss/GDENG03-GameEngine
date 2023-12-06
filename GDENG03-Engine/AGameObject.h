@@ -35,6 +35,13 @@ public:
 		float y = 0.0f;
 		float z = 0.0f;
 	};
+	enum PrimitiveType
+	{
+		CUBE,
+		PHYSICS_CUBE,
+		PLANE,
+		PHYSICS_PLANE,
+	};
 
 	virtual void update(float deltaTime) = 0;
 	virtual void draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader) = 0;
@@ -56,6 +63,10 @@ public:
 
 	string RetrieveName();
 	string RetrieveObjTypeName();
+
+	void setObjectType(PrimitiveType type);
+	PrimitiveType getObjectType();
+
 	void setEnabled(bool flag);
 	bool IsEnabled();
 
@@ -80,7 +91,7 @@ public:
 	
 private:
 	string name;
-	
+	PrimitiveType objType;
 
 	Vector3D localRotation;
 	Vector3D localPosition;

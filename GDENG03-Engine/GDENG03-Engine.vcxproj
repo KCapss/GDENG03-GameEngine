@@ -234,6 +234,7 @@
     <ClInclude Include="ScenePlaySettings.h" />
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="StringUtils.h" />
     <ClInclude Include="SwapChain.h" />
     <ClInclude Include="Toolbar.h" />
     <ClInclude Include="UIManager.h" />

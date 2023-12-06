@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include "AGameObject.h"
 
 
 class Quads;
@@ -42,10 +43,17 @@ public:
 	void updateAll();
 	void renderAll(int viewportWidth, int viewportHeight, VertexShader* vertexShader, PixelShader* pixels_shader);
 	void addObject(AGameObject* gameObject);
+
 	void createObject(PrimitiveType type, void* shaderByteCode, size_t sizeShader);
 	void deleteObject(AGameObject* gameObject);
+	void deleteAllObjects();
 	void setSelectedObject(AGameObject* gameObject);
 	AGameObject* getSelectedObject();
+
+	//Scene Saving Section
+	void createObjectFromFile(std::string objectName, AGameObject::PrimitiveType objectType, 
+		Vector3D position, Vector3D rotation, Vector3D scale, float mass, bool isGravityEnabled);
+
 
 private:
 	static GameObjectManager* sharedInstance;

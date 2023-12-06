@@ -2,6 +2,8 @@
 
 #include "Cube.h"
 #include "GameObjectManager.h"
+#include "SceneReader.h"
+#include "SceneWriter.h"
 #include "UIManager.h"
 
 Toolbar::Toolbar(const string name) : AUIScreen(name)
@@ -112,8 +114,8 @@ void Toolbar::drawUI()
 			// Full File Path fileDialog.GetSelected().string()
 			//std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
 
-			/*SceneReader* reader = new SceneReader(openFileDialog->GetSelected().string());
-			reader->readFromFile();*/
+			SceneReader* reader = new SceneReader(openFileDialog->GetSelected().string());
+			reader->readFromFile();
 			openFileDialog->ClearSelected();
 			openFileDialog->Close();
 		}
@@ -122,9 +124,9 @@ void Toolbar::drawUI()
 		{
 			// Full File Path fileDialog.GetSelected().string()
 			//std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
-			/*SceneWriter* file = new SceneWriter();
+			SceneWriter* file = new SceneWriter();
 			file->setDirectory(saveFileDialog->GetSelected().string());
-			file->writeToFile();*/
+			file->writeToFile();
 			saveFileDialog->ClearSelected();
 			saveFileDialog->Close();
 		}

@@ -102,6 +102,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			}
 
 			Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+			cube->setObjectType(AGameObject::CUBE);
 			addObject((AGameObject*)cube);
 
 			cubeCount++;
@@ -121,6 +122,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 				}
 
 				Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+				cube->setObjectType(AGameObject::PHYSICS_CUBE);
 				cube->setPosition(0, 5.0f, 0);
 				this->addObject(cube);
 
@@ -146,6 +148,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			}
 
 			Quads* quads = new Quads(objName, shaderByteCode, sizeShader);
+			quads->setObjectType(AGameObject::PLANE);
 			addObject((AGameObject*)quads);
 
 			planeCount++;
@@ -163,6 +166,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			}
 
 			PhysicsPlane* plane = new PhysicsPlane(objName, shaderByteCode, sizeShader);
+			plane->setObjectType(AGameObject::PHYSICS_PLANE);
 			this->addObject(plane);
 
 			// add the Physics Component
@@ -187,15 +191,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 
 void GameObjectManager::deleteObject(AGameObject* gameObject)
 {
-	/*for (auto it = aList.begin(); it != aList.end();)
-	{
-		if (it->first % 2 != 0)
-			it = c.erase(it);
-		else
-			++it;
-	}*/
 
-	
 
 	//First Method
 	for(int i = 0; i < aList.size(); i++)
@@ -210,17 +206,18 @@ void GameObjectManager::deleteObject(AGameObject* gameObject)
 		}
 	}
 
-	
+}
 
-	
-	//for (AGameObject* aObject : aList)
-	//{
-	//	if (aObject == gameObject)
-	//	{
-	//		//Potential Issue for the way how it destroye
-	//		aList.erase(aObject);
-	//	}
-	//}
+void GameObjectManager::deleteAllObjects()
+{
+	for (int i = 0; i < aList.size(); i++)
+	{
+		delete aList[i];
+	}
+
+	selectedObject = nullptr;
+	aList.clear();
+	aTable.clear();
 }
 
 void GameObjectManager::setSelectedObject(AGameObject* gameObject)
@@ -239,4 +236,53 @@ void GameObjectManager::setSelectedObject(AGameObject* gameObject)
 AGameObject* GameObjectManager::getSelectedObject()
 {
 	return selectedObject;
+}
+
+void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject::PrimitiveType objectType,
+	Vector3D position, Vector3D rotation, Vector3D scale, float mass, bool isGravityEnabled)
+{
+
+	//Overriding from normal create objects
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+
+	if (objectType == AGameObject::PrimitiveType::CUBE) {
+
+		Cube* cube = new Cube(objectName, shader_byte_code, size_shader);
+		cube->setPosition(position);
+		cube->setRotation(rotation);
+		cube->setScale(scale);
+		addObject(cube);
+	}
+
+	else if (objectType == AGameObject::PrimitiveType::PLANE) {
+		Quads* plane = new Quads(objectName, shader_byte_code, size_shader);
+		plane->setPosition(position);
+		plane->setRotation(rotation);
+		plane->setScale(scale);
+		addObject(plane);
+	}
+
+	
+	else if (objectType == AGameObject::PrimitiveType::PHYSICS_CUBE) {
+		Cube* cube = new Cube(objectName, shader_byte_code, size_shader);
+		cube->setPosition(position);
+		cube->setRotation(rotation);
+		cube->setScale(scale);
+		cube->attachComponent(new PhysicsComponent("Physics_Component", cube, BodyType::DYNAMIC));
+		static_cast<PhysicsComponent*>(cube->findComponentByName("Physics_Component"))->getRigidBody()->setMass(mass);
+		static_cast<PhysicsComponent*>(cube->findComponentByName("Physics_Component"))->getRigidBody()->enableGravity(isGravityEnabled);
+		addObject(cube);
+	}
+
+	else if (objectType == AGameObject::PrimitiveType::PHYSICS_PLANE) {
+		PhysicsPlane* plane = new PhysicsPlane(objectName, shader_byte_code, size_shader);
+		plane->setPosition(position);
+		plane->setRotation(rotation);
+		plane->setScale(scale);
+		plane->attachComponent(new PhysicsComponent("Physics_Component", plane, BodyType::KINEMATIC));
+
+		addObject(plane);
+	}
 }

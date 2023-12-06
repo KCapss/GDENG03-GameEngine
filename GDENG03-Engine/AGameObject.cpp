@@ -103,6 +103,16 @@ string AGameObject::RetrieveObjTypeName()
 	return this->typeName;
 }
 
+void AGameObject::setObjectType(PrimitiveType type)
+{
+	this->objType = type;
+}
+
+AGameObject::PrimitiveType AGameObject::getObjectType()
+{
+	return this->objType;
+}
+
 void AGameObject::setEnabled(bool flag)
 {
 	isEnabled = flag;
