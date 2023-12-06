@@ -32,14 +32,17 @@ void ScenePlaySettings::drawUI()
 
 			PhysicsSystem::ComponentList components = BaseComponentSystem::getInstance()->getPhysicsSystem()->getAllComponents();
 			for (int i = 0; i < components.size(); i++) {
-				if (components[i]->getRigidBody()->getType() != BodyType::KINEMATIC)
+				if (components[i]->getRigidBody()->getType() == BodyType::DYNAMIC)
 				{
 					AGameObject* aObject = components[i]->getOwner();
 
 					aObject->detachComponent(components[i]);
-					aObject->attachComponent(new PhysicsComponent("Physics_Component", aObject, BodyType::DYNAMIC));
-
 					BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(components[i]);
+
+					string componentName = "Physics_Component ";
+					aObject->attachComponent(new PhysicsComponent(componentName.append(aObject->RetrieveName()), aObject, BodyType::DYNAMIC));
+
+					
 					delete components[i];
 				}
 

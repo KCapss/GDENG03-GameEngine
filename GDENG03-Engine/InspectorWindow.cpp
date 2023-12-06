@@ -94,21 +94,29 @@ void InspectorWindow::UpdateTransformGameObject(AGameObject* aObject)
 void InspectorWindow::DisplayRigidBody(AGameObject* aObject)
 {
 	bool isComponentActive = false;
-	PhysicsComponent* pComponent = (PhysicsComponent*)aObject->findComponentByName("Physics_Component");
 
-	if (pComponent == nullptr)
+	
+	AGameObject::ComponentList aComponentList = aObject->getComponentsOfType(AComponent::ComponentType::Physics);
+	//PhysicsComponent* pComponent = (PhysicsComponent*)aObject->findComponentByName("Physics_Component");
+
+	if (aComponentList.size() != 1)
 	{
 		ImGui::Text("Rigid Body: None");
 		if (ImGui::Button("Add RigidBody"))
 		{
-			PhysicsComponent* component = new PhysicsComponent("Physics_Component", aObject, BodyType::STATIC);
+
+			string componentName = "Physics_Component ";
+			
+
+			PhysicsComponent* component = new PhysicsComponent(componentName.append(aObject->RetrieveName()), aObject, BodyType::STATIC);
 			aObject->attachComponent(component);
 		}
 	}
 
 	else
 	{
-		
+		PhysicsComponent* pComponent = (PhysicsComponent*)aComponentList[0];
+		//PhysicsComponent* pComponent = (PhysicsComponent*)aObject->findComponentByName("Physics_Component");
 
 		RigidBody* rigidBody = pComponent->getRigidBody();
 		bool isPEnabled = rigidBody->isActive();

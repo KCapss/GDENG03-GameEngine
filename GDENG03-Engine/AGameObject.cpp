@@ -95,12 +95,12 @@ void AGameObject::updateLocalMatrix()
 
 string AGameObject::RetrieveName()
 {
-	return this->typeName;
+	return this->name;
 }
 
-string AGameObject::RetrieveObjName()
+string AGameObject::RetrieveObjTypeName()
 {
-	return this->name;
+	return this->typeName;
 }
 
 void AGameObject::setEnabled(bool flag)

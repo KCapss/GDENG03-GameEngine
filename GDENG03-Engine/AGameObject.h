@@ -55,7 +55,7 @@ public:
 	void updateLocalMatrix();
 
 	string RetrieveName();
-	string RetrieveObjName();
+	string RetrieveObjTypeName();
 	void setEnabled(bool flag);
 	bool IsEnabled();
 

@@ -93,8 +93,18 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 	{
 		case PrimitiveType::CUBE:
 		{
-			Cube* cube = new Cube("Cube", shaderByteCode, sizeShader);
+			string objName = "Cube";
+			if (cubeCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(cubeCount));
+				objName.append(") ");
+			}
+
+			Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
 			addObject((AGameObject*)cube);
+
+			cubeCount++;
 		}
 		break;
 
@@ -102,39 +112,66 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 		{
 			for (int i = 0; i < 1; i++)
 			{
-				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
+				string objName = "Physics Cube";
+				if (pCubeCount != 0)
+				{
+					objName.append(" (");
+					objName.append(std::to_string(pCubeCount));
+					objName.append(") ");
+				}
+
+				Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
 				cube->setPosition(0, 5.0f, 0);
 				this->addObject(cube);
 
 				// add the Physics Component
-				string componentName = "Physics_Component";
-				PhysicsComponent* component = new PhysicsComponent(componentName, cube, BodyType::DYNAMIC);
-				
-				//component->getRigidBody()->setAngularDamping(10.0f);
-				component->getRigidBody()->setLinearDamping(0.60f);
+				string componentName = "Physics_Component ";
+				PhysicsComponent* component = new PhysicsComponent( componentName.append(objName), 
+					cube, BodyType::DYNAMIC);
 				cube->attachComponent((AComponent*)component);
+
+				pCubeCount++;
 			}
 		}
 		break;
 
 		case PrimitiveType::PLANE:
 		{
-			Quads* quads = new Quads("Plane", shaderByteCode, sizeShader);
+			string objName = "Plane";
+			if (planeCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(planeCount));
+				objName.append(") ");
+			}
+
+			Quads* quads = new Quads(objName, shaderByteCode, sizeShader);
 			addObject((AGameObject*)quads);
+
+			planeCount++;
 		}
 		break;
 
 		case PrimitiveType::PHYSICS_PLANE:
 		{
-			PhysicsPlane* plane = new PhysicsPlane("Plane_Physics", shaderByteCode, sizeShader);
+			string objName = "Physics Plane";
+			if (pPlaneCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(pPlaneCount));
+				objName.append(") ");
+			}
+
+			PhysicsPlane* plane = new PhysicsPlane(objName, shaderByteCode, sizeShader);
 			this->addObject(plane);
 
 			// add the Physics Component
-			string componentName = "Physics_Component";
-			PhysicsComponent* component = new PhysicsComponent(componentName, plane, BodyType::STATIC);
+			string componentName = "Physics_Component ";
+			PhysicsComponent* component = new PhysicsComponent(componentName.append(objName),
+				plane, BodyType::STATIC);
 			plane->attachComponent((AComponent*)component);
 			
-			
+			pPlaneCount++;
 		}
 		break;
 
