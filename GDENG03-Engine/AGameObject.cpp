@@ -247,3 +247,8 @@ float* AGameObject::getPhysicsLocalMatrix()
 
 	return allMatrix.getFloatArray();// allMatrix.getMatrix();
 }
+
+void AGameObject::setOverride(bool flag)
+{
+	this->overrideMatrix = flag;
+}

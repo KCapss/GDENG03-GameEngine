@@ -22,4 +22,5 @@ private:
 	String directory;
 	void readFromLevelFile();
 	void readFromUnityFile();
+	//int DetermineObjectType();
 };

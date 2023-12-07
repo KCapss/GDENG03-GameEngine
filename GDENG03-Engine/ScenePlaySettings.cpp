@@ -39,10 +39,17 @@ void ScenePlaySettings::drawUI()
 					aObject->detachComponent(components[i]);
 					BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(components[i]);
 
+					//copy Component Properties:
+
 					string componentName = "Physics_Component ";
 					aObject->attachComponent(new PhysicsComponent(componentName.append(aObject->RetrieveName()), aObject, BodyType::DYNAMIC));
 
-					
+					AGameObject::ComponentList list = aObject->getComponentsOfType(AComponent::ComponentType::Physics);
+					PhysicsComponent* pObject = (PhysicsComponent*)list[0];
+
+					pObject->getRigidBody()->setMass((components[i]->getRigidBody()->getMass()));
+					pObject->getRigidBody()->enableGravity((components[i]->getRigidBody()->isGravityEnabled()));
+
 					delete components[i];
 				}
 

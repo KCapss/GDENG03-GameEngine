@@ -1,10 +1,20 @@
-Physics Cube
-Type:|1|1|10|1|
-Position:|0|5|0|
+Plane
+Type:|2|0|0|1|
+Position:|0|0|0|
+Rotation:|0|0|0|
+Scale:|10|1|10|
+Cube
+Type:|0|0|0|1|
+Position:|-0.8|2.4|-4.1|
 Rotation:|0|0|0|
 Scale:|1|1|1|
-Physics Plane
-Type:|3|1|10|1|
-Position:|0|-2|0|
+Cube (1) 
+Type:|0|0|0|1|
+Position:|1.3|1.3|-2.1|
 Rotation:|0|0|0|
-Scale:|10|0.1|10|
+Scale:|1|1|1|
+Cube (2) 
+Type:|0|0|0|1|
+Position:|-0.6|1.9|-0.6|
+Rotation:|0|0|0|
+Scale:|1|1|1|

@@ -80,12 +80,12 @@ public:
 	ComponentList getComponentsOfTypeRecursive(AComponent::ComponentType type);
 
 
-
-
 	// openGL matrix to our matrix implementation
 	void recomputeMatrix(float matrix[16]);
 	// our matrix implementation to openGL matrix
 	float* getPhysicsLocalMatrix();
+
+	void setOverride(bool flag);
 
 
 	

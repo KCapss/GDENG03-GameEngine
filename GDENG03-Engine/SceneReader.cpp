@@ -3,6 +3,7 @@
 #include <fstream>
 #include "GameObjectManager.h"
 #include "AGameObject.h"
+#include "MathUtils.h"
 #include "StringUtils.h"
 
 SceneReader::SceneReader(String directory)
@@ -120,6 +121,7 @@ void SceneReader::readFromUnityFile()
 	String objectName;
 	AGameObject::PrimitiveType objectType = AGameObject::PrimitiveType::CUBE;
 	Vector3D position;
+	AGameObject::AQuaternion quaternion;
 	Vector3D rotation;
 	Vector3D scale;
 
@@ -137,6 +139,7 @@ void SceneReader::readFromUnityFile()
 
 	bool isSceneSpawnerPresent = false;
 	bool isValidGameObject = false; //determine if proper primitive or not
+	bool isRigidBodyPresent = false;
 
 
 	while (std::getline(sceneFile, readLine))
@@ -148,6 +151,13 @@ void SceneReader::readFromUnityFile()
 			//omitting scenespawner
 			isSceneSpawnerPresent = false;
 
+			//Generate new object prior loading another one
+			if (isValidGameObject)
+			{
+				GameObjectManager::getInstance()->createObjectFromFile(objectName, objectType, position, rotation, scale, mass, isGravityEnabled);
+				isValidGameObject = false;
+				isRigidBodyPresent = false;
+			}
 			
 			//This a specific component
 			while (std::getline(sceneFile, readLine))
@@ -194,7 +204,14 @@ void SceneReader::readFromUnityFile()
 				{
 					if (parts == "m_LocalRotation:")
 					{
-						rotation = Vector3D(0, 0, 0);
+						double x = std::stof(stringSplit[4]);
+						double y = std::stof(stringSplit[6]);
+						double z = std::stof(stringSplit[8]);
+						double w = std::stof(stringSplit[10]);
+
+						rotation = MathUtils::convertQuateriontoEuler(w, x, y, z);
+
+						//rotation = Vector3D(0, 0, 0);
 					}
 
 					if (parts == "m_LocalPosition:")
@@ -223,20 +240,63 @@ void SceneReader::readFromUnityFile()
 				if (isFinishedImportingTransform) break;
 			}
 
-			//Generate new object prior loading another one
-			if (isValidGameObject)
-			{
-				GameObjectManager::getInstance()->createObjectFromFile(objectName, objectType, position, rotation, scale, mass, isGravityEnabled);
-				isValidGameObject = false;
-			}
+			
 		}
 			
 
-		if (readLine == "RigidBody:")
+		if (readLine == "Rigidbody:")
+		{
+			while (std::getline(sceneFile, readLine))
+			{
+				bool isFinishedPhysics = false;
+				std::vector stringSplit = StringUtils::split(readLine, ' ');
+				for (string parts : stringSplit)
+				{
+					if (parts == "m_Mass:")
+					{
+						mass = stoi(stringSplit[3]);
+					}
+
+					if (parts == "m_UseGravity:")
+					{
+						int flag = std::stoi(stringSplit[3]);
+						if (flag == 1)
+							isGravityEnabled = true;
+
+						else isGravityEnabled = false;
+						
+
+					}
+
+					if (parts == "m_IsKinematic:")
+					{
+						int flag = std::stoi(stringSplit[3]);
+						if (flag == 1)
+							objectType = AGameObject::PHYSICS_PLANE;
+
+						else 
+							objectType = AGameObject::PHYSICS_CUBE;
+
+						isFinishedPhysics = true;
+						break;
+					}
+				}
+
+				if (isFinishedPhysics) break;
+			}
+		}
 			rigidBodyCount++;
 		//std::cout << readLine << std::endl;
 	}
 
+	//Generate new object prior loading another one
+	if (isValidGameObject)
+	{
+		GameObjectManager::getInstance()->createObjectFromFile(objectName, objectType, position,
+			rotation, scale, mass, isGravityEnabled);
+		isValidGameObject = false;
+		isRigidBodyPresent = false;
+	}
 	/*std::cout << "GOCount: " << gameObjectsCount << std::endl;
 	std::cout << "TCount: " << transformCount << std::endl;
 	std::cout << "RbCount: " << rigidBodyCount << std::endl;*/
