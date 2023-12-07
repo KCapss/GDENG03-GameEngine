@@ -116,8 +116,128 @@ void SceneReader::readFromUnityFile()
 	sceneFile.open(fileDir, std::ios::in);
 	String readLine;
 
+	//Object Properties
+	String objectName;
+	AGameObject::PrimitiveType objectType = AGameObject::PrimitiveType::CUBE;
+	Vector3D position;
+	Vector3D rotation;
+	Vector3D scale;
+
+	String hasRigidbody = "0";
+
+
+	float mass = 0;
+	bool isGravityEnabled = true;
+
+
+	//Debugging Counter
+	int gameObjectsCount = 0;
+	int transformCount = 0;
+	int rigidBodyCount = 0;
+
+	bool isSceneSpawnerPresent = false;
+	bool isValidGameObject = false; //determine if proper primitive or not
+
+
 	while (std::getline(sceneFile, readLine))
 	{
-		std::cout << readLine << std::endl;
+
+
+		if (readLine == "GameObject:")
+		{
+			//omitting scenespawner
+			isSceneSpawnerPresent = false;
+
+			
+			//This a specific component
+			while (std::getline(sceneFile, readLine))
+			{
+				bool foundName = false;
+				std::vector stringSplit = StringUtils::split(readLine, ' ');
+				for(string parts : stringSplit)
+				{
+					if (parts == "m_Name:")
+					{
+						foundName = true;
+						readLine = readLine.substr(parts.size() + 3, readLine.size());
+
+						if (readLine == "SceneSpawner")
+						{
+							isSceneSpawnerPresent = true;
+							break;
+						}
+							
+						else{
+							std::cout << "Name: " << readLine << std::endl;
+							isValidGameObject = true;
+							objectName = readLine;
+						}
+						break;
+					}
+				}
+				if (foundName) break;
+			}
+		}
+		
+
+		if (readLine == "Transform:" && !isSceneSpawnerPresent)
+		{
+			//after scale
+			
+			transformCount++;
+
+			while (std::getline(sceneFile, readLine))
+			{
+				bool isFinishedImportingTransform = false;
+				std::vector stringSplit = StringUtils::split(readLine, ' ');
+				for (string parts : stringSplit)
+				{
+					if (parts == "m_LocalRotation:")
+					{
+						rotation = Vector3D(0, 0, 0);
+					}
+
+					if (parts == "m_LocalPosition:")
+					{
+						float x = std::stof(stringSplit[4]);
+						float y = std::stof(stringSplit[6]);
+						float z = std::stof(stringSplit[8]);
+
+						position = Vector3D(x, y, z);
+						
+					}
+
+					if (parts == "m_LocalScale:")
+					{
+						float x = std::stof(stringSplit[4]);
+						float y = std::stof(stringSplit[6]);
+						float z = std::stof(stringSplit[8]);
+
+						scale = Vector3D(x, y, z);
+
+						isFinishedImportingTransform = true;
+						break;
+					}
+				}
+
+				if (isFinishedImportingTransform) break;
+			}
+
+			//Generate new object prior loading another one
+			if (isValidGameObject)
+			{
+				GameObjectManager::getInstance()->createObjectFromFile(objectName, objectType, position, rotation, scale, mass, isGravityEnabled);
+				isValidGameObject = false;
+			}
+		}
+			
+
+		if (readLine == "RigidBody:")
+			rigidBodyCount++;
+		//std::cout << readLine << std::endl;
 	}
+
+	/*std::cout << "GOCount: " << gameObjectsCount << std::endl;
+	std::cout << "TCount: " << transformCount << std::endl;
+	std::cout << "RbCount: " << rigidBodyCount << std::endl;*/
 }
