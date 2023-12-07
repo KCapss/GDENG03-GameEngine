@@ -274,9 +274,13 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		cube->setScale(scale);
 		cube->update(EngineTime::getDeltaTime());
 		// add the Physics Component
+
 		string componentName = "Physics_Component ";
 		PhysicsComponent* component = new PhysicsComponent(componentName.append(cube->RetrieveName()),
 			cube, BodyType::DYNAMIC);
+
+		component->getRigidBody()->setMass(mass);
+		component->getRigidBody()->enableGravity(isGravityEnabled);
 
 		cube->attachComponent((AComponent*)component);
 
@@ -296,10 +300,80 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		PhysicsComponent* component = new PhysicsComponent(componentName.append(plane->RetrieveName()),
 			plane, BodyType::STATIC);
 
+		component->getRigidBody()->setMass(mass);
+		component->getRigidBody()->enableGravity(isGravityEnabled);
+
 		plane->attachComponent((AComponent*)component);
 
 		plane->setOverride(false);
 		plane->updateLocalMatrix();
 		addObject(plane);
+	}
+}
+
+void GameObjectManager::batchInstantiate(void* shaderByteCode, size_t sizeShader)
+{
+
+	for(int i = 0; i < 5; i++)
+	{
+		string objName = "Physics Cube";
+		if (pCubeCount != 0)
+		{
+			objName.append(" (");
+			objName.append(std::to_string(pCubeCount));
+			objName.append(") ");
+		}
+
+		Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+		cube->setObjectType(AGameObject::PHYSICS_CUBE);
+		cube->setPosition(
+			MathUtils::randomFloat(-5.0f, 5.0f),
+			MathUtils::randomFloat(6.0f, 8.0f),
+			MathUtils::randomFloat(-5.0f, 5.0f)
+		);
+		cube->setRotation(
+			MathUtils::randomFloat(-3.0f, 3.0f),
+			MathUtils::randomFloat(-3.0f, 3.0f),
+			MathUtils::randomFloat(-3.0f, 3.0f)
+		);
+		this->addObject(cube);
+
+		// add the Physics Component
+		string componentName = "Physics_Component ";
+		PhysicsComponent* component = new PhysicsComponent(componentName.append(objName),
+			cube, BodyType::DYNAMIC);
+
+		switch(i)
+		{
+		case 0:
+			component->getRigidBody()->setMass(1.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 1:
+			component->getRigidBody()->setMass(1.0f);
+			component->getRigidBody()->enableGravity(false);
+			break;
+
+		case 2:
+			component->getRigidBody()->setMass(2.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 3:
+			component->getRigidBody()->setMass(4.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 4:
+			component->getRigidBody()->setMass(5.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+		}
+		cube->setOverride(false);
+		cube->updateLocalMatrix();
+		cube->attachComponent((AComponent*)component);
+
+		pCubeCount++;
 	}
 }

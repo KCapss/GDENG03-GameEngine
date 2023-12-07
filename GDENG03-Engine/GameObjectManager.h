@@ -54,6 +54,9 @@ public:
 	void createObjectFromFile(std::string objectName, AGameObject::PrimitiveType objectType, 
 		Vector3D position, Vector3D rotation, Vector3D scale, float mass, bool isGravityEnabled);
 
+	//For Test Case 4 only
+	void batchInstantiate(void* shaderByteCode, size_t sizeShader);
+
 
 private:
 	static GameObjectManager* sharedInstance;

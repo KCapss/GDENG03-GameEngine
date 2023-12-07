@@ -93,12 +93,21 @@ void Toolbar::drawUI()
 				size_t size_shader = 0;
 				GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
 				GameObjectManager::getInstance()->createObject(GameObjectManager::PHYSICS_PLANE, shader_byte_code, size_shader);
-				GraphicsEngine::get()->releaseCompiledShader();
+				
 			}
 			if (ImGui::BeginMenu("Create Light"))
 			{
 				if (ImGui::MenuItem("Point Light")) {}
 				ImGui::EndMenu();
+			}
+
+			if (ImGui::MenuItem("Batch P6 Cube"))
+			{
+				void* shader_byte_code = nullptr;
+				size_t size_shader = 0;
+				GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+				GameObjectManager::getInstance()->batchInstantiate(shader_byte_code, size_shader);
+				GraphicsEngine::get()->releaseCompiledShader();
 			}
 			
 			ImGui::EndMenu();
