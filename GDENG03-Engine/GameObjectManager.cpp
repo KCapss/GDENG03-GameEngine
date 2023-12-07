@@ -130,7 +130,12 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 				string componentName = "Physics_Component ";
 				PhysicsComponent* component = new PhysicsComponent( componentName.append(objName), 
 					cube, BodyType::DYNAMIC);
+
+				cube->setOverride(false);
+				cube->updateLocalMatrix();
 				cube->attachComponent((AComponent*)component);
+
+				
 
 				pCubeCount++;
 			}
@@ -174,7 +179,9 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 			PhysicsComponent* component = new PhysicsComponent(componentName.append(objName),
 				plane, BodyType::STATIC);
 			plane->attachComponent((AComponent*)component);
-			
+
+			plane->setOverride(false);
+			plane->updateLocalMatrix();
 			pPlaneCount++;
 		}
 		break;
