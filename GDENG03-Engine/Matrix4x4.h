@@ -192,6 +192,16 @@ public:
 		return out;
 	}
 
+	void debugPrint()
+	{
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				std::cout << this->m_mat[i][j] << " ";
+			}
+			std::cout << "\n";
+		}
+	}
+
 
 	~Matrix4x4()
 	{

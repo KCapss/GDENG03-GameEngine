@@ -60,6 +60,7 @@ public:
 
 	virtual void IncrementRot(float offset);
 	void updateLocalMatrix();
+	Matrix4x4 computeLocalMatrix();
 
 	string RetrieveName();
 	string RetrieveObjTypeName();
@@ -84,6 +85,7 @@ public:
 	void recomputeMatrix(float matrix[16]);
 	// our matrix implementation to openGL matrix
 	float* getPhysicsLocalMatrix();
+	float* getNoTranslationPhysicsMatrix();
 
 	void setOverride(bool flag);
 

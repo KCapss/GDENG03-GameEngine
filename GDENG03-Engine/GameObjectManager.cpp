@@ -253,6 +253,7 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		cube->setPosition(position);
 		cube->setRotation(rotation);
 		cube->setScale(scale);
+		cube->updateLocalMatrix();
 		addObject(cube);
 	}
 
@@ -261,6 +262,7 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		plane->setPosition(position);
 		plane->setRotation(rotation);
 		plane->setScale(scale);
+		plane->updateLocalMatrix();
 		addObject(plane);
 	}
 
@@ -270,13 +272,16 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		cube->setPosition(position);
 		cube->setRotation(rotation);
 		cube->setScale(scale);
-
+		cube->update(EngineTime::getDeltaTime());
 		// add the Physics Component
 		string componentName = "Physics_Component ";
 		PhysicsComponent* component = new PhysicsComponent(componentName.append(cube->RetrieveName()),
 			cube, BodyType::DYNAMIC);
 
 		cube->attachComponent((AComponent*)component);
+
+		cube->setOverride(false);
+		cube->updateLocalMatrix();
 		addObject(cube);
 	}
 
@@ -285,6 +290,7 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 		plane->setPosition(position);
 		plane->setRotation(rotation);
 		plane->setScale(scale);
+		//plane->update(EngineTime::getDeltaTime());
 
 		string componentName = "Physics_Component ";
 		PhysicsComponent* component = new PhysicsComponent(componentName.append(plane->RetrieveName()),
@@ -292,6 +298,8 @@ void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject
 
 		plane->attachComponent((AComponent*)component);
 
+		plane->setOverride(false);
+		plane->updateLocalMatrix();
 		addObject(plane);
 	}
 }

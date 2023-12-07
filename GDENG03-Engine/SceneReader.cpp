@@ -181,6 +181,20 @@ void SceneReader::readFromUnityFile()
 							std::cout << "Name: " << readLine << std::endl;
 							isValidGameObject = true;
 							objectName = readLine;
+
+							//TODO: Do Some Filtering
+							readLine = readLine.substr(0, 6);
+
+							if(readLine == "Plane ")
+								objectType = AGameObject::PLANE;
+
+							readLine = readLine.substr(0, 5);
+
+							if (readLine == "Cube ")
+								objectType = AGameObject::CUBE;
+
+
+							
 						}
 						break;
 					}
@@ -294,6 +308,7 @@ void SceneReader::readFromUnityFile()
 	{
 		GameObjectManager::getInstance()->createObjectFromFile(objectName, objectType, position,
 			rotation, scale, mass, isGravityEnabled);
+
 		isValidGameObject = false;
 		isRigidBodyPresent = false;
 	}

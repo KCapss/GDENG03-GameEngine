@@ -195,6 +195,11 @@ void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* 
 
 	if(this->overrideMatrix)
 	{
+		//Debugging Check
+		/*cout << "Original Matrix" << endl;
+		computeLocalMatrix().debugPrint();
+		cout << "p6 Matrix" << endl;
+		localMatrix.debugPrint();*/
 		cc.m_world = localMatrix;
 	}
 
