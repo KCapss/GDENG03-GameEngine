@@ -73,6 +73,9 @@
     <Filter Include="GameEngine\Backend\SceneSaving">
       <UniqueIdentifier>{15e9d257-5082-4ed4-9c04-494297856da5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Backend\UndoRedo">
+      <UniqueIdentifier>{2d4b8603-f4c1-45c7-a55c-5d62534df301}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -198,13 +201,27 @@
     <ClCompile Include="PhysicsPlane.cpp">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClCompile>
-    <ClCompile Include="EngineBackend.cpp" />
-    <ClCompile Include="ScenePlaySettings.cpp" />
-    <ClCompile Include="ActionMomento.cpp" />
-    <ClCompile Include="ActionHistory.cpp" />
-    <ClCompile Include="EditorAction.cpp" />
-    <ClCompile Include="SceneReader.cpp" />
-    <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="EngineBackend.cpp">
+      <Filter>GameEngine\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneReader.cpp">
+      <Filter>GameEngine\Backend\SceneSaving</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneWriter.cpp">
+      <Filter>GameEngine\Backend\SceneSaving</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionHistory.cpp">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionMomento.cpp">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePlaySettings.cpp">
+      <Filter>GameEngine\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorAction.cpp">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -342,16 +359,30 @@
     <ClInclude Include="PhysicsPlane.h">
       <Filter>GameEngine\Primitives\PhysicsPrimitive</Filter>
     </ClInclude>
-    <ClInclude Include="EngineBackend.h" />
-    <ClInclude Include="ScenePlaySettings.h" />
-    <ClInclude Include="ActionMomento.h" />
-    <ClInclude Include="ActionHistory.h" />
-    <ClInclude Include="EditorAction.h" />
     <ClInclude Include="imgui\imfilebrowser.h" />
-    <ClInclude Include="SceneReader.h" />
-    <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="StringUtils.h">
       <Filter>GameEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineBackend.h">
+      <Filter>GameEngine\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneReader.h">
+      <Filter>GameEngine\Backend\SceneSaving</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneWriter.h">
+      <Filter>GameEngine\Backend\SceneSaving</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionHistory.h">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionMomento.h">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePlaySettings.h">
+      <Filter>GameEngine\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorAction.h">
+      <Filter>GameEngine\Backend\UndoRedo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,13 @@ class SceneReader
 public:
 	typedef std::string String;
 	typedef std::fstream FileReader;
+
+	enum FileType
+	{
+		Levels,
+		Unity
+	};
+
 	SceneReader(String directory);
 	~SceneReader();
 
@@ -13,4 +20,6 @@ public:
 
 private:
 	String directory;
+	void readFromLevelFile();
+	void readFromUnityFile();
 };

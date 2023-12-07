@@ -14,7 +14,7 @@ Toolbar::Toolbar(const string name) : AUIScreen(name)
 
 	openFileDialog = new ImGui::FileBrowser();
 	openFileDialog->SetTitle("Open Scene");
-	openFileDialog->SetTypeFilters({ ".level" });
+	openFileDialog->SetTypeFilters({ ".level", ".unity" });
 }
 
 Toolbar::~Toolbar()

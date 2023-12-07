@@ -16,6 +16,23 @@ SceneReader::~SceneReader()
 
 void SceneReader::readFromFile()
 {
+	String levelfileDir = this->directory + ".level";
+	String unityfileDir = this->directory + ".unity";
+
+	if (this->directory.find(".level") != String::npos) {
+		readFromLevelFile();
+	}
+
+	else if (this->directory.find(".unity") != String::npos) {
+		readFromUnityFile();
+	}
+
+
+	
+}
+
+void SceneReader::readFromLevelFile()
+{
 	String fileDir = this->directory + ".level";
 	if (this->directory.find(".level") != String::npos) {
 		fileDir = this->directory;
@@ -53,7 +70,7 @@ void SceneReader::readFromFile()
 
 			isGravityEnabled = std::stof(stringSplit[4]);
 
-			if (objectType == AGameObject::PrimitiveType::CUBE && hasRigidbody == "1") 
+			if (objectType == AGameObject::PrimitiveType::CUBE && hasRigidbody == "1")
 				objectType = AGameObject::PrimitiveType::PHYSICS_CUBE;
 
 			if (objectType == AGameObject::PrimitiveType::PLANE && hasRigidbody == "1")
@@ -86,4 +103,21 @@ void SceneReader::readFromFile()
 		}
 	}
 	sceneFile.close();
+}
+
+void SceneReader::readFromUnityFile()
+{
+	String fileDir = this->directory + ".unity";
+	if (this->directory.find(".unity") != String::npos) {
+		fileDir = this->directory;
+	}
+
+	FileReader sceneFile;
+	sceneFile.open(fileDir, std::ios::in);
+	String readLine;
+
+	while (std::getline(sceneFile, readLine))
+	{
+		std::cout << readLine << std::endl;
+	}
 }
