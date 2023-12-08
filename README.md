@@ -43,6 +43,7 @@ Note Setup:
 ### For Scene Editor UtoL Parser Setup
 Requirements:
 - SceneEditor (Custom)
+- Configuration: x64 Debug
 - Libraries: 
   - lib file = reactPhysics3D
   - include file = imgui, imfileBrowser, reactPhysics3D
