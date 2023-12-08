@@ -31,7 +31,7 @@ Rendering System Reference: Commit History for TestCase **(TC)**
 6) TC6 -  [[b15fbbd](https://github.com/KCapss/GameEngine/commit/b15fbbd73b533be607e05b927b476b6612ce31f8)]
 
 ## Final Exam Instruction
-
+### By Capalar, K.C.
 ### For Unity LtoU Parser Setup
 Requirements:
 - Unity Engine
@@ -49,5 +49,5 @@ Requirements:
 - Entry Class
   - **Main.cpp** -> **AppWindow.cpp**
 
-**Commit**
+**Commit History**
 1) Final Exam -  [[6cd67e7](https://github.com/KCapss/GameEngine/commit/6cd67e7c1b45cb16b239428f22c077382c2e428d)]
