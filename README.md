@@ -1,7 +1,7 @@
 # GameEngine
 Container for the Project in GDENG03
 
-Commit History Reference:
+## Commit History Reference:
 1) H01 Window - [[4f159d3](https://github.com/KCapss/GameEngine/tree/4f159d3e2301ef4e9999a53e3b4759dbcfe329c0)]
 2) HO2 Triangle [[987475e](https://github.com/KCapss/GameEngine/commit/987475ef468b11af6c1c09514d238bb833e76a17)]
 3) HO3 Quads -  [[987475e](https://github.com/KCapss/GameEngine/tree/987475ef468b11af6c1c09514d238bb833e76a17)]
@@ -15,7 +15,7 @@ Commit History Reference:
 10) HO9 UI and GameObject Manager [[16432f6](https://github.com/KCapss/GameEngine/commit/16432f606033ba86063d0df31e869d61063cfa60)]
 
 
-Rendering System Instruction:
+## Rendering System Instruction:
 - To run the program kindly clone/download the zip the file,
 - Open the solution folder
 - Run the through debug mode
@@ -30,5 +30,24 @@ Rendering System Reference: Commit History for TestCase **(TC)**
 5) TC5 -  [[e55da7e](https://github.com/KCapss/GameEngine/commit/e55da7e2b870330f4e8b344ae2c6dfbf9edb718c)]
 6) TC6 -  [[b15fbbd](https://github.com/KCapss/GameEngine/commit/b15fbbd73b533be607e05b927b476b6612ce31f8)]
 
-Engine Features Replication:
+## Final Exam Instruction
 
+### For Unity LtoU Parser Setup
+Requirements:
+- Unity Engine
+Note Setup:
+  - Remove All the non primitive in the hierarchy (including Lights, Camera)
+  - Create an empty gameobject and explicitly named it **"SceneSpawner"** and attach all the scripts included in the scene folder except _"**CustomSceneParser.cs**"_.
+  - Location of the .level that need to be loaded is started on the (projectdir)Assets/"Name".level
+
+### For Scene Editor UtoL Parser Setup
+Requirements:
+- SceneEditor (Custom)
+- Libraries: 
+  - lib file = reactPhysics3D
+  - include file = imgui, imfileBrowser, reactPhysics3D
+- Entry Class
+  - **Main.cpp** -> **AppWindow.cpp**
+
+**Commit**
+1) Final Exam -  [[6cd67e7](https://github.com/KCapss/GameEngine/commit/6cd67e7c1b45cb16b239428f22c077382c2e428d)]
