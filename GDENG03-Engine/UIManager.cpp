@@ -3,6 +3,7 @@
 #include "EngineProfiler.h"
 #include "InspectorWindow.h"
 #include "SceneOutliner.h"
+#include "ScenePlaySettings.h"
 
 UIManager* UIManager::sharedInstance = nullptr;
 
@@ -76,4 +77,7 @@ void UIManager::OnCreateInterface()
 
 	EngineProfiler* engineProfiler = new EngineProfiler("New");
 	uiList.push_back(engineProfiler);
+
+	ScenePlaySettings* scenePlaySettings = new ScenePlaySettings("New");
+	uiList.push_back(scenePlaySettings);
 }

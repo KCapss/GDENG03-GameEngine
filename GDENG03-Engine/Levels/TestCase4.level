@@ -1,0 +1,30 @@
+Physics Plane
+Type:|3|1|10|1|
+Position:|0|-2|0|
+Rotation:|0|0|0|
+Scale:|20|0.1|20|
+Physics Cube
+Type:|1|1|1|1|
+Position:|-3.06696|7.12717|-4.98749|
+Rotation:|-0.120762|0.510056|1.85244|
+Scale:|1|1|1|
+Physics Cube (1) 
+Type:|1|1|1|0|
+Position:|3.2284|7.79192|-1.49709|
+Rotation:|2.15366|-1.95535|1.47963|
+Scale:|1|1|1|
+Physics Cube (2) 
+Type:|1|1|2|1|
+Position:|-1.96005|7.02707|2.10501|
+Rotation:|-0.813288|-2.45158|-2.91009|
+Scale:|1|1|1|
+Physics Cube (3) 
+Type:|1|1|4|1|
+Position:|4.88525|6.3318|-3.52687|
+Rotation:|-2.97198|-2.2855|-0.325846|
+Scale:|1|1|1|
+Physics Cube (4) 
+Type:|1|1|5|1|
+Position:|0.316629|6.75576|-4.91089|
+Rotation:|0.642994|0.610584|0.427106|
+Scale:|1|1|1|

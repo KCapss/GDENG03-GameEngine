@@ -93,50 +93,96 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 	{
 		case PrimitiveType::CUBE:
 		{
-			Cube* cube = new Cube("Cube", shaderByteCode, sizeShader);
+			string objName = "Cube";
+			if (cubeCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(cubeCount));
+				objName.append(") ");
+			}
+
+			Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+			cube->setObjectType(AGameObject::CUBE);
 			addObject((AGameObject*)cube);
+
+			cubeCount++;
 		}
 		break;
 
 		case PrimitiveType::PHYSICS_CUBE:
 		{
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 1; i++)
 			{
-				Cube* cube = new Cube("Cube_Physics", shaderByteCode, sizeShader);
-				cube->setPosition(MathUtils::randomFloat(-0.8f, 0.8f) ,
-					2.0f, 
-					MathUtils::randomFloat(-0.8f, 0.8f));
-				cube->setRotation(0, MathUtils::randomInt(0, 180), 0);
-				cube->setScale(1.0f, 1.0f, 1.0f);
+				string objName = "Physics Cube";
+				if (pCubeCount != 0)
+				{
+					objName.append(" (");
+					objName.append(std::to_string(pCubeCount));
+					objName.append(") ");
+				}
+
+				Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+				cube->setObjectType(AGameObject::PHYSICS_CUBE);
+				cube->setPosition(0, 5.0f, 0);
 				this->addObject(cube);
 
 				// add the Physics Component
-				string componentName = "Physics_Component" + cube->RetrieveName();
-				PhysicsComponent* component = new PhysicsComponent(componentName, cube, BodyType::DYNAMIC);
+				string componentName = "Physics_Component ";
+				PhysicsComponent* component = new PhysicsComponent( componentName.append(objName), 
+					cube, BodyType::DYNAMIC);
+
+				cube->setOverride(false);
+				cube->updateLocalMatrix();
+				cube->attachComponent((AComponent*)component);
+
 				
-				//component->getRigidBody()->setAngularDamping(10.0f);
-				component->getRigidBody()->setLinearDamping(0.60f);
+
+				pCubeCount++;
 			}
 		}
 		break;
 
 		case PrimitiveType::PLANE:
 		{
-			Quads* quads = new Quads("Plane", shaderByteCode, sizeShader);
+			string objName = "Plane";
+			if (planeCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(planeCount));
+				objName.append(") ");
+			}
+
+			Quads* quads = new Quads(objName, shaderByteCode, sizeShader);
+			quads->setObjectType(AGameObject::PLANE);
 			addObject((AGameObject*)quads);
+
+			planeCount++;
 		}
 		break;
 
 		case PrimitiveType::PHYSICS_PLANE:
 		{
-			PhysicsPlane* plane = new PhysicsPlane("Plane_Physics", shaderByteCode, sizeShader);
+			string objName = "Physics Plane";
+			if (pPlaneCount != 0)
+			{
+				objName.append(" (");
+				objName.append(std::to_string(pPlaneCount));
+				objName.append(") ");
+			}
+
+			PhysicsPlane* plane = new PhysicsPlane(objName, shaderByteCode, sizeShader);
+			plane->setObjectType(AGameObject::PHYSICS_PLANE);
 			this->addObject(plane);
 
 			// add the Physics Component
-			string componentName = "Physics_Component" + plane->RetrieveName();
-			PhysicsComponent* component = new PhysicsComponent(componentName, plane, BodyType::STATIC);
-			
-			
+			string componentName = "Physics_Component ";
+			PhysicsComponent* component = new PhysicsComponent(componentName.append(objName),
+				plane, BodyType::STATIC);
+			plane->attachComponent((AComponent*)component);
+
+			plane->setOverride(false);
+			plane->updateLocalMatrix();
+			pPlaneCount++;
 		}
 		break;
 
@@ -152,15 +198,7 @@ void GameObjectManager::createObject(PrimitiveType type, void* shaderByteCode, s
 
 void GameObjectManager::deleteObject(AGameObject* gameObject)
 {
-	/*for (auto it = aList.begin(); it != aList.end();)
-	{
-		if (it->first % 2 != 0)
-			it = c.erase(it);
-		else
-			++it;
-	}*/
 
-	
 
 	//First Method
 	for(int i = 0; i < aList.size(); i++)
@@ -175,17 +213,26 @@ void GameObjectManager::deleteObject(AGameObject* gameObject)
 		}
 	}
 
-	
+}
 
-	
-	//for (AGameObject* aObject : aList)
-	//{
-	//	if (aObject == gameObject)
-	//	{
-	//		//Potential Issue for the way how it destroye
-	//		aList.erase(aObject);
-	//	}
-	//}
+void GameObjectManager::deleteAllObjects()
+{
+	for (int i = 0; i < aList.size(); i++)
+	{
+		AGameObject::ComponentList aComponentList = aList[i]->getComponentsOfType(AComponent::ComponentType::Physics);
+
+		if (aComponentList.size() == 1) {
+			PhysicsComponent* pComponent = (PhysicsComponent*)aComponentList[0];
+			BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(pComponent);
+			delete pComponent;
+
+		}
+		delete aList[i];
+	}
+
+	selectedObject = nullptr;
+	aList.clear();
+	aTable.clear();
 }
 
 void GameObjectManager::setSelectedObject(AGameObject* gameObject)
@@ -204,4 +251,144 @@ void GameObjectManager::setSelectedObject(AGameObject* gameObject)
 AGameObject* GameObjectManager::getSelectedObject()
 {
 	return selectedObject;
+}
+
+void GameObjectManager::createObjectFromFile(std::string objectName, AGameObject::PrimitiveType objectType,
+	Vector3D position, Vector3D rotation, Vector3D scale, float mass, bool isGravityEnabled)
+{
+
+	//Overriding from normal create objects
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+
+	if (objectType == AGameObject::PrimitiveType::CUBE) {
+
+		Cube* cube = new Cube(objectName, shader_byte_code, size_shader);
+		cube->setPosition(position);
+		cube->setRotation(rotation);
+		cube->setScale(scale);
+		cube->updateLocalMatrix();
+		addObject(cube);
+	}
+
+	else if (objectType == AGameObject::PrimitiveType::PLANE) {
+		Quads* plane = new Quads(objectName, shader_byte_code, size_shader);
+		plane->setPosition(position);
+		plane->setRotation(rotation);
+		plane->setScale(scale);
+		plane->updateLocalMatrix();
+		addObject(plane);
+	}
+
+	
+	else if (objectType == AGameObject::PrimitiveType::PHYSICS_CUBE) {
+		Cube* cube = new Cube(objectName, shader_byte_code, size_shader);
+		cube->setPosition(position);
+		cube->setRotation(rotation);
+		cube->setScale(scale);
+		cube->update(EngineTime::getDeltaTime());
+		// add the Physics Component
+
+		string componentName = "Physics_Component ";
+		PhysicsComponent* component = new PhysicsComponent(componentName.append(cube->RetrieveName()),
+			cube, BodyType::DYNAMIC);
+
+		component->getRigidBody()->setMass(mass);
+		component->getRigidBody()->enableGravity(isGravityEnabled);
+
+		cube->attachComponent((AComponent*)component);
+
+		cube->setOverride(false);
+		cube->updateLocalMatrix();
+		addObject(cube);
+	}
+
+	else if (objectType == AGameObject::PrimitiveType::PHYSICS_PLANE) {
+		PhysicsPlane* plane = new PhysicsPlane(objectName, shader_byte_code, size_shader);
+		plane->setPosition(position);
+		plane->setRotation(rotation);
+		plane->setScale(scale);
+		//plane->update(EngineTime::getDeltaTime());
+
+		string componentName = "Physics_Component ";
+		PhysicsComponent* component = new PhysicsComponent(componentName.append(plane->RetrieveName()),
+			plane, BodyType::STATIC);
+
+		component->getRigidBody()->setMass(mass);
+		component->getRigidBody()->enableGravity(isGravityEnabled);
+
+		plane->attachComponent((AComponent*)component);
+
+		plane->setOverride(false);
+		plane->updateLocalMatrix();
+		addObject(plane);
+	}
+}
+
+void GameObjectManager::batchInstantiate(void* shaderByteCode, size_t sizeShader)
+{
+
+	for(int i = 0; i < 5; i++)
+	{
+		string objName = "Physics Cube";
+		if (pCubeCount != 0)
+		{
+			objName.append(" (");
+			objName.append(std::to_string(pCubeCount));
+			objName.append(") ");
+		}
+		float offset = (float)i;
+;		Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+		cube->setObjectType(AGameObject::PHYSICS_CUBE);
+		cube->setPosition(
+			( -5.0f + (offset * 2.0f)),
+			MathUtils::randomFloat(6.0f, 8.0f),
+			0
+		);
+		cube->setRotation(
+			MathUtils::randomFloat(-3.0f, 3.0f),
+			MathUtils::randomFloat(-3.0f, 3.0f),
+			MathUtils::randomFloat(-3.0f, 3.0f)
+		);
+		this->addObject(cube);
+
+		// add the Physics Component
+		string componentName = "Physics_Component ";
+		PhysicsComponent* component = new PhysicsComponent(componentName.append(objName),
+			cube, BodyType::DYNAMIC);
+
+		switch(i)
+		{
+		case 0:
+			component->getRigidBody()->setMass(1.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 1:
+			component->getRigidBody()->setMass(1.0f);
+			component->getRigidBody()->enableGravity(false);
+			break;
+
+		case 2:
+			component->getRigidBody()->setMass(2.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 3:
+			component->getRigidBody()->setMass(4.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+
+		case 4:
+			component->getRigidBody()->setMass(5.0f);
+			component->getRigidBody()->enableGravity(true);
+			break;
+		}
+		cube->setOverride(false);
+		cube->updateLocalMatrix();
+		cube->attachComponent((AComponent*)component);
+
+		pCubeCount++;
+	}
 }

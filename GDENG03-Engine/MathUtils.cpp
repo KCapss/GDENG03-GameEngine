@@ -30,3 +30,26 @@ float* MathUtils::convertInto1D(Matrix4x4 mat)
 
     return copy;
 }
+
+Vector3D MathUtils::convertQuateriontoEuler(double w, double x, double y, double z)
+{
+   
+    Vector3D rotation;
+
+    // roll (x-axis rotation)
+    double sinr_cosp = 2.0f * (w * x + y * z);
+    double cosr_cosp = 1.0f - 2.0f * (x * x + y * y);
+	rotation.m_x = std::atan2(sinr_cosp, cosr_cosp);
+
+    // pitch (y-axis rotation)
+    double sinp = std::sqrt(1 + 2 * (w * y - x * z));
+    double cosp = std::sqrt(1 - 2 * (w * y - x * z));
+    rotation.m_y = 2.0f * std::atan2(sinp, cosp) - 3.14159f / 2.0f;
+
+    // yaw (z-axis rotation)
+    double siny_cosp = 2.0f * (w * z + x * y);
+    double cosy_cosp = 1.0f - 2.0f * (y * y + z * z);
+    rotation.m_z = std::atan2(siny_cosp, cosy_cosp);
+
+    return rotation;
+}

@@ -112,87 +112,104 @@ Cube::~Cube()
 
 void Cube::update(float deltaTime)
 {
-	Matrix4x4 temp;
-	
-	ticks += (deltaTime) * this->speed * 100.0f;
-	float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
+	this->deltaTime = deltaTime;
 
-	cc.m_time = (m_rot_x)*this->speed * 100.0f;
+	//Matrix4x4 temp;
+	//
+	//ticks += (deltaTime) * this->speed * 100.0f;
+	//float delta = ((sin((ticks / 500.0f)) + 1.0f) / 2.0f) + 0.01f;
+	//cc.m_time = (m_rot_x)*this->speed * 100.0f;
 
-	//Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
-	//Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
+	////Vector3D currentScale = Vector3D().lerp(scale1, scale2, delta);
+	////Vector3D currentTranslate = Vector3D().lerp(translate1, translate2, delta);
 
-	
-	cc.m_world.setIdentity();
-	temp.setIdentity();
-	temp.setScale(this->getLocalScale());
-	cc.m_world *= temp;
-
-
-	//Animation Scale
-	/*Matrix4x4 Scaling;
-	Scaling.setIdentity();
-
-	temp.setIdentity();
-	temp.setScale(currentScale);
-	Scaling *= temp;
-
-	cc.m_world *= Scaling;*/
-
-
-
-	//Initial Rotation
-	Matrix4x4 Rot;
-	Rot.setIdentity();
-
-	temp.setIdentity();
-	temp.setRotationX(this->getLocalRotation().m_x);
-	Rot *= temp;
-	
-	temp.setIdentity();
-	temp.setRotationY(this->getLocalRotation().m_y);
-	Rot *= temp;
-
-	temp.setIdentity();
-	temp.setRotationZ(this->getLocalRotation().m_z);
-	Rot *= temp;
-	cc.m_world *= Rot;
-
-
-	////Animation Rotation
+	//
+	//cc.m_world.setIdentity();
 	//temp.setIdentity();
-	//temp.setRotationZ(m_rot_z * speed);
+	//temp.setScale(this->getLocalScale());
 	//cc.m_world *= temp;
 
-	//temp.setIdentity();
-	//temp.setRotationY(m_rot_y * speed);
-	//cc.m_world *= temp;
+
+	////Animation Scale
+	///*Matrix4x4 Scaling;
+	//Scaling.setIdentity();
 
 	//temp.setIdentity();
-	//temp.setRotationX(m_rot_x * speed);
+	//temp.setScale(currentScale);
+	//Scaling *= temp;
+
+	//cc.m_world *= Scaling;*/
+
+
+
+	////Initial Rotation
+	//Matrix4x4 Rot;
+	//Rot.setIdentity();
+
+	//temp.setIdentity();
+	//temp.setRotationX(this->getLocalRotation().m_x);
+	//Rot *= temp;
+	//
+	//temp.setIdentity();
+	//temp.setRotationY(this->getLocalRotation().m_y);
+	//Rot *= temp;
+
+	//temp.setIdentity();
+	//temp.setRotationZ(this->getLocalRotation().m_z);
+	//Rot *= temp;
+	//cc.m_world *= Rot;
+
+
+	//////Animation Rotation
+	////temp.setIdentity();
+	////temp.setRotationZ(m_rot_z * speed);
+	////cc.m_world *= temp;
+
+	////temp.setIdentity();
+	////temp.setRotationY(m_rot_y * speed);
+	////cc.m_world *= temp;
+
+	////temp.setIdentity();
+	////temp.setRotationX(m_rot_x * speed);
+	////cc.m_world *= temp;
+
+	//temp.setIdentity();
+	//temp.setTranslation(this->getLocalPosition());
 	//cc.m_world *= temp;
 
-	temp.setIdentity();
-	temp.setTranslation(this->getLocalPosition());
-	cc.m_world *= temp;
+	////Translation animation
+	///*Matrix4x4 Translate;
+	//Translate.setIdentity();
 
-	//Translation animation
-	/*Matrix4x4 Translate;
-	Translate.setIdentity();
+	//temp.setIdentity();
+	//temp.setTranslation(currentTranslate);
+	//Translate *= temp;
+	//cc.m_world *= Translate;*/
 
-	temp.setIdentity();
-	temp.setTranslation(currentTranslate);
-	Translate *= temp;
-	cc.m_world *= Translate;*/
-
-	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
+	//cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 
 }
 
 void Cube::draw(int width, int height, VertexShader* vertexShader, PixelShader* pixelShader)
 {
 
+	if(this->overrideMatrix)
+	{
+		//Debugging Check
+		/*cout << "Original Matrix" << endl;
+		computeLocalMatrix().debugPrint();
+		cout << "p6 Matrix" << endl;
+		localMatrix.debugPrint();*/
+		cc.m_world = localMatrix;
+	}
 
+	else
+	{
+		this->updateLocalMatrix();
+		cc.m_world = localMatrix;
+	}
+
+	cc.m_view = SceneCameraHandler::getInstance()->getSceneCameraViewMatrix();
 	cc.m_proj.setPerspectiveFovLH(1.57f, ((float)height / (float)width), 0.1f, 100.0f);
 	/*cc.m_proj.setOrthoLH
 	(

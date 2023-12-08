@@ -17,6 +17,7 @@
 
 //Helper
 #include "BaseComponentSystem.h"
+#include "EngineBackend.h"
 #include "GameObjectManager.h"
 #include "MathUtils.h"
 #include "PhysicsSystem.h"
@@ -79,12 +80,12 @@ void AppWindow::onCreate()
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	//Initialize the Base System
-	BaseComponentSystem::getInstance()->initialize();
-
-
-	SceneCameraHandler::initialize();
-	UIManager::initialize(m_hwnd);
 	GameObjectManager::initialize();
+	BaseComponentSystem::getInstance()->initialize();
+	SceneCameraHandler::initialize();
+	EngineBackend::initialize();
+	UIManager::initialize(m_hwnd);
+	
 
 }
 
@@ -92,9 +93,8 @@ void AppWindow::onUpdate()
 {
 	m_delta_time = EngineTime::getDeltaTime(); // Engine Time Conversion
 	Window::onUpdate();
-	InputSystem::getInstance()->update();
 
-	
+	InputSystem::getInstance()->update();
 
 
 	//CLEAR THE RENDER TARGET 
@@ -106,14 +106,30 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 	//Update All Components;
-	BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
-
 	SceneCameraHandler::getInstance()->update();
-	GameObjectManager::getInstance()->updateAll();
+	EngineBackend* backend = EngineBackend::getInstance();
+	switch (backend->getMode())
+	{
+	case EngineBackend::EditorMode::EDITOR:
+		GameObjectManager::getInstance()->updateAll();
+		break;
+
+	case EngineBackend::EditorMode::PLAY:
+		BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
+		GameObjectManager::getInstance()->updateAll();
+		break;
+
+	case EngineBackend::EditorMode::PAUSED:
+		if (backend->insideFrameStep()) {
+			backend->startFrameStep();
+			BaseComponentSystem::getInstance()->getPhysicsSystem()->updateAllComponents();
+			GameObjectManager::getInstance()->updateAll();
+			backend->endFrameStep();
+		}
+		break;
+	}
+
 	GameObjectManager::getInstance()->renderAll(rc.right - rc.left, rc.bottom - rc.top, m_vs, m_ps);
-
-	
-
 	UIManager::getInstance()->drawAllUI();
 
 	m_swap_chain->present(true);
@@ -129,6 +145,8 @@ void AppWindow::onDestroy()
 	m_swap_chain->release();
 	m_vs->release();
 	m_ps->release();
+
+	EngineBackend::destroy();
 
 	ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
