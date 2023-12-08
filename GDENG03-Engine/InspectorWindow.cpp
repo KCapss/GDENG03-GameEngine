@@ -5,7 +5,9 @@
 #include "GameObjectManager.h"
 
 //Component System
+#include "BaseComponentSystem.h"
 #include "PhysicsComponent.h"
+#include "PhysicsSystem.h"
 
 InspectorWindow::InspectorWindow(const String name) : AUIScreen(name)
 {
@@ -82,13 +84,32 @@ void InspectorWindow::UpdateTransformGameObject(AGameObject* aObject)
 		aObject->getLocalScale().m_z
 	};
 
-	ImGui::DragFloat3("Position", t, 0.1f);
-	ImGui::DragFloat3("Rotation", r, 0.01f);
-	ImGui::DragFloat3("Scale", s, 0.1f);
+	if(ImGui::DragFloat3("Position", t, 0.1f))
+	{
+		aObject->setPosition(t[0], t[1], t[2]);
+		aObject->setRotation(r[0], r[1], r[2]);
+		aObject->setScale(s[0], s[1], s[2]);
 
-	aObject->setPosition(t[0], t[1], t[2]);
-	aObject->setRotation(r[0], r[1], r[2]);
-	aObject->setScale(s[0], s[1], s[2]);
+		UpdateRigidBody(aObject);
+	};
+	if(ImGui::DragFloat3("Rotation", r, 0.01f))
+	{
+		aObject->setPosition(t[0], t[1], t[2]);
+		aObject->setRotation(r[0], r[1], r[2]);
+		aObject->setScale(s[0], s[1], s[2]);
+
+		UpdateRigidBody(aObject);
+	};
+
+	if (ImGui::DragFloat3("Scale", s, 0.1f))
+	{
+		aObject->setPosition(t[0], t[1], t[2]);
+		aObject->setRotation(r[0], r[1], r[2]);
+		aObject->setScale(s[0], s[1], s[2]);
+		UpdateRigidBody(aObject);
+	};
+
+	
 }
 
 void InspectorWindow::DisplayRigidBody(AGameObject* aObject)
@@ -133,7 +154,9 @@ void InspectorWindow::DisplayRigidBody(AGameObject* aObject)
 		ImGui::Text("Rigid Body:");
 		if (ImGui::Button("Detach"))
 		{
+			BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(pComponent);
 			aObject->detachComponent(pComponent);
+			delete pComponent;
 			return;
 		}
 		ImGui::Checkbox("Is Enabled", &isPEnabled);
@@ -149,8 +172,12 @@ void InspectorWindow::DisplayRigidBody(AGameObject* aObject)
 		if (ImGui::Button("Apply Force"))
 		{
 			//Do Something
+			Vector3 finalForce;
 
-			rigidBody->applyLocalForceAtCenterOfMass(*pComponent->forceVector);
+			finalForce.x=  (pComponent->forceVector->x / mass);
+			finalForce.y = (pComponent->forceVector->y / mass);
+			finalForce.z = (pComponent->forceVector->z / mass);
+			rigidBody->setLinearVelocity(finalForce);
 		}
 
 
@@ -164,5 +191,31 @@ void InspectorWindow::DisplayRigidBody(AGameObject* aObject)
 		rigidBody->enableGravity(isGravityEnabled);
 		rigidBody->setMass(mass);
 
+	}
+}
+
+void InspectorWindow::UpdateRigidBody(AGameObject* aObject)
+{
+
+	AGameObject::ComponentList aComponentList = aObject->getComponentsOfType(AComponent::ComponentType::Physics);
+
+	if (aComponentList.size() == 1)
+	{
+		PhysicsComponent* pComponent = (PhysicsComponent*)aComponentList[0];
+
+		aObject->detachComponent(pComponent);
+		BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(pComponent);
+
+		string componentName = "Physics_Component ";
+		
+		aObject->attachComponent(new PhysicsComponent(componentName.append(aObject->RetrieveName()), aObject, pComponent->getRigidBody()->getType()));
+
+		AGameObject::ComponentList list = aObject->getComponentsOfType(AComponent::ComponentType::Physics);
+		PhysicsComponent* pObject = (PhysicsComponent*)list[0];
+
+		pObject->getRigidBody()->setMass((pComponent->getRigidBody()->getMass()));
+		pObject->getRigidBody()->enableGravity((pComponent->getRigidBody()->isGravityEnabled()));
+
+		delete pComponent;
 	}
 }

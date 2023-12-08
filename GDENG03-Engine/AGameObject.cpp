@@ -245,14 +245,14 @@ void AGameObject::recomputeMatrix(float matrix[16])
 	//Get Component
 	ComponentList list = this->getComponentsOfType(AComponent::ComponentType::Physics);
 
-	if(list.size() == 1)
+	/*if(list.size() == 1)
 	{
 		PhysicsComponent* pObject = (PhysicsComponent*)list[0];
 		this->localMatrix = scaleMatrix.multiplyTo((newMatrix));
-	}
+	}*/
 
-	else
-		this->localMatrix = scaleMatrix.multiplyTo(transMatrix.multiplyTo(newMatrix));
+	
+		this->localMatrix = scaleMatrix.multiplyTo((newMatrix));
 
 
 	this->overrideMatrix = true;

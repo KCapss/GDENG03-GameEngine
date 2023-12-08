@@ -62,7 +62,10 @@ PhysicsComponent::PhysicsComponent(String name, AGameObject* owner, BodyType typ
 
 PhysicsComponent::~PhysicsComponent()
 {
-	BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(this);
+	
+	PhysicsSystem* physicsSystem = BaseComponentSystem::getInstance()->getPhysicsSystem();
+	PhysicsWorld* physicsWorld = physicsSystem->getPhysicsWorld();
+	physicsWorld->destroyRigidBody(rigidBody);
 	AComponent::~AComponent();
 }
 

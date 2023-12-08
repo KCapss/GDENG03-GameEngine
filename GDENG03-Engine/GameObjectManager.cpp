@@ -219,6 +219,14 @@ void GameObjectManager::deleteAllObjects()
 {
 	for (int i = 0; i < aList.size(); i++)
 	{
+		AGameObject::ComponentList aComponentList = aList[i]->getComponentsOfType(AComponent::ComponentType::Physics);
+
+		if (aComponentList.size() == 1) {
+			PhysicsComponent* pComponent = (PhysicsComponent*)aComponentList[0];
+			BaseComponentSystem::getInstance()->getPhysicsSystem()->unregisterComponent(pComponent);
+			delete pComponent;
+
+		}
 		delete aList[i];
 	}
 
@@ -330,13 +338,13 @@ void GameObjectManager::batchInstantiate(void* shaderByteCode, size_t sizeShader
 			objName.append(std::to_string(pCubeCount));
 			objName.append(") ");
 		}
-
-		Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
+		float offset = (float)i;
+;		Cube* cube = new Cube(objName, shaderByteCode, sizeShader);
 		cube->setObjectType(AGameObject::PHYSICS_CUBE);
 		cube->setPosition(
-			MathUtils::randomFloat(-5.0f, 5.0f),
+			( -5.0f + (offset * 2.0f)),
 			MathUtils::randomFloat(6.0f, 8.0f),
-			MathUtils::randomFloat(-5.0f, 5.0f)
+			0
 		);
 		cube->setRotation(
 			MathUtils::randomFloat(-3.0f, 3.0f),

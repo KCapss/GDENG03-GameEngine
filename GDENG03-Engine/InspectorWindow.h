@@ -20,6 +20,7 @@ private:
 
 	//Rigid Body
 	void DisplayRigidBody(AGameObject* aObject);
+	void UpdateRigidBody(AGameObject* aObject);
 
 };
 
