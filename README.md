@@ -37,7 +37,7 @@ Requirements:
 - Unity Engine
 Note Setup:
   - Remove All the non primitive in the hierarchy (including Lights, Camera)
-  - Create an empty gameobject and explicitly named it **"SceneSpawner"** and attach all the scripts included in the scene folder except _"**CustomSceneParser.cs**"_.
+  - Create an empty gameobject and explicitly named it **"SceneSpawner"** and attach all the scripts included in the unity folder except _"**CustomSceneParser.cs**"_.
   - Location of the .level that need to be loaded is started on the (projectdir)Assets/"Name".level
 
 ### For Scene Editor UtoL Parser Setup
